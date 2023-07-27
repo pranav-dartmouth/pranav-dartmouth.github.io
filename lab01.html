@@ -41,6 +41,11 @@
 				text-align: left;
 			}
 
+			.formcomponents {
+				padding-bottom: 10px;
+				width: 50%;
+			}
+
 			
 			
 		</style>
@@ -78,24 +83,33 @@
 			<h3>Contact Me</h3>
 			<div id="contactform">
 			<form action="action_page.php">
-				
+				<div class="formcomponents">
 				<label for="name">Name:</label><br />
 				<input type="text" id="name" name="name"><br />
+				</div>
 
+				<div class="formcomponents">
 				<label for="organization">Institution/Organization:</label><br />
 				<input type="text" id="organization"><br />
+				</div>
 
+				<div class="formcomponents">
 				<label for="personalknowledge">How do you know Pranav?</label><br />
 				<select id="personalknowledge" name="personalknowledge">
 					<option value="school">School</option>
 					<option value="work">Work</option>
 					<option value="N/A">I don't know Pranav</option>
 				</select><br />
+				</div>
 
+				<div class="formcomponents">
 				<label for="message">Your Message</label><br />
 				<textarea id="message" name="message" style="height: 300px; width: 50%;"></textarea><br /> <!-- Source: W3Schools -->
-
+				</div>
+				
+				<div class="formcomponents">
 				<input type="submit" value="submit">
+				</div>
 			</form>
 			</div>
 		</div>
