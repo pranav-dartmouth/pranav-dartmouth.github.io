@@ -28,7 +28,7 @@
 			display: block;
 			margin-right: auto;
 			margin-left: auto;
-			text-align: center;
+			text-align: left;
 			list-style-position: inside;	
 			width: 50%;
 			}
@@ -62,6 +62,14 @@
 				margin-right: auto;
 			}
 
+			.orderedlistcenter {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			text-align: left;
+			width: 50%;
+			}
+
 			
 			
 		</style>
@@ -73,17 +81,8 @@
 			<p class="center">My name is <span class="emboldenedname">Pranav Kanmadikar</span>. I'm a 19-year-old college student who's really interested in social science research and political advocacy, but I'm also passionate about exploring new places and meeting new places generally.</p>
 		</div>
 		<div class="section">
-			<h3>Where I Live Now</h3>
+			<h3>Where I Live</h3>
 			<p class="center">I'm originally from <span class="emboldenedname">Louisville, Kentucky</span>, but now live in <span class="emboldenedname">Hanover, New Hampshire</span>, for school.</p>
-		</div>
-
-		<div class="section">
-			<h3>Places I've Lived Before</h3>
-			<ul class="center">
-				<li>Prospect, Kentucky	
-				</li>
-				<li>Greensboro, North Carolina</li>
-			</ul>
 		</div>
 			
 		<div class="section">
@@ -96,6 +95,17 @@
 			Regardless of what I end up choosing, I aspire to do something interdisciplinary and something 
 			that will have an impact towards an issue I am passionate about.</p>
 		</div>
+
+		<div class="section">
+			<h3>My (Potential) Majors</h3>
+			<ul>
+				<li>Geography</li>
+				<li>Anthropology</li>
+				<li>Government</li>
+				<li>Linguistics</li>
+				<li>Quantitative Social Science</li>
+			</ul>
+		</div>	
 
 		<div class="section">
 		<h3>Courses I've Taken</h3>
@@ -208,7 +218,7 @@
 
 		<div class="section">
 		<h3>Places I've Traveled to in the Past 3 Years</h3>
-			<ol class="center">
+			<ol class="orderedlistcenter">
 				<li>The Grand Canyon</li>
 				<li>St. Louis</li>
 				<li>Nashville</li>
@@ -224,9 +234,9 @@
 
 		
 		<div class="section">
-			<h3>Contact Me</h3>
+			<h3>Contact Me Directly</h3>
 			<div id="contactform" class="formcenter">
-			<form action="action_page.php">
+			<form action="action_page.php">  <!-- Source: W3Schools --> 
 				<div class="formcomponents">
 				<label for="name">Name</label><br />
 				<input type="text" id="name" name="name"><br />
@@ -257,6 +267,15 @@
 			</form>
 			</div>
 		</div>
+
+		<div class="section">
+			<h3>Other Ways to Reach Out</h3>
+			<p>You can also contact me in the following ways:</p>
+			<ul class="orderedlistcenter">
+				<li>Email: pkanmadikar@gmail.com</li>
+				<li>LinkedIn: Pranav Kanmadikar</li>
+				<li>Phone: 5023388041</li>
+			</ul>
 	</body>
 		
 </html>
