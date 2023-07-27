@@ -30,17 +30,26 @@
 			width: 50%;
 			}
 
+			.section {
+				padding-bottom: 40px;
+			}
+
 			
 			
 		</style>
 	</head>
 	<body>
-		<h1>About Me<h1>
-		<h3>Who I Am</h3>
+		<div class="section"><h1>About Me<h1></div>
+	 	<div class="section">
+			<h3>Who I Am</h3>
 			<p class="center">My name is Pranav Kanmadikar. I'm a 19-year-old college student who's really interested in social science research and political advocacy, but I'm also passionate about exploring new places and meeting new places generally.</p>
-		<h3>Where I Live</h2>
+		</div>
+		<div class="section">
+			<h3>Where I Live</h3>
 			<p class="center">I'm originally from Louisville, Kentucky, but now live in Hanover, New Hampshire, for school.</p>
-		<h3>My Academic Interests </h2>
+		</div>
+		<div class="section">
+			<h3>My Academic Interests</h3>
 			<p class="center">Academically, I have a number of broad and overlapping interests. I've had some preliminary exposure 
 			to geography, political science, and linguistics through my time at college and 
 			I definitely hope to do something at the intersection of these fields. 
@@ -48,13 +57,40 @@
 			and participating in environmental activism, so I'm far from settled in terms of what I would actually like to do in my career.
 			Regardless of what I end up choosing, I aspire to do something interdisciplinary and something 
 			that will have an impact towards an issue I am passionate about.</p>
-		<h3>My Career Interests</h3>
+		</div>
+		<div class="section">
+			<h3>My Career Interests</h3>
 			<p class="center">After college, I plan to pursue some sort of career in geography, although I am not entirely set on the specific field within geography that I am interested in. 
 				In tandem with whatever career I end up choosing, I definitely hope to be involved with social and political activism in both my local community and beyond.</p>
-		<h3>What I Like to Do for Fun</h3>
-			<p class="center">I enjoy reading, cooking, and traveling when I'm not doing anything else. My favorite book is <em>To Kill a Mockingbird</em> and my favorite thing to cook is pasta.</h1>p>
-		<h3>Contact Me</h3>
-			
+		</div>
+		<div class="section">
+			<h3>What I Like to Do for Fun</h3>
+			<p class="center">I enjoy reading, cooking, and traveling when I'm not doing anything else. My favorite book is <em>To Kill a Mockingbird</em> and my favorite thing to cook is pasta.</p>
+		</div>
+		<div class="section">
+			<h3>Contact Me</h3>
+			<div id="contactform" class="center">
+			<form action="action_page.php">
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" placeholder="Your name...">
+
+				<label for="organization">Institution/Organization:</label>
+				<input type="text" id="organization" placeholder="The name of the institution/organization you are affiliated with...">
+
+				<label for="personalknowledge">How do you know Pranav?</label>
+				<select id="personalknowledge" name="personalknowledge">
+					<option value="school">School</option>
+					<option value="work">Work</option>
+					<option value="N/A">I don't know Pranav</option>
+				</select>
+
+				<label for="message">Message</label>
+				<textarea id="message" name="message" placeholder="Write something you would like to tell me..." style=height: 300px"></textarea> <!-- Source: W3Schools --> 
+
+				<input type="submit" value="submit">
+			</form>
+			</div>
+		</div>
 	</body>
 		
 </html>
