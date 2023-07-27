@@ -37,6 +37,10 @@
 				padding-bottom: 40px;
 			}
 
+			label {
+				text-align: left;
+			}
+
 			
 			
 		</style>
@@ -72,8 +76,9 @@
 		</div>
 		<div class="section">
 			<h3>Contact Me</h3>
-			<div id="contactform" class="center">
+			<div id="contactform">
 			<form action="action_page.php">
+				
 				<label for="name">Name:</label><br />
 				<input type="text" id="name" name="name"><br />
 
@@ -88,7 +93,7 @@
 				</select><br />
 
 				<label for="message">Your Message</label><br />
-				<textarea id="message" name="message" style="height: 700px"></textarea><br /> <!-- Source: W3Schools -->
+				<textarea id="message" name="message" style="height: 300px; width: 50%;"></textarea><br /> <!-- Source: W3Schools -->
 
 				<input type="submit" value="submit">
 			</form>
