@@ -101,7 +101,7 @@
 
 			#imageofme {
 			border-radius: 50%;
-			width: 15%;
+			width: 10%;
 			display: block;
 			margin-right: auto;
 			margin-left: auto;
@@ -118,14 +118,7 @@
 			padding-bottom: 10px;
 			}
 
-			#imagewithbrother {
-			width: 25%;
-			display: block;
-			margin-right: auto;
-			margin-left: auto;
-			padding-top: 30px;
-			padding-bottom: 10px;
-			}
+			
 
 			#imageofbook {
 			width: 15%;
@@ -134,6 +127,31 @@
 			margin-left: auto;
 			padding-top: 30px;
 			padding-bottom: 10px;
+			}
+
+			#imagewithbrother {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			padding-top: 30px;
+			padding-bottom: 10px;
+			}
+
+			#imageofpuertorico {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			padding-top: 30px;
+			padding-bottom: 10px;
+			}
+
+			.row {
+				display: flex;
+			}
+
+			.column {
+				flex: 50%;
+				padding: 5px;
 			}
 
 			figcaption {
@@ -349,10 +367,17 @@
 				<li>Mumbai, India</li>
 				<li>Tokyo</li>
 			</ol>
-			<figure>
+			<div class="row"> <!-- Source: W3Schools -->
+			<figure class="column">
 			<img src="PicWithBrother.jpg" id="imagewithbrother" alt="Picture of me with my brother on a recent trip to The Grand Canyon">
 			<figcaption>My brother and I on a recent trip to The Grand Canyon</figcaption>
 			</figure>
+			<figure class="column">
+			<img src="PicofPuertoRico.jpg" id="imageofpuertorico" alt="Picture of me on a trip to Puerto Rico">
+			<figcaption>Me on a trip to Puerto Rico</figcaption>
+			</figure>
+			</div>
+			
 		</div>
 
 		
