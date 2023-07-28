@@ -80,6 +80,36 @@
 				font-family: Trebuchet, sans-serif;
 			}
 
+			.courselinks {
+				target: "_blank";
+			}
+			
+			.courselinks, .courseswithoutlinks {
+				color: green;
+				background-color: transparent;
+				text-decoration: none;
+			}
+			
+			.courselinks:visited {
+				color: green;
+				background-color: transparent;
+				text-decoration: none;
+			}
+			
+			.courselinks:hover {
+				color: green;
+				background-color: transparent;
+				text-decoration: underline;
+			}
+
+			#imageofme {
+			border-radius: 50%;
+			width: 10%;
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			}
+
 			
 			
 		</style>
@@ -88,11 +118,13 @@
 		<div class="section"><h1>About Me<h1></div>
 	 	<div class="section">
 			<h3>Who I Am</h3>
+			<img src="pranav image.jpg" id="imageofme" alt="Picture of Pranav">
 			<p class="center">My name is <span class="emboldenedname">Pranav Kanmadikar</span>. I'm a 19-year-old college student who's really interested in social science research and political advocacy, but I'm also passionate about exploring new places and meeting new places generally.</p>
 		</div>
 		<div class="section">
 			<h3>Where I Live</h3>
 			<p class="center">I'm originally from <span class="emboldenedname">Louisville, Kentucky</span>, but now live in <span class="emboldenedname">Hanover, New Hampshire</span>, for school.</p>
+			<img src="" alt="Static map of Hanover"> <!-- Source for this map: https://whereismap.net/where-is-hanover-new-hampshire-what-county-is-hanover-new-hampshire-in/ -->
 		</div>
 			
 		<div class="section">
@@ -109,12 +141,12 @@
 		<div class="section">
 			<h3>My (Potential) Majors</h3>
 			<ul class="listcenter">
-				<li>Geography</li>
-				<li>Anthropology</li>
-				<li>Government</li>
-				<li>Linguistics</li>
-				<li>Quantitative Social Science</li>
-				<li>Computer Science</li>
+				<li><a href="https://geography.dartmouth.edu/" class="courselinks" title="Description for the Geography Department at Dartmouth College">Geography</a></li>
+				<li><a href="https://anthropology.dartmouth.edu/" class="courselinks" title="Description for the Anthroplogy Department at Dartmouth College">Anthropology</a></li>
+				<li><a href="https://govt.dartmouth.edu/" class="courselinks" title="Description for the Government Department at Dartmouth College"</li>Government</a></li>
+				<li><a href="https://linguistics.dartmouth.edu/" class="courselinks" title="Description for the Linguistics Department at Dartmouth College">Linguistics</a></li>
+				<li><a href="https://qss.dartmouth.edu/" class="courselinks" title="Description for the Quantitative Social Sciences Department at Dartmouth College">Quantitative Social Science</a></li>
+				<li><a href="https://web.cs.dartmouth.edu/" class="courselinks" title="Description for the Computer Science Department at Dartmouth College">Computer Science</a></li>
 			</ul>
 		</div>	
 
@@ -126,7 +158,7 @@
 					<th>Subject</th>
 					<th>Academic Term</th>
 				</tr>
-        <tr>
+        			<tr>
 					<td><a href="https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/geography/geog-geography/geog-50-02/" class="courselinks" title="Course description for Web Mapping and Application">Web Mapping and Application</td>
 					<td>Geography</td>
 					<td>Summer 2023</td>
@@ -318,12 +350,10 @@
 
 		<div class="section">
 			<h3>Other Ways to Reach Out</h3> <!-- In case user does not want to/cannot contact directly via the above form -->
-			<p class="center">You can also contact me in the following ways:</p>
-			<ul class="listcenter">
-				<li>Email: pkanmadikar@gmail.com</li>
-				<li>LinkedIn: Pranav Kanmadikar</li> <!-- Username but not profile or link provided; added those in third lab -->
-				<li>Phone: 5023388041</li>
-			</ul>
+			<p class="center">You can also contact me via <a href="mailto: pkanmadikar@gmail.com" class="courselinks" title="Send an email to me">email</a> or <a href="https://www.linkedin.com/in/pranav-kanmadikar-537522259" class="courselinks" title="Check out my LinkedIn profile">LinkedIn</a>.
+			
+			</p>
+			
 	</body>
 		
 </html>
