@@ -1,0 +1,167 @@
+body {
+				background-color: #e5f6df;
+			}
+			
+			h1 {
+				text-align: center;
+			}
+			h3 {
+				text-align: center;
+			}
+			h1, h3 {
+				font-family: perpetua, sans-serif, serif;
+			}
+			p, label, li {
+				font-family: "Trebuchet MS", sans-serif, serif;
+			}
+
+			.center {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			text-align: left;
+			list-style-position: inside;	
+			width: 50%;
+			}
+
+			.formcenter {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			text-align: left;
+			width: 50%;
+			}
+
+			.tablecenter {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			list-style-position: inside;	
+			width: 50%;
+			}
+
+			.section {
+				padding-bottom: 40px;
+			}
+
+			.formcomponents {
+				padding-bottom: 10px;
+				width: 100%;
+			}
+
+			.emboldenedname {
+				font-weight: bold;
+			}
+
+			.listcenter {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			text-align: left;
+			width: 50%;
+			}
+
+			tr {
+				font-family: Trebuchet, sans-serif;
+			}
+
+			.courselinks, .courseswithoutlinks {
+				color: green;
+				background-color: transparent;
+				text-decoration: none;
+			}
+			
+			.courselinks:visited {
+				color: green;
+				background-color: transparent;
+				text-decoration: none;
+			}
+			
+			.courselinks:hover {
+				color: green;
+				background-color: transparent;
+				text-decoration: underline;
+			}
+
+			#imageofme {
+			border-radius: 50%;
+			width: 10%;
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			padding-top: 30px;
+			padding-bottom: 30px;
+			}
+
+			#imageofhanover {
+			width: 50%;
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			padding-top: 30px;
+			padding-bottom: 10px;
+			}
+
+			#imageofbook {
+			width: 15%;
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			padding-top: 30px;
+			padding-bottom: 10px;
+			}
+
+			#imagewithbrother {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			padding-top: 30px;
+			padding-bottom: 10px;
+			width: 50%;
+			}
+
+			#imageofpuertorico {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			padding-top: 30px;
+			padding-bottom: 10px;
+			width: 50%;
+			}
+
+			.twoimagesinasingleline {
+				display: flex;
+			}
+
+			.eachimage {
+				flex: 50%;
+				padding: 5px;
+			}
+
+			figcaption {
+				text-align: center;
+				font-family: Trebuchet, sans-serif;
+				font-size: small;
+			}
+
+			.footer {
+				text-align: center;
+				font-size: x-small;
+				font-family: courier, monospace, serif; 
+				padding-top: 70px;
+			}
+
+			table {
+				border: 1px solid black;
+				border-spacing: 10px;
+			}
+
+			th {
+				width: 16.6%;
+				border-bottom: 1px solid black;
+				padding-bottom: 7px;
+			}
+
+			.hoverabletablerows:hover {
+				background-color: #dedede;
+			}
