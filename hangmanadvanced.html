@@ -43,11 +43,11 @@
           let guesses = "";
 
           $("#word").html(blanks);
-
             $(".letter").click(function() {
                     let id = $(this).attr('id');
                     console.log("Clicked on " + id);
-                    document.getElementById("#" + id).style.display = "none";
+                    $("#" + id).css("display", "none");
+              
                     guesses = guesses + id;
                     total_chances = total_chances - 1;
                         if (total_chances < 0) {
