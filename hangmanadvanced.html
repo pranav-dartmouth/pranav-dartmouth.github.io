@@ -47,17 +47,9 @@
             $(".letter").click(function() {
                     let id = $(this).attr('id');
                     console.log("Clicked on " + id);
-                    ("#" + id).style.display = "none";
-
-                    if (guesses.includes(id)) {
-                          $("#errormessage").html("You already guessed " + id);
-                    }
-
-                    else {
-                        guesses = guesses + id;
-                        $("#" + id).css('text-decoration', 'line-through');
-                      
-                        total_chances = total_chances - 1;
+                    document.getElementById("#" + id).style.display = "none";
+                    guesses = guesses + id;
+                    total_chances = total_chances - 1;
                         if (total_chances < 0) {
                               $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
                         }
