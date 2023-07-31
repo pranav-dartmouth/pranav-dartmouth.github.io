@@ -32,7 +32,7 @@
                         $("#" + id).css('text-decoration', 'line-through');
                       
                         total_chances = total_chances - 1;
-                        if (total_chances <= 0) {
+                        if (total_chances < 0) {
                               $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
                         }
                         else {
@@ -42,23 +42,11 @@
                                 let index = word.indexOf(id);
                                 console.log("letter" + id + "is at position " + index + "of the word");
                                 blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
-                                $("#word").html(blanks);
-                                
+                                $("#word").html(blanks);  
                         }
                     }
-                    
-                  
-
-
               }
-
-
-
-
               )
-
-
-
         });
     </script>
     <style>
