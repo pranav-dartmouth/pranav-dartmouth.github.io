@@ -25,7 +25,7 @@
 				padding: 0;
 				position: fixed;
 				vertical-align: top;
-				width: 100%;
+				float: left;
 			}
 
 			/* nav .navheader {
@@ -38,6 +38,7 @@
 				
 			nav ul {
 				list-style-type: none;
+				float: right;
 			}
 
 			nav li {
