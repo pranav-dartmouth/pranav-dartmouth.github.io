@@ -29,10 +29,10 @@
                         guesses = guesses + id;
                         total_chances = total_chances - 1;
                         if (total_chances < 0) {
-                              $(#errormessage").innerHTML("You are out of guesses. You have unfortunately lost the game.");
+                              $("#errormessage").innerHTML("You are out of guesses. You have unfortunately lost the game.");
                         }
                         else {
-                              $(#numberofchances").innerHTML(total_guesses);
+                              $("#numberofchances").innerHTML(total_guesses);
                         }
                     }
                     
