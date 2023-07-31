@@ -6,14 +6,28 @@
     <script>
       $(document).ready(
 
+
+          
+
           function() {
+
+          let total_chances = 10;
+          let word = "f i s h";
+          let blanks = "_ _ _ _";
+          let guesses = "";
 
             $(".letter").click(
               function() {
                     let id = $(this).attr('id');
                     console.log("Clicked on " + id);
+
+                    if (guesses.includes(id)) {
+                          $("#errormessage").html("You already guessed " + id);
                       
-                
+                      
+
+                    }
+                    
                   
 
 
