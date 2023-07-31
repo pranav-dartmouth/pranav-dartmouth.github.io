@@ -40,6 +40,9 @@
 				font-weight: bold;
 				color: white;
 				text-decoration: none;
+			}
+
+			a {
 				display: inline-block;
 			}
 
