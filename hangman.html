@@ -22,17 +22,17 @@
                     console.log("Clicked on " + id);
 
                     if (guesses.includes(id)) {
-                          $("#errormessage").innerHTML("You already guessed " + id);
+                          $("#errormessage").html("You already guessed " + id);
                     }
 
                     else {
                         guesses = guesses + id;
                         total_chances = total_chances - 1;
                         if (total_chances < 0) {
-                              $("#errormessage").innerHTML("You are out of guesses. You have unfortunately lost the game.");
+                              $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
                         }
                         else {
-                              $("#numberofchances").innerHTML(total_chances);
+                              $("#numberofchances").html(total_chances);
                         }
                     }
                     
