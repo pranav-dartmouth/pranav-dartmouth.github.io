@@ -20,6 +20,7 @@
 				position: fixed;
 				vertical-align: top;
 				width: 100%;
+				overflow: hidden;
 			}
 				
 			.navbarleft {
