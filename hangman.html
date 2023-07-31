@@ -10,6 +10,7 @@
           
 
           function() {
+          var total_chances;
           let possiblewords = ["w i t h", "t h i s", "f r o m", "h a v e", "t h e y", "m o r e", "w h e n", "w h a t", 
                                "t h e m", "t h a n", "s o m e", "t i m e", "i n t o", "o n l y", "s u c h", "a l s o", "t h e n", "m o s t", "s a i d", "y o u r", 
                                "v e r y", "m a d e", "m a n y", "o v e r", "l i k e",  "m u s t", "s a m e", "w o r k", "l i f e", "e a c h",
@@ -27,13 +28,13 @@
             blanks += "_ ";
           }
           if (word.length >= 9) {
-              let total_chances = 20;
+              total_chances = 20;
           }
           else if (word.length >=5 && word.length <=8) {
-              let total_chances = 15;
+              total_chances = 15;
           }
           else {
-            let total_chances = 10;
+            total_chances = 10;
           }
           let guesses = "";
 
