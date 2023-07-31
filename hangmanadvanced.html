@@ -47,6 +47,7 @@
             $(".letter").click(function() {
                     let id = $(this).attr('id');
                     console.log("Clicked on " + id);
+                    ("#" + id).style.display = "none";
 
                     if (guesses.includes(id)) {
                           $("#errormessage").html("You already guessed " + id);
