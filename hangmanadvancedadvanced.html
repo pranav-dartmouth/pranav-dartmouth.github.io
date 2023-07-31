@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pranav's Hangman Game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(
 
+
+          
+
+          function() {
+          var total_chances;
+          let possiblewords = ["w i t h", "t h i s", "f r o m", "h a v e", "t h e y", "m o r e", "w h e n", "w h a t", 
+                               "t h e m", "t h a n", "s o m e", "t i m e", "i n t o", "o n l y", "s u c h", "a l s o", "t h e n", "m o s t", "s a i d", "y o u r", 
+                               "v e r y", "m a d e", "m a n y", "o v e r", "l i k e",  "m u s t", "s a m e", "w o r k", "l i f e", "e a c h",
+                               "m u c h", "b o t h", "u p o n", "u s e d", "p a r t", "m a k e", "l o n g", "j u s t", "d o e s", "d o w n",
+                               "c a s e", "b a c k", "t r u e", "s e l f", "k i n g", "d o n e", "a u t h o r i n g", "a b o l i s h e d", "a w e s t r u c k", 
+                               "a b s o l v i n g", "a l g o r i t h m", "a m p l i t u d e", "b l a c k o u t s", "b r o a c h i n g", "b r i g h t e n s", "b r e a k d o w n", "c o s t u m i e r", "c o m p a n i e s", "f a v o r i t e", 
+                               "f l a g s t o n e", "f u r n i s h e d", "f a r m h o u s e", "c r e m a t i n g", "c o p y r i g h t", "a u t o l y z e d", 
+                              "b a c k f l o w s", "b a c k s w e p t", "b a c k s w i n g", "c o m p r i s e d", "c o n f l u x e s", "d u p l e x i n g", "e n z y m a t i c", "e x c u s a b l y", 
+                              "e q u i v o c a l", "e q u i t a b l y", "f a n c y w o r k", "f o r m u l i z e", "f o r j u d g e s", "s u b d e r m a t o g l y p h i c"]
+          /* BONUS: The longest English word without any repeating letters that I have added to the above array is "subdermatoglyphic". Source: https://atkinsbookshelf.wordpress.com/2016/08/23/what-is-the-longest-english-word-without-repeated-letters/#:~:text=The%20longest%20word%20in%20the%20English%20language%20without%20repeating%20any,%2C%E2%80%9D%20and%20%E2%80%9Cmisconjugatedly.%E2%80%9D */
+  
+          let word = possiblewords[Math.floor(Math.random() * (possiblewords.length))];
+          let wordlength = (word.length+1)/((2));
+          let blanks = "";
+          for (let i = 1; i<=wordlength; i++) {
+            blanks += "_ ";
+          }
+          blanks = blanks.substring(0, blanks.length-1);
+            
+          if (word.length >= 9) {
+              total_chances = 20;
+          }
+          else if (word.length >=5 && word.length <=8) {
+              total_chances = 15;
+          }
+          else {
+            total_chances = 10;
+          }
+          $("#numberofchances").html(total_chances);
+          let guesses = "";
+
+          $("#word").html(blanks);
+            $(".letter").click(function() {
+                    let id = $(this).attr('id');
+                    console.log("Clicked on " + id);
+              
+    
+              
+                    guesses = guesses + id;
+                    total_chances = total_chances - 1;
+                        if (total_chances < 0) {
+                              $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
+                        }
+                        else {
+                              $("#numberofchances").html(total_chances);
+
+                              if(word.count(id) > 1) {
+                                let indexofmultiletterword = word.indexOf(id);
+                                console.log("letter" + id + "is at position " + indexofmultiletterword + "of the word");
+                                blanks = blanks.substr(0, indexofmultiletterword) + id + blanks.substr(indexofmultiletterword + 1);
+                                $("#word").html(blanks);  
+                                
+                              }
+                          else if (word.count(id) == 1) {
+                                $("#" + id).css("display", "none");
+                                let indexofuniletterword = word.indexOf(id);
+                                console.log("letter" + id + "is at position " + indexofuniletterword + "of the word");
+                                blanks = blanks.substr(0, indexofuniletterword) + id + blanks.substr(indexofuniletterword + 1);
+                                $("#word").html(blanks);  
+                          }
+                          else {
+                                $("#errormessage").html("That is incorrect");
+                          }
+                          }
+
+                              if (blanks == word) {
+                                      $("#errormessage").html("You won");
+
+                              }
+                        }
+                          
+                    }
+              )
+          });
+    </script>
+    <style>
+      body {
+        background-color: #d6f6d5;
+      }
+      #word {
+        font-weight: bold;
+      }
+
+      #errormessage {
+          color: red;
+          font-weight: bold;
+      }
+
+      #chances {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        padding: 10px;
+        font-size: medium;
+        border: 4px solid black;
+      }
+
+      #numberofchances {
+        font-size: xxx-large;
+      }
+
+      h1 {
+        text-align: center;
+        font-family: Arial, Verdana, sans-serif;
+        font-weight: xxx-large;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      #letterselection {
+        padding-top: 20%;
+      }
+
+       #wordspace {
+          font-size: xx-large;
+         padding-top: 12%;
+       }
+        
+      
+    </style>
+  </head>
+  <body>
+    <h1>Hangman!</h1>
+      <div id="chances">
+        <p>
+          <span id="numberofchances"></span> chances left
+        </p>
+      </div>
+
+      <div id="wordspace">
+        <p>
+          The word to guess is <span id="word"></span>
+        </p>
+      </div>
+
+      <div id="letterselection">
+        <p>Click on a letter to guess:</p>
+        <p>
+          <span class="letter" id="a">a</span>
+          <span class="letter" id="b">b</span>
+          <span class="letter" id="c">c</span>
+          <span class="letter" id="d">d</span>
+          <span class="letter" id="e">e</span>
+          <span class="letter" id="f">f</span>
+          <span class="letter" id="g">g</span>
+          <span class="letter" id="h">h</span>
+          <span class="letter" id="i">i</span>
+          <span class="letter" id="j">j</span>
+          <span class="letter" id="k">k</span>
+          <span class="letter" id="l">l</span>
+          <span class="letter" id="m">m</span>
+          <span class="letter" id="n">n</span>
+          <span class="letter" id="o">o</span>
+          <span class="letter" id="p">p</span>
+          <span class="letter" id="q">q</span>
+          <span class="letter" id="r">r</span>
+          <span class="letter" id="s">s</span>
+          <span class="letter" id="t">t</span>
+          <span class="letter" id="u">u</span>
+          <span class="letter" id="v">v</span>
+          <span class="letter" id="w">w</span>
+          <span class="letter" id="x">x</span>
+          <span class="letter" id="y">y</span>
+          <span class="letter" id="z">z</span>
+        </p>
+        </div>
+
+        <div id="errormessage"></div>
+  </body>
+</html>
