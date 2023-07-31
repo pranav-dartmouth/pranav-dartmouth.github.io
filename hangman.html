@@ -6,57 +6,27 @@
     <script>
       $(document).ready(
 
+          function() {
 
-            
-      
-            function() {
-
-                var total_guesses = 10;
-                var word = "f i s h";
-                var blanks = "_ _ _ _";
-                var guesses = "";
-
-                $("#word").html(blanks);
-
-                
-                   $(".letter").click(
-                      function() {
-                          var id = $(this).attr('id');
-                          console.log("Clicked on" + id);
-
-                          if (guesses.includes(id)) {
-                            $("#error_msg").html("You already guessed " + id);
-                          
-                        }
-                          else {
-                            guesses = guesses + id;
-
-                            $("#" + id).css('text-decoration', 'line-through')
-                            total_guesses = total_guesses - 1;
-                            if (total_guesses < 0) {
-                              $("#errormessage").html("You happen to be out of guesses. You have unfortunately lost the game.")
-                          }
-                            else {
-                                $("#numleft").html(total_guesses);
-
-                                if (word.includes(id)) {
-                                  var index = word.indexOf(id);
-                                  console.log("letter" + id + "is at index" + index);
-                                  blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
-                                  $("#word").html(blanks);
-                                  
-                            }
-
-                          if (blanks == word) {
-                              $("#errormessage").text("You won");
-                          }
-                              
+            $(".letter").click(
+              function() {
+                    let id = $(this).attr('id');
+                    console.log("Clicked on" " id);
                       
-                    }
-                )
-            }
-        );
+                
+                  
 
+
+              }
+
+
+
+
+              )
+
+
+
+        });
     </script>
     <style>
 
