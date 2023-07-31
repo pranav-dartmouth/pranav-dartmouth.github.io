@@ -23,9 +23,10 @@
 
                     if (guesses.includes(id)) {
                           $("#errormessage").html("You already guessed " + id);
-                      
-                      
+                    }
 
+                    else {
+                        guesses = guesses + id;
                     }
                     
                   
