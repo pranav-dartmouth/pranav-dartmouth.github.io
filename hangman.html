@@ -18,7 +18,11 @@
                                "true", "self", "free", "king", "done"]
 
           let word = possiblewords[Math.floor(Math.random() * (possiblewords.length))];
-          let blanks = "____";
+          let wordlength = word.length;
+          let blanks = "";
+          for (let i = 1; i<=wordlength; i++) {
+            blanks += "_ ";
+          }
           let guesses = "";
 
           $("#word").html(blanks);
