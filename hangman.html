@@ -80,32 +80,56 @@
         });
     </script>
     <style>
-
+      body {
+        background-color: #d6f6d5;
+      }
       #word {
         font-weight: bold;
       }
 
       #errormessage {
           color: red;
+          font-weight: bold;
       }
 
       #chances {
         position: fixed;
         top: 0px;
         right: 0px;
+        padding: 10px;
         font-size: medium;
         border: 4px solid black;
       }
 
       #numberofchances {
-        font-size: xx-large;
+        font-size: xxx-large;
+      }
+
+      h1 {
+        text-align: center;
+        font-family: Arial, Verdana, sans-serif;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      #letterselection {
+        margin-top: 40%;
+      }
+
+       #wordspace {
+          font-size: xx-large;
+       }
+        
+      
     </style>
   </head>
   <body>
     <h1>Hangman!</h1>
       <div id="chances">
         <p>
-          You have <span id="numberofchances"></span> chances left.
+          <span id="numberofchances"></span> chances left
         </p>
       </div>
 
