@@ -38,7 +38,7 @@
                         else {
                               $("#numberofchances").html(total_chances);
 
-                              if(word.indexOf(id) != -1) {
+                              if(word.includes(id)) {
                                 let index = word.indexOf(id);
                                 console.log("letter" + id + "is at position " + index + "of the word");
                                 blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
