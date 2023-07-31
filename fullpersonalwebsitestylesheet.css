@@ -21,6 +21,7 @@
 				vertical-align: top;
 				width: 100%;
 				overflow: hidden;
+				height: 7%;
 			}
 				
 			.navbarleft {
@@ -28,7 +29,7 @@
 				float: left;
 				margin-right: auto;
 				text-align: left;
-				width: 40%;
+				width: 50%;
 			}
 
 				.navbarright {
@@ -36,13 +37,14 @@
 					float: right;
 					margin-left: auto;
 					text-align: right;
-					width: 60%;
+					width: 50%;
 				}
 
 			li {
 				font-weight: bold;
 				color: white;
 				text-decoration: none;
+				padding: 10px;
 				display: inline-block;
 			}
 
