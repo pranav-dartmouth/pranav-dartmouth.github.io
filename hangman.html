@@ -12,8 +12,13 @@
           function() {
 
           let total_chances = 10;
-          let word = "f i s h";
-          let blanks = "_ _ _ _";
+          let possiblewords = ["that", "with", "this", "from", "have", "they", "were", "been", "more", "when", "will", "what", "them", "than", "some", "time", "into",
+                               "only", "such", "also", "then", "most", "said", "your", "very", "made", "many", "over", "like", "even", "well", "must", "same", "work",
+                               "life", "each", "much", "both", "upon", "used", "part", "good", "make", "long", "just", "here", "does", "down", "case", "back", "area", 
+                               "true", "self", "free", "king", "done"]
+
+          let word = possiblewords[Math.floor(Math.random() * (possiblewords.length))];
+          let blanks = "____";
           let guesses = "";
 
           $("#word").html(blanks);
