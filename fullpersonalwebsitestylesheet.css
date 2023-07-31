@@ -45,6 +45,9 @@
 				color: white;
 				text-decoration: none;
 				padding: 10px;
+			}
+
+			a {
 				display: inline-block;
 			}
 
