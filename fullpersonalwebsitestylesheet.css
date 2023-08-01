@@ -268,13 +268,12 @@
 
 			.majorcolumn { /* Source: W3Schools */ 
   				float: left;
-  				padding: 10px;
 				display: inline-block;
 			}
 
 			.majorcolumn img {
   				margin-top: 12px;
-				height: 50px;
+				height: 60px;
 			}
 
 			#majorimagegrid:after {
