@@ -8,6 +8,7 @@
 			.firstsection {
 				vertical-align: middle;
 				text-align: center;
+				margin-top: 30%;
 			}
 
 			
@@ -22,6 +23,7 @@
 				width: 100%;
 				display: flex;
 				justify-content: space-between;
+				text-decoration: none;
 			}
 				
 			.navbarleft {
