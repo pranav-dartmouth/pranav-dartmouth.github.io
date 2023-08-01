@@ -11,7 +11,7 @@
 			}
 
 			
-			.navbar {
+			nav {
 				background-color: green;
 				top: 0;
 				left: 0;
@@ -33,24 +33,25 @@
 					display: flex;
 				}
 
-			li {
-				font-weight: bold;
+			nav a {
+				font-weight: normal;
 				color: white;
 				text-decoration: none;
 				padding: 10px;
 			}
 
-			a:hover {
+			nav a:hover {
 				font-weight: bold;
 
 			}
 
-			a:visited {
+			nav a:visited {
 				color: white;
 				text-decoration: none;
+				font-weight: normal;
 			}
 
-			a:active {
+			nav a:active {
 				font-weight: bold;
 			}
 			
