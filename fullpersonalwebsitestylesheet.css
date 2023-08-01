@@ -43,11 +43,12 @@
 				font-weight: bold;
 				color: white;
 				text-decoration: none;
-				padding: 10px;
+				padding=right: 10px;
+				display: inline-block;
 			}
 
 			a {
-				display: inline-block;
+				display: block;
 			}
 
 			a:hover {
