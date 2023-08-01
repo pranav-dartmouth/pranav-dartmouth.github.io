@@ -216,6 +216,20 @@
 			width: 50%;
 			}
 
+			#emailicon {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			width: 50%;
+			}
+
+			#linkedinicon {
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			width: 50%;
+			}
+
 			.twoimagesinasingleline {
 				width: 50%;
 				margin-right: auto;
