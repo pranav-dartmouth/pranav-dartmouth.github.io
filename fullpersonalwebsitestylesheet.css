@@ -268,15 +268,14 @@
 
 			.majorcolumn { /* Source: W3Schools */ 
   				float: left;
- 				width: 50%;
-				height: 10%;
+ 				width: 100%;
+				height: 50px;
   				padding: 10px;
 				display: inline-block;
 			}
 
 			.majorcolumn img {
   				margin-top: 12px;
-				height: 40px;
 			}
 
 			#majorimagegrid:after {
