@@ -10,10 +10,7 @@
 				margin-top: 90px;
 			}
 
-			#volunteeringpicture {
-				float: left;
-			}
-
+			
 			#volunteeringpictureandcaption {
 				width: 50%;
 				margin-left: auto;
@@ -21,7 +18,11 @@
 				display: inline-block;
 			}
 
-			
+			#volunteeringpicture {
+				float: left;
+				width: 50%;
+			}
+
 			.navbar {
 				background-color: green;
 				top: 0;
