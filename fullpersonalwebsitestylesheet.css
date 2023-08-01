@@ -256,3 +256,27 @@
 			.hoverabletablerows:hover {
 				background-color: #dedede;
 			}
+
+			#majorimagegrid {
+				display: flex;
+				flex-wrap: wrap;
+				padding: 0 4px;
+				width: 50%;
+			}
+
+			.majorcolumn { /* Source: W3Schools */ 
+  				float: left;
+ 				width: 33.3%;
+  				padding: 10px;
+			}
+
+			.majorcolumn img {
+  				margin-top: 12px;
+			}
+
+			#majorimagegrid:after {
+  				content: "";
+ 				display: table;
+ 				clear: both;
+			}
+				
