@@ -236,6 +236,8 @@
 
 			.footer {
 				text-align: center;
+				margin-right: auto;
+				margin-left: auto;
 				font-size: x-small;
 				font-family: serif; 
 				bottom: 0;
