@@ -106,7 +106,7 @@
 
 			
 			
-			p, label {
+			p, label, tr, li {
 				font-family: Arial, Verdana, serif;
 			}
 
@@ -150,10 +150,6 @@
 			margin-left: auto;
 			text-align: left;
 			width: 50%;
-			}
-
-			tr, li {
-				font-family: Verdana, Arial, serif;
 			}
 
 			.courselinks, .courseswithoutlinks {
