@@ -262,12 +262,16 @@
 				flex-wrap: wrap;
 				padding: 0 4px;
 				width: 50%;
+				margin-right: auto;
+				margin-left: auto;
 			}
 
 			.majorcolumn { /* Source: W3Schools */ 
   				float: left;
- 				width: 33.3%;
+ 				width: 50%;
+				height: 10%;
   				padding: 10px;
+				display: inline-block;
 			}
 
 			.majorcolumn img {
