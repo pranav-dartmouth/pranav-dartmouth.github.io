@@ -150,6 +150,7 @@
 			margin-left: auto;
 			text-align: center;
 			width: 50%;
+			list-style-position: inside;
 			}
 
 			.courselinks, .courseswithoutlinks {
