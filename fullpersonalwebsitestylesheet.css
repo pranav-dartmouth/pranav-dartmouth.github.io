@@ -53,7 +53,31 @@
 			nav a:active {
 				font-weight: bold;
 			}
-			
+
+			.louisville {
+				float: left;
+				width: 50%;
+				padding: 5px;
+			}
+
+			.louisvillerow::after { /* Source: W3Schools */  
+				content: "";
+				clear: both:
+				display: table;
+			}
+
+			.hanover {
+				float: left;
+				width: 50%;
+				padding: 5px;
+			}
+
+.			.hanoverrow::after { /* Source: W3Schools */ 
+				content: "";
+				clear: both;
+				display: table;
+
+			}	
 			h1 {
 				text-align: center;
 				font-size: xxx-large;
