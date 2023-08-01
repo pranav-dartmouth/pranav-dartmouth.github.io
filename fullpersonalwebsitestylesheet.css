@@ -10,15 +10,14 @@
 				margin-top: 90px;
 			}
 
-			
+			#volunteerginpicturewithcaption {
+				display: flex;
+				justify-content: center;
+				width: 50%;
+			}
 
 			#volunteeringpicture {
 				float: left;
-				height: 170px;
-				display: block;
-				margin-right: auto;
-				margin-left: auto;
-				width: 30%;
 			}
 
 			#internships {
