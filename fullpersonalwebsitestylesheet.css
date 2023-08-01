@@ -239,6 +239,8 @@
 				font-size: x-small;
 				font-family: serif; 
 				bottom: 0;
+				position: absolute;
+				vertical-align: bottom;
 			}
 
 			table {
