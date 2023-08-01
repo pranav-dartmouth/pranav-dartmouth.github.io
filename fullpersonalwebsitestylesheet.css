@@ -7,11 +7,11 @@
 
 			.firstsection {
 				text-align: center;
-				margin-top: 40px;
+				margin-top: 70px;
 			}
 
 			
-			nav {
+			.navbar {
 				background-color: green;
 				top: 0;
 				left: 0;
@@ -28,15 +28,15 @@
 				list-style-type: none;
 			}
 
-				.navbarright {
-					list-style-type: none;
-					display: flex;
-				}
+			.navbarright {
+				list-style-type: none;
+				display: flex;
+			}
 
 			nav a {
-				font-weight: normal;
 				color: white;
 				text-decoration: none;
+				padding: 10px;
 			}
 
 			nav a:hover {
