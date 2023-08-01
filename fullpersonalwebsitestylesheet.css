@@ -26,16 +26,10 @@
 				
 			.navbarleft {
 				list-style-type: none;
-				float: left;
-				margin-right: auto;
-				text-align: left;
 			}
 
 				.navbarright {
 					list-style-type: none;
-					float: right;
-					margin-left: auto;
-					text-align: right;
 					display: flex;
 				}
 
@@ -44,7 +38,6 @@
 				color: white;
 				text-decoration: none;
 				padding: 10px;
-				display: inline-block;
 			}
 
 			a:hover {
