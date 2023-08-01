@@ -77,7 +77,15 @@
 				clear: both;
 				display: table;
 
-			}	
+			}
+
+			.describinglouisville {
+				text-align: left;
+			}
+
+			.describinghanover {
+				text-align: right;
+			}
 			h1 {
 				text-align: center;
 				font-size: xxx-large;
@@ -174,14 +182,14 @@
 			padding-bottom: 30px;
 			}
 
-			#imageofhanover {
+			/* #imageofhanover {
 			width: 50%;
 			display: block;
 			margin-right: auto;
 			margin-left: auto;
 			padding-top: 30px;
 			padding-bottom: 10px;
-			}
+			} */ 
 
 			#imageofbook {
 			width: 15%;
