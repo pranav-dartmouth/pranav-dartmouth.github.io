@@ -28,7 +28,7 @@
 				float: left;
 				margin-right: auto;
 				text-align: left;
-				width: 40%;
+				width: 35%;
 			}
 
 				.navbarright {
@@ -36,7 +36,7 @@
 					float: right;
 					margin-left: auto;
 					text-align: right;
-					width: 60%;
+					width: 65%;
 				}
 
 			li {
@@ -44,9 +44,6 @@
 				color: white;
 				text-decoration: none;
 				padding: 10px;
-			}
-
-			a {
 				display: inline-block;
 			}
 
