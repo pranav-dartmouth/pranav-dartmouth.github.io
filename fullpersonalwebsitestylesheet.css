@@ -20,12 +20,14 @@
 
 			#volunteeringpicture {
 				float: left;
-				width: 25%;
+				height: 170px;
+				width: 170px;
 			}
 
-			#volunteeringcaption {
-				vertical-align: middle;
+			#internships {
+				clear: left;
 			}
+			
 
 			.navbar {
 				background-color: green;
