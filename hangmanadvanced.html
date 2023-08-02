@@ -61,6 +61,11 @@
                                 console.log("letter" + id + "is at position " + index + "of the word");
                                 blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
                                 $("#word").html(blanks);  
+                                $("#errormessage").html("That is correct.");
+                              }
+
+                              else {
+                                  $("#errormessage").html("That is incorrect.");
                               }
 
                               if (blanks == word) {
