@@ -5,9 +5,22 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Pranav's Academics</title>
 			<link rel="stylesheet" href="fullpersonalwebsitestylesheet.css">
-			
+
 			
 		</head>
+
+		<script>
+			$(document).ready(function() {
+				$(button#table).click(
+					function() {
+						$(table#table).fadeToggle();
+					}
+			)
+			}); 
+
+
+			
+		</script>
 
 <body>
 	<nav>
@@ -58,7 +71,9 @@
 
 		<div class="subsection">
 		<h3>Courses I've Taken</h3> <!-- New section added after previous lab, but connects to academic interests section -->
-			<table class="tablecenter">
+			<button id="table">Click here to see all my courses so far
+			</button>
+			<table class="tablecenter" hidden id="table">
 				<tr class="hoverabletablerows">
 					<th>Course</th>
 					<th>Subject</th>
