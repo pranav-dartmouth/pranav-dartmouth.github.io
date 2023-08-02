@@ -265,7 +265,8 @@
 			}
 
 			.hoverabletablerows:hover {
-				background-color: #dedede;
+				background-color: white;
+				font-weight: bold;
 			}
 
 			#majorimagegrid {
