@@ -11,7 +11,12 @@
 				$("button#table").click(function() {
 						$("table#table").fadeToggle();
 				})
-			}); 
+				$("#searchbar").on("keyup", function() {
+					let search = $(this).val();
+					$("#tablebody tr").filter(function() {
+						$(this).toggle($(this).text().indexOf(search) > -1)}
+					)}
+					})
 
 			
 		</script>
