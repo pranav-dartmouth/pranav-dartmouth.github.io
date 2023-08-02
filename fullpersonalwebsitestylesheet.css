@@ -169,14 +169,15 @@
 			padding-bottom: 30px;
 			}
 
-			/* #imageofhanover {
-			width: 50%;
+			#imageofhanover, #mapoflouisville {
+			width: 100%;
+			height: 200px;
 			display: block;
 			margin-right: auto;
 			margin-left: auto;
-			padding-top: 30px;
+			padding-top: 10px;
 			padding-bottom: 10px;
-			} */ 
+			} 
 
 			#imageofbook, #picturewithpasta {
 			width: 15%;
