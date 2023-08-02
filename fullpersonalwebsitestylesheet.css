@@ -92,8 +92,6 @@
 				font-size: x-large;
 			}
 
-			
-			
 			p, label, tr, li {
 				font-family: Arial, Verdana, serif;
 			}
@@ -157,6 +155,7 @@
 				color: green;
 				background-color: transparent;
 				text-decoration: underline;
+				font-weight: bold;
 			}
 
 			#imageofme {
