@@ -45,6 +45,7 @@
           $("#word").html(blanks);
             $(".letter").click(function() {
                     let id = $(this).attr('id');
+                    let matches = word.match(/id/gi); 
                     console.log("Clicked on " + id);
               
     
@@ -57,21 +58,16 @@
                         else {
                               $("#numberofchances").html(total_chances);
 
-                              if(word.count(id) > 1) {
-                                let indexofmultiletterword = word.indexOf(id);
+                              if(matches >= 1) {
+                                for (i = matches; matches > 0; matches--) {
+                                let indexofmultiletterword = word.indexOf(id/i);
                                 console.log("letter" + id + "is at position " + indexofmultiletterword + "of the word");
                                 blanks = blanks.substr(0, indexofmultiletterword) + id + blanks.substr(indexofmultiletterword + 1);
                                 $("#word").html(blanks);  
-                                
+                                }
                               }
-                          else if (word.count(id) == 1) {
-                                $("#" + id).css("display", "none");
-                                let indexofuniletterword = word.indexOf(id);
-                                console.log("letter" + id + "is at position " + indexofuniletterword + "of the word");
-                                blanks = blanks.substr(0, indexofuniletterword) + id + blanks.substr(indexofuniletterword + 1);
-                                $("#word").html(blanks);  
-                          }
-                          else {
+                  
+                              else {
                                 $("#errormessage").html("That is incorrect");
                           }
                           }
