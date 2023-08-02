@@ -140,7 +140,7 @@
 			margin-left: auto;
 			text-align: center;
 			width: 50%;
-			list-style-position: inside;
+			list-style-position: inside; /* Help on this: W3Schools */
 			}
 
 			.courselinks, .courseswithoutlinks {
