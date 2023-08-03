@@ -14,16 +14,38 @@
 						$("#postsubmissionformtext").fadeIn();
 				});
 
-				$("#emailcontainer").mouseover(
+				$(".emailcontainer").mouseover( // Source for help with this: W3Schools 
 					function() {
-						(
-
-
+					console.log("Image is being hovered over");
+					$(this).children(".emailicon").css("opacity", "0.1");
+					$(this).children(".emailtext").show();
+					$(this).children(".emailtext").css({"opacity": "1"});
+					});
+				
+				$(".emailcontainer").mouseout(
+					function() {
+					console.log("Image is being left by mouse.");
+					$(this).children(".emailicon").css("opacity", "1");
+					$(this).children(".emailtext").hide();
 					}
+				);
 
+				$(".linkedincontainer").mouseover( 
+					function() {
+					console.log("Image is being hovered over");
+					$(this).children(".emailicon").css("opacity", "0.1");
+					$(this).children(".emailtext").show();
+					$(this).children(".emailtext").css({"opacity": "1"});
+					});
+				
+				$(".linkedincontainer").mouseout(
+					function() {
+					console.log("Image is being left by mouse.");
+					$(this).children(".emailicon").css("opacity", "1");
+					$(this).children(".emailtext").hide();
+					});
 
-
-					)
+				
 			});
 
 			
@@ -97,12 +119,12 @@
 			<div class="twoimagesinasingleline"> <!-- Source for code: W3Schools -->
 				<div class="eachimage">
 					<figure>
-						<a href="mailto:pkanmadikar@gmail.com" title="Send an email to me directly" target="_blank"><div id="emailcontainer"><img src="email.jpg" alt="Image of email icon" id="emailicon"><div id="email text">Send an email</div></div></a>
+						<a href="mailto:pkanmadikar@gmail.com" title="Send an email to me directly" target="_blank"><div id="emailcontainer"><img src="email.jpg" alt="Image of email icon" id="emailicon"><div id="emailtext">Send an email</div></div></a>
 					</figure>
 				</div>
 				<div class="eachimage">
 					<figure>
-						<a href="https://www.linkedin.com/in/pranav-kanmadikar-537522259" title="Connect with my profile on LinkedIn" target="_blank"><div id="linkedincontainer"><img src="linkedin.jpg" id="linkedinicon" alt="Image of LinkedIn icon"><div id="linkedintext">Connect on LinkedIn</div></div></a>
+						<a href="https://www.linkedin.com/in/pranav-kanmadikar-537522259" title="Connect with my profile on LinkedIn" target="_blank"><div id="linkedincontainer"><img src="linkedin.jpg" alt="Image of LinkedIn icon" id="linkedinicon"><div id="linkedintext">Connect on LinkedIn</div></div></a>
 					</figure>
 				</div>
      			</div>
