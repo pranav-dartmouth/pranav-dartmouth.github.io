@@ -38,8 +38,8 @@
          /* Sources for words without repeating letters: https://www.wordunscrambler.net/word-list/10-letter-words-with-no-repeating-letters, https://wordswithletters.org/blog/10-letter-words-with-no-repeating-letters#:~:text=Some%20not%20so%20common%2010,%2C%20mudslinger%2C%20pachyderms%2C%20etc. */
             /* BONUS: The longest English word without any repeating letters that I have added to the above array is "subdermatoglyphic". Source: https://atkinsbookshelf.wordpress.com/2016/08/23/what-is-the-longest-english-word-without-repeated-letters/#:~:text=The%20longest%20word%20in%20the%20English%20language%20without%20repeating%20any,%2C%E2%80%9D%20and%20%E2%80%9Cmisconjugatedly.%E2%80%9D */
 
-          let possiblewrongerrormessages = ["Wrong", "Incorrect", "Not quite!", "Try again!", "Not exactly", "Give it another shot!", "Doesn't work!", "Doesn't match", "Doesn't fit"]
-          let possiblecorrecterrormessages = ["Correct!", "Amazing!", "Nice guess!", "You got it!", "Great!", "Terrific!", "Right letter!", "Wow!", "Nice!"];
+          let possiblewrongerrormessages = ["Wrong!", "Incorrect!", "Not quite!", "Try again!", "Not exactly!", "Give it another shot!", "Doesn't work!", "Doesn't match!", "Doesn't fit!"];
+          let possiblecorrecterrormessages = ["Correct!", "Amazing!", "Nice guess!", "You got it!", "Great!", "Terrific!", "Right letter!", "Wow!", "Nice!", "Awesome!", "Exemplary work!", "Nice job!", "Great guess!"];
           let word = possiblewords[Math.floor(Math.random() * (possiblewords.length))];
           let wordlength = (word.length+1)/((2));
           let blanks = "";
@@ -79,7 +79,7 @@
                                 console.log("letter" + id + "is at position " + index + "of the word");
                                 blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
                                 $("#word").html(blanks);  
-                                $("#errormessage").html("That is correct.");
+                                $("#errormessage").html("You have won the game!);
                               }
 
                               else {
@@ -109,6 +109,8 @@
       #errormessage {
           color: red;
           font-weight: bold;
+          text-align: center;
+          font-size: xx-large;
       }
 
       #chances {
