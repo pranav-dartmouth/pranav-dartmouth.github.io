@@ -70,7 +70,7 @@
                     total_chances = total_chances - 1;
                         if (total_chances <= 0) {
                               $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
-                             $("#errormessage").css({"font-size":"60px"},{"color":"red"});
+                             $("#errormessage").css({"font-size":"60px","color":"red"});
                         }
                         else {
                               $("#numberofchances").html(total_chances);
@@ -93,7 +93,7 @@
 
                               if (blanks == word) {
                                       $("#errormessage").text("You have won the game!");
-                                      $("#errormessage").css({"font-size":"60px"},{"color":"green"});
+                                      $("#errormessage").css({"font-size":"60px","color":"green"});
 
                               }
                         }
