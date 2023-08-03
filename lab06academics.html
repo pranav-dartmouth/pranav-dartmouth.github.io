@@ -16,7 +16,7 @@
 						$("table#table").fadeToggle();
 				});
 
-				$(".majorimage").mouseover( // Source for help with this: W3Schools 
+				$(".majorimagecontainer").mouseover( // Source for help with this: W3Schools 
 					function() {
 					console.log("Image is being hovered over");
 					$(this).css("opacity", "0.1");
@@ -24,7 +24,7 @@
 					$(".text").css({"color": "green"}, {"text-decoration": "underline"}, {"font-weight": "800"});
 					});
 				
-				$(".majorimage").mouseout(
+				$(".majorimagecontainer").mouseout(
 					function() {
 					console.log("Image is being left by mouse.");
 					$(this).css("opacity", "1");
