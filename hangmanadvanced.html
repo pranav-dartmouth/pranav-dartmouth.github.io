@@ -70,8 +70,7 @@
                     total_chances = total_chances - 1;
                         if (total_chances <= 0) {
                               $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
-                             $("#errormessage").css("font-size", "60px");
-                             $("#errormessage").addClass("w3-spin");
+                             $("#errormessage").css({"font-size":"60px"},{"color":"red"});
                         }
                         else {
                               $("#numberofchances").html(total_chances);
@@ -83,7 +82,7 @@
                                 $("#word").html(blanks);  
                                 let correcterrormessage = possiblecorrecterrormessages[Math.floor(Math.random() * (possiblecorrecterrormessages.length))];
                                 $("#errormessage").text(correcterrormessage);
-                                $("#errormessage").css("color", "green");
+                                $("#errormessage").css("color","green");
                               }
 
                               else {
@@ -94,8 +93,7 @@
 
                               if (blanks == word) {
                                       $("#errormessage").text("You have won the game!");
-                                      $("#errormessage").css("font-size", "60px");
-                                      $("#errormessage").addClass("w3-spin");
+                                      $("#errormessage").css({"font-size":"60px"},{"color":"green"});
 
                               }
                         }
