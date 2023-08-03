@@ -166,10 +166,11 @@
 				text-align: center;
 			}
 
-			.text { /* Soure for help on this: W3Schools */
+			.text { 
 				position: absolute; 
 				top: 50%;
 				left: 50%;
+				transform: translate(-50%, -50%); /* Soure for help on this: W3Schools */
 			}
 
 			#imageofme {
