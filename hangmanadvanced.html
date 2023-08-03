@@ -81,13 +81,13 @@
                                 $("#word").html(blanks);  
                                 let correcterrormessage = possiblecorrecterrormessages[Math.floor(Math.random() * (possiblecorrecterrormessages.length))];
                                 $("#errormessage").text(correcterrormessage);
-                                $("#errormessage").css("font-color", "green");
+                                $("#errormessage").css("color", "green");
                               }
 
                               else {
                                   let wrongerrormessage = possiblewrongerrormessages[Math.floor(Math.random() * (possiblewrongerrormessages.length))];
                                   $("#errormessage").text(wrongerrormessage);
-                                $("#errormessage").css("font-color", "red");
+                                $("#errormessage").css("color", "red");
                               }
 
                               if (blanks == word) {
