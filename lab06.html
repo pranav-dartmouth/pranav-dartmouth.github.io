@@ -13,15 +13,15 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				$(".pronunciationtext").hide();
-				$(".nameheading").mouseenter(function() {
-					$(".pronunciationtext").show();
-					$(".nameheading").css("opacity", "0.1");
+				$(".pronunciationtext").attr("style", "display: none");
+				$(".nameheading").mouseover(function() {
+					$(".pronunciationtext").attr("style", "display: block");
+					$(this).attr("style", "opacity: 0.1");
 				});
 
-				$(".nameheading").mouseleave(function() {
-					$(".pronunciationtext").hide();
-					$(".nameheading").css("opacity", "1");
+				$(".nameheading").mouseout(function() {
+					$(".pronunciationtext").attr("style", "display: none");
+					$(this).attr("style", "opacity: 1");
 				});
 			});
 		</script>
