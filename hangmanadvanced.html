@@ -79,6 +79,7 @@
                                 console.log("letter" + id + "is at position " + index + "of the word");
                                 blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
                                 $("#word").html(blanks);  
+                                let correcterrormessage = possiblecorrecterrormessages[Math.floor(Math.random() * (possiblecorrecterrormessages.length))];
                                 $("#errormessage").text(correcterrormessage);
                               }
 
@@ -88,7 +89,6 @@
                               }
 
                               if (blanks == word) {
-                                      let correcterrormessage = possiblecorrecterrormessages[Math.floor(Math.random() * (possiblecorrecterrormessages.length))];
                                       $("#errormessage").text("You have won the game!");
 
                               }
