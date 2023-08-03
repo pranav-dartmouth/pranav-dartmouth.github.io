@@ -9,11 +9,11 @@
 
 		<script>
 			$(document).ready(function() {
-				$("table#table").hide();
+				$("#table").hide();
 				$(".text").hide();
-				$("button#table").click(function() {
+				$("#buttonfortable").click(function() {
 						console.log("Button has been clicked");
-						$("table#table").fadeToggle();
+						$("#table").fadeToggle();
 				});
 
 				$(".majorimagecontainer").mouseover( // Source for help with this: W3Schools 
@@ -100,7 +100,7 @@
 
 		<div class="subsection">
 		<h3>Courses I've Taken</h3> <!-- New section added after previous lab, but connects to academic interests section -->
-			<button id="table" class="center">Click here to see all my courses so far
+			<button id="buttonfortable" class="center">Click here to see all my courses so far
 			</button>
 			<table class="tablecenter" id="table">
 				<tr class="hoverabletablerows">
