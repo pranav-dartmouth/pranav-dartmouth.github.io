@@ -8,11 +8,12 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
+				$("table#table").hide();
 				$("button#table").click(function() {
-						$("table#table").show();
-				})
-			})
-
+						console.log("Button has been clicked");
+						$("table#table").fadeToggle();
+				});
+			}); 
 			
 		</script>
 
