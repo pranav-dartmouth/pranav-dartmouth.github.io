@@ -17,11 +17,13 @@
 
 				$("#majorimagecontainer").hover( // Source for help with this: W3Schools 
 					function() {
+					console.log("Image is being hovered over");
 					$(this).css("opacity", "0.1");
 					$(".text").show();
 					$(".text").css({"color": "green"}, {"font-weight": "bold"});
 					},
 					function() {
+					console.log("Image is being left by mouse.");
 					$(this).css("opacity", "1");
 					$(".text").hide();
 					}
