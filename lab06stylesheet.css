@@ -161,12 +161,12 @@
 				font-weight: bold;
 			}
 
-			.majorimagecontainer {
+			.majorimagecontainer, .funphotocontainer {
 				position: relative;
 				text-align: center;
 			}
 
-			.text { 
+			.text, .funphototext { 
 				position: absolute; 
 				top: 50%;
 				left: 50%;
@@ -184,7 +184,7 @@
 			}
 
 			#imageofhanover, #mapoflouisville {
-			width: 70%;
+			width: 65%;
 			height: 300px;
 			display: block;
 			margin-right: auto;
