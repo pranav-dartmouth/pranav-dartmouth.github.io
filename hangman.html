@@ -83,12 +83,14 @@
                                 let correcterrormessage = possiblecorrecterrormessages[Math.floor(Math.random() * (possiblecorrecterrormessages.length))];
                                 $("#errormessage").text(correcterrormessage);
                                 $("#errormessage").css("color","green");
+                                $("#errormessage").addClass("blinking");
                               }
 
                               else {
                                   let wrongerrormessage = possiblewrongerrormessages[Math.floor(Math.random() * (possiblewrongerrormessages.length))];
                                   $("#errormessage").text(wrongerrormessage);
-                                $("#errormessage").css("color", "red");
+                                  $("#errormessage").css("color", "red");
+                                 $("#errormessage").addClass("blinking");
                               }
 
                               if (blanks == word) {
@@ -115,6 +117,27 @@
           font-weight: bold;
           text-align: center;
           font-size: xx-large;
+      }
+
+      .blinking {
+        animation-name: blink;
+        animation-duration: 1.5s;
+        animation-iteration-count: 2;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes blink {
+      0% {
+          opacity: 1;
+      }
+
+      50% {
+          opacity: 0;
+      }
+
+      100% {
+          opacity: 1;
+      }
       }
 
       #chances {
