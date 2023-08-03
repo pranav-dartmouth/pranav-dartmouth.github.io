@@ -9,6 +9,7 @@
 
 		<script>
 			$(document).ready(function() {
+				$("#text").hide();
 				$("table#table").hide();
 				$("button#table").click(function() {
 						console.log("Button has been clicked");
@@ -17,7 +18,9 @@
 
 				$("#majorimagecontainer").mouseenter(function() {
 					console.log("User is currently hovering over image);
-					$(this).css("opacity", 0.9);
+					$(this).css("opacity", "0.9");
+					$("#text").show();
+				});
 
 				  });
 			}); 
