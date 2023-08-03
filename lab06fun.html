@@ -16,6 +16,22 @@
 					$(".text").show();
 					$(".text").css({"color": "green"}, {"text-decoration": "underline"}, {"font-weight": "800"});
 					});
+
+				$("figure").mouseover( // Source for help with this: W3Schools 
+					function() {
+					console.log("Image is being hovered over");
+					$(this).children(".funphoto").css("opacity", "0.1");
+					$(this).children(".text").show();
+					$(this).children(".text").css({"color": "green"}, {"font-weight": "bold"}, {"text-decoration": "underline"}, {"opacity": "1"});
+					});
+				
+				$("figure").mouseout(
+					function() {
+					console.log("Image is being left by mouse.");
+					$(this).children(".funphoto").css("opacity", "1");
+					$(this).children(".text").hide();
+					}
+				);
 			}); 
 
 			
@@ -50,15 +66,15 @@
 		<h3>Reading</h3>
 		<p class="center">Reading for pleasure is something you'll always find me doing when I have even a little bit of spare time. I thoroughly enjoy reading both fiction and nonfiction, but my personal preference is nonfiction.</p>
 		<figure>
-			<a href="https://www.amazon.com/Kill-Mockingbird-Harper-Lee/dp/0446310786" title="Click to buy this book on Amazon" target="_blank"><img src="ToKillAMockingbird.jpg" alt="Picture of the cover of my favorite book, To Kill a Mockingbird" id="imageofbook"></a>
-			<figcaption>My all-time favorite book, <em>To Kill A Mockingbird</em> (click it to buy)</figcaption>
+			<a href="https://www.amazon.com/Kill-Mockingbird-Harper-Lee/dp/0446310786" title="Click to buy this book on Amazon" target="_blank"><div class="funphotocontainer"><img src="ToKillAMockingbird.jpg" alt="Picture of the cover of my favorite book, To Kill a Mockingbird" id="imageofbook" class="funphoto">Click to buy this book</div></a>
+			<figcaption>My all-time favorite book, <em>To Kill A Mockingbird</em>)</figcaption>
 		</figure>
 		</div>
 		<div class="subsection">
 		<h3>Cooking</h3>
 			<p class="center">Cooking has never been something I've been great at, to be completely frank. But I've always enjoyed cooking whatever simple things I can because my family appreciates it and it helps me destress a little bit.</p>
 			<figure>
-			<img src="Pasta.jpg" alt=""Picture with pasta" id="picturewithpasta">
+			<a href="" title="My favorite pasta recipe" target="_blank"><div class="funphotocontainer"><img src="Pasta.jpg" alt="Picture with pasta" id="picturewithpasta" class="funphoto">Click to see my preferred pasta recipe</div></a>
 			<figcaption>My all-time favorite dish, pasta</figcaption>
 			</figure>
 		</div>
