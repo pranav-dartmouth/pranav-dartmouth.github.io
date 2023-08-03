@@ -161,6 +161,17 @@
 				font-weight: bold;
 			}
 
+			.majorimagecontainer {
+				position: relative;
+				text-align: center;
+			}
+
+			.text { /* Soure for help on this: W3Schools */
+				position: absolute; 
+				top: 50%;
+				left: 50%;
+			}
+
 			#imageofme {
 			border-radius: 50%;
 			width: 10%;
