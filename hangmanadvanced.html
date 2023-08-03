@@ -62,8 +62,8 @@
 
           $("#word").html(blanks);
             $(".letter").click(function() {
-                    let id = $(this).attr('id');
-                    console.log("Clicked on " + id);
+                    let id = $(this).attr("id");
+                    console.log("Clicked on the letter " + id);
                     $("#" + id).css("display", "none");
               
                     guesses = guesses + id;
