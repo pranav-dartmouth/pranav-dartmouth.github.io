@@ -14,12 +14,12 @@
 		<script>
 			$(document).ready(function() {
 				$(".pronunciationtext").hide();
-				$("h1").mouseover(function() {
+				$(".nameheading").mouseover(function() {
 					$(".pronunciationtext").show();
 					$(this).css("opacity", "0.1");
 				});
 
-				$("h1").mouseout(function() {
+				$(".nameheading").mouseout(function() {
 					$(".pronunciationtext").hide();
 					(this).css("opacity", "1");
 				});
@@ -48,7 +48,7 @@
 		</nav>
 					
 	 	<div class="firstsection">
-			<h1>Pranav Kanmadikar</h1>
+			<h1 class="nameheading">Pranav Kanmadikar</h1>
 			<p class="center" class="pronunciationtext">How to pronounce it: pr-uh-nuh-v kuhn-maa-dee-kuhr</p>
 			<img src="pranav image.jpg" id="imageofme" alt="Picture of Pranav"> <!-- Source of image: Personal -->
 			<p class="center">I'm a 19-year-old college student who's really interested in social science research and political advocacy, but I'm also passionate about exploring new places and meeting new people generally.</p>
