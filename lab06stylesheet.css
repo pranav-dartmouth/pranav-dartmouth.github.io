@@ -4,6 +4,16 @@
 				height: 100%;
 			}
 
+			button, input {
+				background-color: blue; 
+				border: none;
+				color: white;
+				font-weight: bold;
+				padding: 20px 20px 20px 20px;
+				text-align: center;
+				text-decoration: none;
+			}
+
 			.firstsection {
 				text-align: center;
 				margin-top: 90px;
