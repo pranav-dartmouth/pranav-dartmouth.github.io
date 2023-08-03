@@ -13,14 +13,14 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				$(".pronunciationtext").attr("style", "display: none");
+				$("#pronunciationtext").attr("style", "display: none");
 				$(".nameheading").mouseover(function() {
-					$(".pronunciationtext").attr("style", "display: block");
+					$("#pronunciationtext").attr("style", "display: block");
 					$(this).attr("style", "opacity: 0.1");
 				});
 
-				$(".nameheading").mouseout(function() {
-					$(".pronunciationtext").attr("style", "display: none");
+				$("#nameheading").mouseout(function() {
+					$("#pronunciationtext").attr("style", "display: none");
 					$(this).attr("style", "opacity: 1");
 				});
 			});
@@ -48,8 +48,8 @@
 		</nav>
 					
 	 	<div class="firstsection">
-			<h1 class="nameheading">Pranav Kanmadikar</h1>
-			<p class="center" class="pronunciationtext">How to pronounce it: pr-uh-nuh-v kuhn-maa-dee-kuhr</p>
+			<h1 id="nameheading">Pranav Kanmadikar</h1>
+			<p class="center" id="pronunciationtext">How to pronounce it: pr-uh-nuh-v kuhn-maa-dee-kuhr</p>
 			<img src="pranav image.jpg" id="imageofme" alt="Picture of Pranav"> <!-- Source of image: Personal -->
 			<p class="center">I'm a 19-year-old college student who's really interested in social science research and political advocacy, but I'm also passionate about exploring new places and meeting new people generally.</p>
 		</div>
