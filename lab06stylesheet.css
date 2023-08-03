@@ -21,6 +21,10 @@
 				 
 			}
 
+			.funphototext {
+				color: green;
+			}
+
 			#volunteeringpicture {
 				float: left;
 				width: 250px;
