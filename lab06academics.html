@@ -19,15 +19,15 @@
 				$(".majorimagecontainer").mouseover( // Source for help with this: W3Schools 
 					function() {
 					console.log("Image is being hovered over");
-					$(this).css("opacity", "0.1");
+					$(this).children(".majorimage").css("opacity", "0.1");
 					$(this).children(".text").show();
-					$(this).children(".text").css({"color": "green"}, {"text-decoration": "underline"}, {"font-weight": "bold"});
+					$(this).children(".text").css({"color": "green"}, {"font-weight": "bold"});
 					});
 				
 				$(".majorimagecontainer").mouseout(
 					function() {
 					console.log("Image is being left by mouse.");
-					$(this).css("opacity", "1");
+					$(this).children(".majorimage").css("opacity", "1");
 					$(this).children(".text").hide();
 					}
 				);
