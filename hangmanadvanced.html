@@ -71,6 +71,7 @@
                         if (total_chances <= 0) {
                               $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
                              $("#errormessage").css("font-size", "60px");
+                             $("#errormessage").addClass("w3-spin");
                         }
                         else {
                               $("#numberofchances").html(total_chances);
@@ -94,6 +95,7 @@
                               if (blanks == word) {
                                       $("#errormessage").text("You have won the game!");
                                       $("#errormessage").css("font-size", "60px");
+                                      $("#errormessage").addClass("w3-spin");
 
                               }
                         }
