@@ -14,12 +14,12 @@
 		<script>
 			$(document).ready(function() {
 				$(".pronunciationtext").hide();
-				$(".nameheading").mouseover(function() {
+				$(".nameheading").mouseenter(function() {
 					$(".pronunciationtext").show();
 					$(".nameheading").css("opacity", "0.1");
 				});
 
-				$(".nameheading").mouseout(function() {
+				$(".nameheading").mouseleave(function() {
 					$(".pronunciationtext").hide();
 					$(".nameheading").css("opacity", "1");
 				});
