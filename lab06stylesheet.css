@@ -147,6 +147,10 @@
 				background-color: transparent;
 				text-decoration: none;
 			}
+
+			.imagelinks {
+				width: 15%;
+			}
 			
 			.courselinks:visited {
 				color: green;
