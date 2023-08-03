@@ -20,15 +20,15 @@
 					function() {
 					console.log("Image is being hovered over");
 					$(this).css("opacity", "0.1");
-					$(".text").show();
-					$(".text").css({"color": "green"}, {"text-decoration": "underline"}, {"font-weight": "800"});
+					$(this).children(".text").show();
+					$(this).children(".text").css({"color": "green"}, {"text-decoration": "underline"}, {"font-weight": "bold"});
 					});
 				
 				$(".majorimagecontainer").mouseout(
 					function() {
 					console.log("Image is being left by mouse.");
 					$(this).css("opacity", "1");
-					$(".text").hide();
+					$(this).children(".text").hide();
 					}
 				);
 				
@@ -86,7 +86,7 @@
 					<a href="https://linguistics.dartmouth.edu/" title="Description of the Linguistics major at Dartmouth College" target="_blank">
 						<div class="majorimagecontainer"><img src="Linguistics.jpg" alt="Picture corresponding to Linguistics" class="majorimage"><div class="text">Linguistics</div></div></a> <!-- Source for picture corresponding to Linguistics: https://www.timeshighereducation.com/student/subjects/what-can-you-do-linguistics-degree -->
 					<a href="https://web.cs.dartmouth.edu/" title="Description of the Computer Science major at Dartmouth College" target="_blank">
-						<div class="majorimagecontainer"><img src="ComputerScience.png" alt="Picture corresponding to Computer Science"><div class="text">Computer Science</div></div></a> <!-- Source for picture corresponding to Computer Science: https://crc.losrios.edu/academics/career-and-academic-communities/business-and-computer-science -->
+						<div class="majorimagecontainer"><img src="ComputerScience.png" alt="Picture corresponding to Computer Science" class="majorimage"><div class="text">Computer Science</div></div></a> <!-- Source for picture corresponding to Computer Science: https://crc.losrios.edu/academics/career-and-academic-communities/business-and-computer-science -->
 					<a href="https://qss.dartmouth.edu/" title="Description of the Quantitative Social Sciences major at Dartmouth College" target="_blank">
 						<div class="majorimagecontainer"><img src="QuantitativeSocialScience.png" alt="Picture corresponding to Quantitative Social Science" class="majorimage"><div class="text">Quantitative Social Science</div></div></a> <!-- Source for picture corresponding to QSS: https://novoresume.com/career-blog/networking-statistics -->
 				</div>
