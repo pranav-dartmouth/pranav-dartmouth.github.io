@@ -9,7 +9,13 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				
+				$(".majorimagecontainer").mouseover( // Source for help with this: W3Schools 
+					function() {
+					console.log("Image is being hovered over");
+					$(this).css("opacity", "0.1");
+					$(".text").show();
+					$(".text").css({"color": "green"}, {"text-decoration": "underline"}, {"font-weight": "800"});
+					});
 			}); 
 
 			
