@@ -167,12 +167,12 @@
 				font-weight: bold;
 			}
 
-			.majorimagecontainer, .funphotocontainer {
+			.majorimagecontainer, .funphotocontainer, .emailcontainer, .linkedincontainer {
 				position: relative;
 				text-align: center;
 			}
 
-			.text, .funphototext { 
+			.text, .funphototext, .emailtext, .linkedintext { 
 				position: absolute; 
 				top: 50%;
 				left: 50%;
