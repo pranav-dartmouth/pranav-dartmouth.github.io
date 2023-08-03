@@ -29,32 +29,32 @@
 				$("#grandcanyonselector").mouseover(
 					function() {
 					console.log("Image is being hovered over");
-					$("#imageofpuertorico").css("opacity", "0.1");
-					$("#imagewithbrother").css("opacity", 1);
+					$("#figureofpuertorico").css("opacity", "0.1");
+					$("#figurewithbrother").css("opacity", 1);
 					}
 				)
 
 				$("#grandcanyonselector").mouseout(
 					function() {
 					console.log("Image is being left by mouse");
-					$("#imagewithbrother").css("opacity", "1"); 
-					$("#imageofpuertorico").css("opacity", "1");
+					$("#figurewithbrother").css("opacity", "1"); 
+					$("#figureofpuertorico").css("opacity", "1");
 
 					}
 				)
 				$("#puertoricoselector").mouseover(
 					function() {
 					console.log("Image is being hovered over");
-					$("#imageofpuertorico").css("opacity", "1");
-					$("#imagewithbrother").css("opacity", "0.1");
+					$("#figureofpuertorico").css("opacity", "1");
+					$("#figurewithbrother").css("opacity", "0.1");
 					}
 				)
 
 				$("#puertoricoselector").mouseout(
 					function() {
 					console.log("Image is being left by mouse");
-					$("#imagewithbrother").css("opacity", "1"); 
-					$("#imageofpuertorico").css("opacity", "1");
+					$("#figurewithbrother").css("opacity", "1"); 
+					$("#figureofpuertorico").css("opacity", "1");
 
 					}
 				)
@@ -121,14 +121,14 @@
 			</ol>
 			<div class="twoimagesinasingleline"> <!-- Source for code: W3Schools -->
 				<div class="eachimage">
-					<figure>
+					<figure id="figurewithbrother">
 						<img src="PicWithBrother.jpg" id="imagewithbrother" alt="Picture of me with my brother on a recent trip to The Grand Canyon">
 						<figcaption>My brother and I on a recent trip to The Grand Canyon</figcaption>
 						<!-- Source of image: personal -->
 					</figure>
 				</div>
 				<div class="eachimage">
-					<figure>
+					<figure id="figureofpuertorico">
 						<img src="PicOfPuertoRico.jpg" id="imageofpuertorico" alt="Picture of me on a trip to Puerto Rico">
 						<figcaption>Me on a trip to Puerto Rico</figcaption>
 						<!-- Source of image: personal -->
