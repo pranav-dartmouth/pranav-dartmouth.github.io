@@ -10,14 +10,19 @@
 			This is part of the sixth iteration (Lab 6) for my first web page.
 		-->
 
-		<script></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				$("table#table").hide();
-				$(".text").hide();
-				$("button#table").click(function() {
-						console.log("Button has been clicked");
-						$("table#table").fadeToggle();
+				$(".pronunciationtext").hide();
+				$("h1").mouseover(function() {
+					$(".pronunciationtext").show();
+				});
+
+				$("h1").mouseout(function() {
+					$(".pronunciationtext").hide();
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<nav>
