@@ -16,10 +16,12 @@
 				$(".pronunciationtext").hide();
 				$("h1").mouseover(function() {
 					$(".pronunciationtext").show();
+					$(this).css("opacity", "0.1");
 				});
 
 				$("h1").mouseout(function() {
 					$(".pronunciationtext").hide();
+					(this).css("opacity", "1");
 				});
 			});
 		</script>
