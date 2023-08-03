@@ -22,6 +22,10 @@
 			}
 
 			.funphototext {
+				color: orange;
+			}
+
+			.#linkedintext, #emailtext {
 				color: green;
 			}
 
