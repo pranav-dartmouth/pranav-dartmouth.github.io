@@ -25,8 +25,41 @@
 					$(this).children(".funphototext").hide();
 					}
 				);
-			}); 
 
+				$("#grandcanyonselector").mouseover(
+					function() {
+					console.log("Image is being hovered over");
+					$("#imageofpuertorico").css("opacity", "0.1");
+					$("#imagewithbrother").css("opacity", 1);
+					}
+				)
+
+				$("#grandcanyonselector").mouseout(
+					function() {
+					console.log("Image is being left by mouse");
+					$("#imagewithbrother").css("opacity", "1"); 
+					$("#imageofpuertorico").css("opacity", "1");
+
+					}
+				)
+				$("#puertoricoselector").mouseover(
+					function() {
+					console.log("Image is being hovered over");
+					$("#imageofpuertorico").css("opacity", "1");
+					$("#imagewithbrother").css("opacity", "0.1");
+					}
+				)
+
+				$("#puertoricoselector").mouseout(
+					function() {
+					console.log("Image is being left by mouse");
+					$("#imagewithbrother").css("opacity", "1"); 
+					$("#imageofpuertorico").css("opacity", "1");
+
+					}
+				)
+				
+			}); 
 			
 		</script>
 		
@@ -75,10 +108,10 @@
 		<h3>Traveling</h3>
 			<p class="center">Traveling far and wide is and will always be my favorite pastime. Here's a list of places I've visited in the past three years:<br /></p>
 			<ol class="listcenter">
-				<li class="hoverabletablerows">The Grand Canyon</li>
+				<li class="hoverabletablerows" id="grandcanyonselector">The Grand Canyon</li>
 				<li class="hoverabletablerows">St. Louis</li>
 				<li class="hoverabletablerows">Nashville</li>
-				<li class="hoverabletablerows">Puerto Rico</li>
+				<li class="hoverabletablerows" id="puertoricoselector">Puerto Rico</li>
 				<li class="hoverabletablerows">St. Paul</li>
 				<li class="hoverabletablerows">Norwich, Vermont</li>
 				<li class="hoverabletablerows">Phoenix</li>
