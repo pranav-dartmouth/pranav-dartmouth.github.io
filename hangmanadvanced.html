@@ -38,9 +38,7 @@
          /* Sources for words without repeating letters: https://www.wordunscrambler.net/word-list/10-letter-words-with-no-repeating-letters, https://wordswithletters.org/blog/10-letter-words-with-no-repeating-letters#:~:text=Some%20not%20so%20common%2010,%2C%20mudslinger%2C%20pachyderms%2C%20etc. */
             /* BONUS: The longest English word without any repeating letters that I have added to the above array is "subdermatoglyphic". Source: https://atkinsbookshelf.wordpress.com/2016/08/23/what-is-the-longest-english-word-without-repeated-letters/#:~:text=The%20longest%20word%20in%20the%20English%20language%20without%20repeating%20any,%2C%E2%80%9D%20and%20%E2%80%9Cmisconjugatedly.%E2%80%9D */
 
-          let possiblewrongerrormessages = ['\xF0\x9F\x98\x81'];
-            
-            <!-- "Wrong!", "Incorrect!", "Not quite!", "Try again!", "Not exactly!", "Give it another shot!", "Doesn't work!", "Doesn't match!", "Doesn't fit!", "No!", "Too bad!", "Not it!"]; -->
+          let possiblewrongerrormessages = ["Wrong!", "Incorrect!", "Not quite!", "Try again!", "Not exactly!", "Give it another shot!", "Doesn't work!", "Doesn't match!", "Doesn't fit!", "No!", "Too bad!", "Not it!"]; 
           let possiblecorrecterrormessages = ["Correct!", "Amazing!", "Nice guess!", "You got it!", "Great!", "Terrific!", "Right letter!", "Wow!", "Nice!", "Awesome!", "Exemplary!", "Nice job!", "Great guess!", "Great job!"];
           let word = possiblewords[Math.floor(Math.random() * (possiblewords.length))];
           let wordlength = (word.length+1)/((2));
