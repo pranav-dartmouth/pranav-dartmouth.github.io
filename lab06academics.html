@@ -9,19 +9,26 @@
 
 		<script>
 			$(document).ready(function() {
-				$(".text").hide();
 				$("table#table").hide();
 				$("button#table").click(function() {
 						console.log("Button has been clicked");
 						$("table#table").fadeToggle();
 				});
 
-				$("#majorimagecontainer").onmouseenter(function() {
-					console.log("User is currently hovering over image");
-					$(this).css("opacity", "0.9");
+				$("#majorimagecontainer").hover( // Source for help with this: W3Schools 
+					function() {
+					$(this).css("opacity", "0.1");
 					$(".text").show();
-				});
-			}); 
+					$(".text").css({"color": "green"}, {"font-weight": "bold"});
+					},
+					function() {
+					$(this).css("opacity", "1");
+					$(".text").hide();
+					}
+				);
+				
+			});
+		}); 
 
 
 			
