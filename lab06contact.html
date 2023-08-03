@@ -14,35 +14,35 @@
 						$("#postsubmissionformtext").fadeIn();
 				});
 
-				$(".emailcontainer").mouseover( // Source for help with this: W3Schools 
+				$("#emailcontainer").mouseover( // Source for help with this: W3Schools 
 					function() {
 					console.log("Image is being hovered over");
-					$(this).children(".emailicon").css("opacity", "0.1");
-					$(this).children(".emailtext").show();
-					$(this).children(".emailtext").css({"opacity": "1"});
+					$("#emailicon").css("opacity", "0.1");
+					$("#emailtext").show();
+					$("#emailtext").css({"opacity": "1"});
 					});
 				
 				$(".emailcontainer").mouseout(
 					function() {
 					console.log("Image is being left by mouse.");
-					$(this).children(".emailicon").css("opacity", "1");
-					$(this).children(".emailtext").hide();
+					$("#emailicon").css("opacity", "1");
+					$("#emailtext").hide();
 					}
 				);
 
-				$(".linkedincontainer").mouseover( 
+				$("#linkedincontainer").mouseover( 
 					function() {
 					console.log("Image is being hovered over");
-					$(this).children(".emailicon").css("opacity", "0.1");
-					$(this).children(".emailtext").show();
-					$(this).children(".emailtext").css({"opacity": "1"});
+					$("#linkedinicon").css("opacity", "0.1");
+					$("#linkedintext").show();
+					$("#linkedintext").css({"opacity": "1"});
 					});
 				
-				$(".linkedincontainer").mouseout(
+				$("#linkedincontainer").mouseout(
 					function() {
 					console.log("Image is being left by mouse.");
-					$(this).children(".emailicon").css("opacity", "1");
-					$(this).children(".emailtext").hide();
+					$("#linkedinicon").css("opacity", "1");
+					$("#linkedintext").hide();
 					});
 
 				
