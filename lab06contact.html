@@ -9,8 +9,8 @@
 		<script>
 			$(document).ready(function() {
 				$("#submitbutton").click(function() {
-						$("#contactform").Toggle();
-						$(this).value
+						$("#contactform").remove();
+						$(this).attr("value", "Thank you for submitting a contact form. Pranav will get back to you shortly.");
 				});
 			});
 
@@ -41,6 +41,7 @@
 			<div class="subsection">
 			<div id="contactform" class="formcenter">
 			<form action="https://pranav-dartmouth.github.io/lab06contact.html" method="get">  <!-- Source for how this was done: W3Schools --> 
+				
 				<div class="formcomponents">
 				<label for="name">Name</label><br />
 				<input type="text" id="name" name="name"><br />
