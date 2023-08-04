@@ -224,6 +224,7 @@
 				left: 50%;
 				transform: translate(-50%, -50%); /* Soure for help on this: W3Schools */
 				font-family: Arial, sans-serif;
+				font-weight: bold;
 			}
 
 			#imageofme {
