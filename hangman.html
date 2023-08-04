@@ -71,7 +71,7 @@
                     $("#numberofchances").html(total_chances);
                    
                     
-                        if (total_chances <= 0) {
+                        if (total_chances == 0) {
                               if(word.includes(id)) {
                                 let index = word.indexOf(id);
                                 console.log("letter" + id + "is at position " + index + "of the word");
