@@ -5,13 +5,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script>
       $(document).ready(
-
-
-          
-
           function() {
           var total_chances;
-          let possiblewords = ["w i t h"]; /* "t h i s", "f r o m", "h a v e", "t h e y", "m o r e", "w h e n", "w h a t", 
+          let possiblewords = ["w i t h", "t h i s", "f r o m", "h a v e", "t h e y", "m o r e", "w h e n", "w h a t", 
                                "t h e m", "t h a n", "s o m e", "t i m e", "i n t o", "o n l y", "s u c h", "a l s o", "t h e n", "m o s t", "s a i d", "y o u r", 
                                "v e r y", "m a d e", "m a n y", "o v e r", "l i k e",  "m u s t", "s a m e", "w o r k", "l i f e", "e a c h",
                                "m u c h", "b o t h", "u p o n", "u s e d", "p a r t", "m a k e", "l o n g", "j u s t", "d o e s", "d o w n",
@@ -34,8 +30,8 @@
                                "s u p e r t o n i c", "s y n d i c a t o r", "t a m b o u r i n g", "t e r m i n a b l y", "t h y l a c i n e s", 
                                "u n d e r c o a t s", "u n d e r p l a y s", "u n d e r p l o t s", "u n i f o r m e s t", "v a n q u i s h e d", 
                                "v e s t i b u l a r", "v i s c o m e t r y", "v u l c a n i z e r", "w o l f r a m i t e", "w o r s h i p f u l", 
-                               "x y l o g r a p h s", "m i s c o n j u g a t e d l y", "a n c h o r i t e s"]; */ 
-         /* Sources for words without repeating letters: https://www.wordunscrambler.net/word-list/10-letter-words-with-no-repeating-letters, https://wordswithletters.org/blog/10-letter-words-with-no-repeating-letters#:~:text=Some%20not%20so%20common%2010,%2C%20mudslinger%2C%20pachyderms%2C%20etc. */
+                               "x y l o g r a p h s", "m i s c o n j u g a t e d l y", "a n c h o r i t e s"];
+            /* Sources for words without repeating letters: https://www.wordunscrambler.net/word-list/10-letter-words-with-no-repeating-letters, https://wordswithletters.org/blog/10-letter-words-with-no-repeating-letters#:~:text=Some%20not%20so%20common%2010,%2C%20mudslinger%2C%20pachyderms%2C%20etc. */
             /* BONUS: The longest English word without any repeating letters that I have added to the above array is "subdermatoglyphic". Source: https://atkinsbookshelf.wordpress.com/2016/08/23/what-is-the-longest-english-word-without-repeated-letters/#:~:text=The%20longest%20word%20in%20the%20English%20language%20without%20repeating%20any,%2C%E2%80%9D%20and%20%E2%80%9Cmisconjugatedly.%E2%80%9D */
 
           let possiblewrongerrormessages = ["Wrong!", "Incorrect!", "Not quite!", "Try again!", "Not exactly!", "Give it another shot!", "Doesn't work!", "Doesn't match!", "Doesn't fit!", "No!", "Too bad!", "Not it!"]; 
@@ -43,20 +39,25 @@
           let word = possiblewords[Math.floor(Math.random() * (possiblewords.length))];
           let wordlength = (word.length+1)/((2));
           let blanks = "";
+            
           for (let i = 1; i<=wordlength; i++) {
             blanks += "_ ";
           }
+            
           blanks = blanks.substring(0, blanks.length-1);
             
           if (wordlength >= 9) {
               total_chances = 20;
           }
+            
           else if (wordlength >=5 && wordlength <=8) {
               total_chances = 15;
           }
+            
           else {
             total_chances = 10;
           }
+            
           let guesses = "";
 
           $("#numberofchances").html(total_chances);
