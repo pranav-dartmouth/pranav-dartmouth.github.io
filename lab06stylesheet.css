@@ -9,7 +9,7 @@
 				border: solid green 2px;
 				color: green;
 				font-weight: bold;
-				font-size: 30px;
+				font-size: 20px;
 				padding-top: 20px;
 				padding-bottom: 20px;
 				padding-right: 20px;
@@ -49,6 +49,12 @@
 
 			.subsection {
 				margin-bottom: 50px;
+			}
+
+			.subsectionswithtables {
+				margin-right: auto;
+				margin-left: auto;
+				width: 50%;
 			}
 
 			#imagewithcaption {
