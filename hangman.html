@@ -83,15 +83,17 @@
                                 let correcterrormessage = possiblecorrecterrormessages[Math.floor(Math.random() * (possiblecorrecterrormessages.length))];
                                 $("#errormessage").text(correcterrormessage);
                                 $("#errormessage").css("color","green");
-                                $("#errormessage").animate({opacity: '1'}, "slow");
                                 $("#errormessage").animate({opacity: '0'}, "slow");
                                 $("#errormessage").animate({opacity: '1'}, "slow");
+                                $("#errormessage").animate({opacity: '0'}, "slow");
+                                $("#errormessage").animate({opacity: '0'}, "slow");
                               }
 
                               else {
                                   let wrongerrormessage = possiblewrongerrormessages[Math.floor(Math.random() * (possiblewrongerrormessages.length))];
                                   $("#errormessage").text(wrongerrormessage);
                                   $("#errormessage").css("color", "red");
+                                  $("#errormessage").animate({opacity: '0'}, "slow");
                                   $("#errormessage").animate({opacity: '1'}, "slow");
                                   $("#errormessage").animate({opacity: '0'}, "slow");
                                   $("#errormessage").animate({opacity: '1'}, "slow");
@@ -123,7 +125,7 @@
           font-size: xx-large;
       }
 
-      .blinking {
+     /* .blinking {
         animation-name: blink;
         animation-duration: 2s;
         animation-fill-mode: forwards;
@@ -142,6 +144,8 @@
           opacity: 1;
       }
       }
+
+      */
 
       #chances {
         position: fixed;
