@@ -68,9 +68,9 @@
               
                     guesses = guesses + id;
                     total_chances = total_chances - 1;
-                    $("#numberofchances").html(total_chances);
+                   
                     
-                        if (total_chances <= 0) {
+                        if (total_chances < 0) {
                               $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
                               $("#errormessage").css({"font-size":"60px","color":"red"});
                               $("#wordspace").hide();
@@ -78,7 +78,8 @@
                               $("#chances").hide();
                         }
                         else {
-     
+                             $("#numberofchances").html(total_chances);
+                          
                               if(word.includes(id)) {
                                 let index = word.indexOf(id);
                                 console.log("letter" + id + "is at position " + index + "of the word");
