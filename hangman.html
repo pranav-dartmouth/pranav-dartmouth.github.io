@@ -72,6 +72,7 @@
                         if (total_chances <= 0) {
                               $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
                              $("#errormessage").css({"font-size":"60px","color":"red"});
+                              $("#wordspace").hide();
                         }
                         else {
 
@@ -102,6 +103,7 @@
                               }
 
                               if (blanks == word) {
+                                      $("#wordspace").hide();   
                                       $("#errormessage").text("You have won the game!");
                                       $("#errormessage").css({"font-size":"60px","color":"green"});
                                       $("#errormessage").animate({opacity: '0'}, "slow");
@@ -112,6 +114,8 @@
                                       $("#errormessage").animate({opacity: '1'}, "slow");
                                       $("#errormessage").animate({opacity: '0'}, "slow");
                                       $("#errormessage").animate({opacity: '1'}, "slow");
+                                      
+                                      
 
                               }
                         }
