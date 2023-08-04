@@ -4,15 +4,16 @@
 				height: 100%;
 			}
 
-			button, input {
-				background-color: blue; 
-				border: none;
-				color: white;
+			button, #submitbutton {
+				background-color: white; 
+				border: solid green 2px;
+				color: green;
 				font-weight: bold;
 				padding: 20px 20px 20px 20px;
+				border-radius: 15px;
 				text-align: center;
 				text-decoration: none;
-				width: 50%;
+				width: 25%;
 			}
 
 			.firstsection {
