@@ -61,7 +61,6 @@
           let guesses = "";
 
           $("#word").html(blanks);
-          $(".blinking").attr("animation-iteration-count", "2");
             $(".letter").click(function() {
                     let id = $(this).attr("id");
                     console.log("Clicked on the letter " + id);
@@ -124,6 +123,7 @@
         animation-name: blink;
         animation-duration: 2s;
         animation-fill-mode: forwards;
+        animation-iteration-count: 0;
       }
 
       @keyframes blink {
