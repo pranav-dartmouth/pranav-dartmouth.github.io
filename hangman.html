@@ -68,6 +68,7 @@
               
                     guesses = guesses + id;
                     total_chances = total_chances - 1;
+                    $("#numberofchances").html(total_chances);
                    
                     
                         if (total_chances <= 0) {
@@ -91,6 +92,14 @@
                                       $("#errormessage").animate({opacity: '0'}, "slow");
                                       $("#errormessage").animate({opacity: '1'}, "slow");
                               }
+                            else {
+                                      $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
+                                      $("#errormessage").css({"font-size":"60px","color":"red", "margin-top":"250px", "margin-bottom":"250px"});
+                                      $("#wordspace").hide();
+                                      $("#letterselection").hide();
+                                      $("#chances").hide();
+                            }
+
                               }
                           else {
                               $("#errormessage").html("You are out of guesses. You have unfortunately lost the game.");
