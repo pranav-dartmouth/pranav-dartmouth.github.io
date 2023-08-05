@@ -32,10 +32,9 @@
 
       <script>
 
-            var map = L.map('map').setView([43.7034, -72.2887], 15);
+            var map = L.map('map', {center : [43.7034, -72.2887], zoom: 15, layers: [OpenStreetMap_HOT]});
 
-           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'}).addTo(map);
-
+           var  OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
             L.geoJson(publicwaters_geojson,
                       { color: "#90DBD1",
                        weight: 1,
