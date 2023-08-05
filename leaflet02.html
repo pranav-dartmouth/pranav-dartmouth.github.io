@@ -38,8 +38,7 @@
    
             L.geoJson(publicwaters_geojson,
                       { color: "#90DBD1",
-                       weight: 1,
-                       opacity: 0.5,
+                       opacity: 1,
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Public Access Point: " + 
                             feature.properties.FACILITY + "</b>");
