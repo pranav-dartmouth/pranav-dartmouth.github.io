@@ -36,7 +36,18 @@
 
            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'}).addTo(map);
 
-            L.geoJson(publicwaters_geojson).addTo(map);
+            L.geoJson(publicwaters_geojson,
+                      { color: "#90DBD1",
+                       weight: 1,
+                       opacity: 0.5,
+                       onEachFeature: function(feature, Layer) {
+                            layer.bindPopup("<b>Public Access Point: " + 
+                            feature.properties.FACILITY + </b>");
+
+                       }
+
+
+                      }).addTo(map);
         
       
       </script>
