@@ -58,9 +58,9 @@
                 var a = parseFloat(feature.properties.ChangeMHV);
 		var b = parseFloat(feature.properties.ChangeMHI);
 		var c = parseFloat(feature.properties.ChangeWHP);
-		var holisticgentrificationindicator = a + b + c;
-		  
+		var holisticgentrificationindicator = a + b + c;  
                  var color;
+		  
                       if (holisticgentrificationindicator > 54.6) {
                             color = "#FF0000";
                       }
@@ -68,7 +68,7 @@
                             color = "#0000FF";
                       }
                 return {
-                      fillColor: color;
+                      fillColor: color
                 }
           }
 
