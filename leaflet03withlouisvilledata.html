@@ -33,14 +33,13 @@
       <div id="buttons"><button id=""toggleFarms">Toggle the Gardens</button></div>
 
       <script>
-        var farmslayer;
-        var farmsVisible = false;
+        
 
           var map = L.map('map').setView([38.2527, -85.7585], 15);
 
            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'}).addTo(map);
    
-            farmslayer = L.geoJson(urbanfarms_geojson,
+            L.geoJson(urbanfarms_geojson,
                       { color: "#90DBD1",
                        opacity: 1,
                        onEachFeature: function(feature, layer) {
@@ -53,23 +52,7 @@
                             "Change in Nearby White Populations (2018-2023): " + 
                             feature.properties.ChangeWHP + "%"); 
 
-                       }
-
-
-                      });
-
-        $("#toggleFarms").click( function() {
-              if(farmsVisible) {
-                    farmsVisible = false;
-                    farmslayer.removeFrom(map);
-              }
-              else {
-                  farmsVisible = true;
-                  farmslayer.addTo(map);
-
-              }
-        });
-        
+                       }}).addTo(map);
       
       </script>
   </body>
