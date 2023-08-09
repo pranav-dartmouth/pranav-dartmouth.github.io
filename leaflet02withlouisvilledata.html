@@ -36,7 +36,7 @@
 
            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'}).addTo(map);
    
-            L.geoJson(urbanfarms_geoJson,
+            L.geoJson(urbanfarms_geojson,
                       { color: "#90DBD1",
                        opacity: 1,
                        onEachFeature: function(feature, layer) {
