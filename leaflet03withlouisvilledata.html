@@ -76,7 +76,7 @@
    
             var farmsLayer = L.geoJson(urbanfarms_geojson, {
 
-		    style: pointSymbology(feature),
+		    style: pointSymbology,
 		    
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Urban Farm: " + 
