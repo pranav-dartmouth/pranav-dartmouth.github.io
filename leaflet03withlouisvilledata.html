@@ -30,7 +30,7 @@
   <body>
       <h1>Hello Campus!</h1>
       <div id="map"></div>
-      <div id="buttons"><button id="toggleFarms">Toggle the Gardens</button></div>
+      <div><button id="toggleFarms">Toggle the Gardens</button></div>
 
       <script>
         
@@ -81,8 +81,8 @@
               },
             });
 
-            if("#toggleFarms").click( function() {
-              if (farmsVisible) {
+            $("#toggleFarms").click( function() {
+              if (farmsVisible = true) {
                     farmsVisible = false;
                     farmsLayer.removeFrom(map);
               }
