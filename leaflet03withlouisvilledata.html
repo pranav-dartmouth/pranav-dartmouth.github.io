@@ -37,9 +37,28 @@
           var farmsLayer;
           var map = L.map('map').setView([38.2527, -85.7585], 13);
 
+          function pointSymbology(feature) {
+                var holisticgentrificationindicator = feature.properties.ChangeMHV + feature.properties.ChangeMHI + feature.properties.ChangeWHP;
+                 var color = "#008000;"
+
+                      if (holisticgentrificationindicator > 54.6) {
+                            color = "#ff0000";
+                      }
+
+                      else {
+                            color = "#0000FF";
+
+                      }
+                return {
+                      fillColor: color,
+                }
+          }
+
            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'}).addTo(map);
    
             var farmsLayer = L.geoJson(urbanfarms_geojson, {
+
+                    style: pointSymbology,
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Urban Farm: " + 
@@ -53,16 +72,14 @@
 
                        },
 
-              pointToLayer: function (feature, latlng) { 
-                      return L.circleMarker(latlng, {
-                        radius: 8, 
-                        fillColor: '#008000',
-                        color: '#000000',
-                        weight: 1,
-                        opacity: 1,
-                        fillOpacity: 1
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                          radius: 8, 
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1
               });
-              }
+              },
             }).addTo(map)
     
       
