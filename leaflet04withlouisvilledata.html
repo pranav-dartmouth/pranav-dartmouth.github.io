@@ -36,9 +36,14 @@
         
           var farmsLayer;
           var farmsVisible = false;
-          var map = L.map('map').setView([38.2527, -85.7585], 10);
+	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+          var map = L.map('map', {
+		  center: [38.2527, -85.7585],
+		  zoom: 15,
+		  layers: [OpenStreetMap]
+	  });
         
-          var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+         
 
           
 
