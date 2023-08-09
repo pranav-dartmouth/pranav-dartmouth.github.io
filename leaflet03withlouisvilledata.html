@@ -35,6 +35,7 @@
       <script>
         
           var farmsLayer;
+          var farmsVisible = false;
           var map = L.map('map').setView([38.2527, -85.7585], 13);
 
           function pointSymbology(feature) {
@@ -78,9 +79,20 @@
                           fillOpacity: 1
               });
               },
-            }).addTo(map)
-    
-      
+            });
+
+            if("#toggleFarms").click( function() {
+              if (farmsVisible) {
+                    farmsVisible = false;
+                    farmsLayer.removeFrom(map);
+              }
+
+              else {
+                  farmsVisible = true;
+                  farmsLayer.addTo(map);
+              }
+            });
+              
       </script>
   </body>
 </html>
