@@ -6,6 +6,7 @@
       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="urbanfarms.geojson"></script>
+      
       <style>
           body {
             background-color: #90DBD1;
@@ -37,6 +38,28 @@
           var farmsLayer;
           var farmsVisible = false;
           var map = L.map('map').setView([38.2527, -85.7585], 10);
+        
+          var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+
+          var Stamen_TerrainBackground = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.{ext}', {
+	        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	        subdomains: 'abcd',
+	        minZoom: 0,
+	        maxZoom: 18,
+	        ext: 'png'
+          });
+
+          var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        maxZoom: 20,
+	        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          });
+
+          var baseMaps = {"OSM" : OpenStreetMap,
+                          "Stamen" : StamenTerrain_Background,
+                          "USGS" : USGS_USImageryTopo
+                         }
+
+          L.control.layers(baseMaps).addTo(map);
 
           function pointSymbology(feature) {
                 var holisticgentrificationindicator = feature.properties.ChangeMHV + feature.properties.ChangeMHI + feature.properties.ChangeWHP;
@@ -53,7 +76,7 @@
                 }
           }
 
-           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'}).addTo(map);
+          
    
             var farmsLayer = L.geoJson(urbanfarms_geojson, {
 
