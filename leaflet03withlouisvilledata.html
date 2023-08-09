@@ -56,16 +56,15 @@
 
           function pointSymbology(feature) {
                 var holisticgentrificationindicator = feature.properties.ChangeMHV + feature.properties.ChangeMHI + feature.properties.ChangeWHP;
-                 var color;
-
+                 var fillColor;
                       if (holisticgentrificationindicator > 54.6) {
-                            color = "#FF0000";
+                            fillColor = "#FF0000";
                       }
                       else {
-                            color = "#0000FF";
+                            fillColor = "#0000FF";
                       }
                 return {
-                      fillColor: color,
+                      fillColor;
                 }
           }
 
