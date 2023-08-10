@@ -114,7 +114,7 @@
 
   		return {
 			opacity: lineOpacity,
-   			color: "brown",
+   			color: "#4B3A26",
       			weight: 0.5
 
     };
@@ -191,7 +191,7 @@
                       );
 
 	      var bikewaysLayer = L.geoJson(bikeways_geojson,
-                      { /* style: lineSymbology, */
+                      { style: lineSymbology,
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
                             feature.properties.ROADNAME + "</b><br>" +
