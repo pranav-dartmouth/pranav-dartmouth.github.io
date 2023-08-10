@@ -116,20 +116,20 @@
           } */
 
 	       function polygonSymbology(feature) {
-                var length = feature.properties.ACRES;
+                var size = feature.properties.ACRES;
 		var polygoncolor;
 
-		if (length > 0) {
+		if (size > 0) {
 			polygoncolor = "#e5f5f9";
 
 		}
 
-		if (length > 30) {
+		if (size > 30) {
 			polygoncolor = "#99d8c9";
 
 		}
 
-		if (length > 60) {
+		if (size > 60) {
 			polygoncolor = "#2ca25f";
 		}
 
