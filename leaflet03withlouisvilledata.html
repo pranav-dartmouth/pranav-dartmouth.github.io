@@ -6,6 +6,7 @@
       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="urbanfarmsfinal.geojson"></script>
+<script src="naturalareas.geojson"></script>
       
       <style>
           body {
@@ -31,6 +32,7 @@
 		display: block
 		text-align: center;
 		position: absolute;
+		justify-content: center;
 	}
         
       </style>
@@ -45,6 +47,8 @@
         
           var farmsLayer;
           var farmsVisible = false;
+	var naturalareasLayer;
+	      var naturalareasVisible = false;
 
 	 var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map = L.map('map', {
@@ -116,6 +120,18 @@
               },
             });
 
+	     var naturalareasLayer = L.geoJson(naturalareas_geojson,
+                      { color: "green",
+                       opacity: 1,
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Natural Area: " + 
+                            feature.properties.IDENTIFIER + "</b>"); }
+
+                       }
+
+
+                      );
+
            $("#toggleFarms").click( function() {
               if (farmsVisible) {
                     farmsVisible = false;
@@ -129,6 +145,20 @@
 		
               }
             });
+
+	     $("#toggleNaturalAreas").click( function() {
+              if (naturalareasVisible) {
+                    naturalareasVisible = false;
+                    naturalareasLayer.removeFrom(map);
+		    
+              }
+
+              else {
+                  naturalareasVisible = true;
+                  naturalareasLayer.addTo(map);
+		
+              }
+            }); 
               
       </script>
   </body>
