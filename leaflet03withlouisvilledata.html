@@ -94,6 +94,53 @@
                 }
           }
 
+	    /*  function lineSymbology(feature) {
+                var length = feature.properties.SHAPELEN;
+		var lineWidth: 0.5;
+		var color;
+
+		if (length > ) {
+
+
+		}
+
+		if (length > ) {
+
+
+		}
+
+		if (length > ) {
+
+		}
+		      
+          } */
+
+	       function polygonSymbology(feature) {
+                var length = feature.properties.ACRES;
+		var polygoncolor;
+
+		if (length > 0) {
+			polygoncolor = "#e5f5f9";
+
+		}
+
+		if (length > 30) {
+			polygoncolor = "#99d8c9";
+
+		}
+
+		if (length > 60) {
+			polygoncolor = "#2ca25f";
+		}
+
+		return {
+		 fillColor: polygoncolor,
+		opacity: 0.5
+			
+	       };	       
+	      }
+		      
+        
           
    
             var farmsLayer = L.geoJson(urbanfarms_geojson, {
@@ -138,8 +185,7 @@
                       );
 
 	      var bikewaysLayer = L.geoJson(bikeways_geojson,
-                      { color: "#4B3A26",
-                       opacity: 1,
+                      { style: polygonSymbology,
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
                             feature.properties.ROADNAME + "</b><br>" +
