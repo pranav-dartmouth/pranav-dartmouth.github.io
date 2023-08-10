@@ -129,7 +129,8 @@
                        opacity: 1,
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Natural Area: " + 
-                            feature.properties.IDENTIFIER + "</b>"); }
+                            feature.properties.IDENTIFIER + "</b>" +
+					   feature.); }
 
                        }
 
@@ -140,8 +141,9 @@
                       { color: "blue",
                        opacity: 1,
                        onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Natural Area: " + 
-                            feature.properties.IDENTIFIER + "</b>"); }
+                            layer.bindPopup("<b>Bikeway: " + 
+                            feature.properties.ROADNAME + "</b><br>" +
+					   "Bikeway Length:" + feature.properties.SHAPELEN); }
 
                        }
 
