@@ -94,7 +94,7 @@
                 }
           }
 
-	/*  function lineSymbology(feature) {
+	  function lineSymbology(feature) {
                 var length = feature.properties.SHAPELEN;
 		var lineOpacity;
 
@@ -119,7 +119,7 @@
 
     };
 		      
-          } */
+          } 
 
 	       function polygonSymbology(feature) {
                 var size = feature.properties.ACRES;
@@ -141,6 +141,7 @@
 
 		return {
 		 fillColor: polygoncolor,
+		color: polygoncolor,
 		opacity: 0.5
 			
 	       };	       
