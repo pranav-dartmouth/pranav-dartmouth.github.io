@@ -94,24 +94,30 @@
                 }
           }
 
-	    /*  function lineSymbology(feature) {
+	/*  function lineSymbology(feature) {
                 var length = feature.properties.SHAPELEN;
-		var lineWidth: 0.5;
-		var color;
+		var lineOpacity;
 
-		if (length > ) {
-
-
-		}
-
-		if (length > ) {
-
+		if (length > 0) {
+			lineOpacity = 0.3;
 
 		}
 
-		if (length > ) {
+		if (length > 200) {
+			lineOpacity = 0.6;
 
 		}
+
+		if (length > 400) {
+			lineOpacity = 1;
+		}
+
+  		return {
+			opacity: lineOpacity,
+   			color: "brown",
+      			weight: 0.5
+
+    };
 		      
           } */
 
@@ -172,8 +178,7 @@
             });
 
 	     var naturalareasLayer = L.geoJson(naturalareas_geojson,
-                      { color: "green",
-                       opacity: 1,
+                      { style: polygonSymbology, 
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Natural Area: " + 
                             feature.properties.IDENTIFIER + "</b><br>" +
@@ -185,7 +190,7 @@
                       );
 
 	      var bikewaysLayer = L.geoJson(bikeways_geojson,
-                      { style: polygonSymbology,
+                      { /* style: lineSymbology, */
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
                             feature.properties.ROADNAME + "</b><br>" +
