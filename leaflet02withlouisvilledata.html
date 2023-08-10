@@ -6,6 +6,7 @@
       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
       <script src="urbanfarmsfinal.geojson"></script>
       <script src="naturalareas.geojson"></script>
+	<script src="bikeways.geojson"></script>
       <style>
           body {
             background-color: #90DBD1;
@@ -71,6 +72,18 @@
 
 
                       ).addTo(map);
+
+	    L.geoJson(bikeways_geojson,
+                      { color: "blue",
+                       opacity: 1,
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Bikeway: " + 
+                            feature.properties.ROADNAME + "</b>"); }
+
+                       }
+
+
+                      ).addTo(map);  
 
         
       
