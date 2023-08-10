@@ -7,6 +7,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="urbanfarmsfinal.geojson"></script>
 <script src="naturalareas.geojson"></script>
+	  <script src="bikeways.geojson"></script>
       
       <style>
           body {
@@ -38,10 +39,11 @@
       
   </head>
   <body>
-      <h1>Hello Campus!</h1>
+      <h1>Environmental Amenities in Louisville</h1>
       <div id="map"></div>
       <div class="buttontext"><button id="toggleFarms">Toggle the gardens</button></div><br>
-<div class="buttontext"><button id="toggleNaturalAreas">Toggle the naturalareas</button></div>
+<div class="buttontext"><button id="toggleNaturalAreas">Toggle the naturalareas</button></div><br>
+	  <div class="buttontext"><button id="toggleBikeways">Toggle the bikeways</button></div>
 
       <script>
         
@@ -49,6 +51,8 @@
           var farmsVisible = false;
 	var naturalareasLayer;
 	      var naturalareasVisible = false;
+	      var bikewaysLayer;
+	      var bikewaysVisible = false;
 
 	 var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map = L.map('map', {
@@ -132,6 +136,18 @@
 
                       );
 
+	      var bikewaysLayer = L.geoJson(bikeways_geojson,
+                      { color: "blue",
+                       opacity: 1,
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Natural Area: " + 
+                            feature.properties.IDENTIFIER + "</b>"); }
+
+                       }
+
+
+                      );
+
            $("#toggleFarms").click( function() {
               if (farmsVisible) {
                     farmsVisible = false;
@@ -156,6 +172,20 @@
               else {
                   naturalareasVisible = true;
                   naturalareasLayer.addTo(map);
+		
+              }
+            }); 
+
+	      $("#toggleBikeways").click( function() {
+              if (bikewaysVisible) {
+                   bikewaysVisible = false;
+                    bikewaysLayer.removeFrom(map);
+		    
+              }
+
+              else {
+                  bikewaysVisible = true;
+                 bikewaysLayer.addTo(map);
 		
               }
             }); 
