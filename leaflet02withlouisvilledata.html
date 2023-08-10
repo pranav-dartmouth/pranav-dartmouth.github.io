@@ -37,19 +37,29 @@
 
            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'}).addTo(map);
    
-            L.geoJson(urbanfarms_geojson,
-                      { color: "#90DBD1",
-                       opacity: 1,
-                       onEachFeature: function(feature, layer) {
+           L.geoJson(urbanfarms_geojson, {
+
+             pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                          fillColor: yellow;
+               color: black;
+                          radius: 8, 
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1
+              });
+              },
+             
+                     onEachFeature: function(feature, layer) {
                             layer.bindPopup('<b>Urban Farm: ' + 
-                            feature.properties.Name + '</b>' +
-                            '<img src="' + feature.properties.Image + '" alt="" style="width:100px;height:100px;display:block;margin-right:auto;margin-left:auto;">') }
+                            feature.properties.Name + '</b><br>' + 
+			                      '<img src="' + feature.properties.Image + '" alt="" style="width:100px;height:100px;display:block;margin-right:auto;margin-left:auto;">'); 
 
                        }
 
-
-                      ).addTo(map);
-
+                      ,
+            }).addTo(map);
+        
         L.geoJson(naturalareas_geojson,
                       { color: "green",
                        opacity: 1,
