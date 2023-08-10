@@ -76,6 +76,7 @@
 	    L.geoJson(bikeways_geojson,
                       { color: "blue",
                        opacity: 1,
+		       width: 1,
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
                             feature.properties.ROADNAME + "</b>"); }
