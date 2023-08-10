@@ -89,14 +89,15 @@
                     style: pointSymbology,
               
                      onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Urban Farm: " + 
-                            feature.properties.Name + "</b><br>" + 
-                            "Change in Nearby Median Home Values (2018-2023): " + 
+                            layer.bindPopup('<b>Urban Farm: ' + 
+                            feature.properties.Name + '</b><br>' + 
+                            'Change in Nearby Median Home Values (2018-2023): ' + 
                             feature.properties.ChangeMHV + "%" + "<br>" + 
-                            "Change in Nearby Median Household Incomes (2018-2023): " + 
+                            'Change in Nearby Median Household Incomes (2018-2023): ' + 
                             feature.properties.ChangeMHI + "%" + "<br>" + 
-                            "Change in Nearby White Populations (2018-2023): " + 
-                            feature.properties.ChangeWHP + "%"); 
+                            'Change in Nearby White Populations (2018-2023): ' + 
+                            feature.properties.ChangeWHP + "%" +
+			'<img src="' + feature.properties.Image + '" alt="" style="width:200px;height:200px;display:block;margin-right:auto;margin-left:auto;">'); 
 
                        },
 
