@@ -40,9 +40,9 @@
                       { color: "#90DBD1",
                        opacity: 1,
                        onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Urban Farm: " + 
+                            layer.bindPopup('<b>Urban Farm: ' + 
                             feature.properties.Name + "</b>" +
-                            "<img src=" + feature.properties.Image + "/>");
+                            '<img src='" + feature.properties.Image + '" style="width:200px;height:200px">');
 
                        }
 
