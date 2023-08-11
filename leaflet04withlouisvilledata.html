@@ -190,7 +190,34 @@
           });
 
           $.when(response).done(function() {
-   
+   		var naturalareasLayer = L.geoJson(response.responseJSON,
+                      { style: polygonSymbology, 
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Natural Area: " + 
+                            feature.properties.IDENTIFIER + "</b><br>" +
+			    "Size: " +  feature.properties.ACRES + " acres"); }
+
+                       }
+
+
+                      ).addTo(map);
+
+		    $("#toggleNaturalAreas").show();
+
+		   $("#toggleNaturalAreas").click( function() {
+              if (naturalareasVisible) {
+                    naturalareasVisible = false;
+                    naturalareasLayer.removeFrom(map);
+              }
+
+              else {
+                  naturalareasVisible = true;
+                  naturalareasLayer.addTo(map);
+              }
+            });
+
+		  
+
 	  });
 
 	      
