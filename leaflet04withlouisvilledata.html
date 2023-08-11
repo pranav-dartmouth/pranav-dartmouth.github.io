@@ -175,6 +175,22 @@
           });
 
           $.when(response).done(function() {
+   		
+		  
+
+	  });
+
+	      
+ 	var response = $.ajax({
+            url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataEnvironment/MapServer/1/query?outFields=*&where=1%3D1&f=geojson",
+            dataType: "json",
+            success: console.log("Naturalareadata loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+          $.when(response).done(function() {
    		var naturalareasLayer = L.geoJson(response.responseJSON,
                       { style: polygonSymbology, 
                        onEachFeature: function(feature, layer) {
@@ -201,22 +217,6 @@
               }
             });
 
-		  
-
-	  });
-
-	      
- 	var response = $.ajax({
-            url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataEnvironment/MapServer/1/query?outFields=*&where=1%3D1&f=geojson",
-            dataType: "json",
-            success: console.log("Naturalareadata loaded."),
-            error: function(xhr) {
-              alert(xhr.statusText);
-            }
-          });
-
-          $.when(response).done(function() {
-   
 	  });
 
 
