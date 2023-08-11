@@ -262,7 +262,7 @@
 
           });
 
-	      var response = $.ajax({
+	      var response2 = $.ajax({
             url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataTransportation/MapServer/0/query?outFields=*&where=1%3D1&f=geojson",
             dataType: "json",
             success: console.log("Bikeway data loaded."),
@@ -271,8 +271,8 @@
             }
           });
 
-          $.when(response).done(function() {
-   		var bikewaysLayer = L.geoJson(response.responseJSON,
+          $.when(response2).done(function() {
+   		var bikewaysLayer = L.geoJson(response2.responseJSON,
                       { style: lineSymbology,
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
@@ -304,7 +304,7 @@
 
 	  });
 	      
- 	var response = $.ajax({
+ 	var response3 = $.ajax({
             url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataEnvironment/MapServer/1/query?outFields=*&where=1%3D1&f=geojson",
             dataType: "json",
             success: console.log("Naturalareadata loaded."),
@@ -313,8 +313,8 @@
             }
           });
 
-          $.when(response).done(function() {
-   		var naturalareasLayer = L.geoJson(response.responseJSON,
+          $.when(response3).done(function() {
+   		var naturalareasLayer = L.geoJson(response3.responseJSON,
                       { style: polygonSymbology, 
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Natural Area: " + 
