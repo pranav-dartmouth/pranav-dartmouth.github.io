@@ -24,6 +24,32 @@
               border-radius: 20px;
             
           }
+
+	      #legend {
+		    width: 25%;
+		      margin-right: auto;
+		      margin-left: auto;
+			margin-top: 10px;
+		      padding-bottom: 10px;
+			      padding-top: 10px;
+		      padding-right: 10px;
+		      padding-left: 10px;
+		      text-align: center;
+		      background-color: white;
+		      font-family: Arial;
+		      border-radius: 20px;
+	      }
+
+	      .yellow {
+		      color: yellow;
+	      }
+
+	      .green {
+		      color: green;
+	      }
+	      .brown {
+		      color: brown;
+	      }
         
       </style>
       
@@ -31,6 +57,11 @@
   <body>
       <h1>Environmental Amenities in Louisville</h1>
       <div id="map"></div>
+<div id="legend">
+<p class="yellow">The yellow circles show community gardens.</p>
+<p class="green">The green polygons indicate natural areas.</p>
+<p class="brown">The brown lines evince bikeways.</p>
+</div>
 
       <script>
 
