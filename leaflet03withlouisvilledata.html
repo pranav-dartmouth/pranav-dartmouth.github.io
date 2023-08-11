@@ -215,7 +215,7 @@
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
                             feature.properties.ROADNAME + "</b><br>" +
-					   "Bikeway Length: " + feature.properties.SHAPELEN + " units"); }
+					   "Bikeway Length: " + Math.round(parseFloat(feature.properties.SHAPELEN), 2) + " units"); }
 
                        }
 
