@@ -272,11 +272,37 @@
           });
 
           $.when(response).done(function() {
-   		
+   		var bikewaysLayer = L.geoJson(response.responseJSON,
+                      { style: lineSymbology,
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Bikeway: " + 
+                            feature.properties.ROADNAME + "</b><br>" +
+					   "Bikeway Length: " + feature.properties.SHAPELEN); }
+
+                       }
+
+
+                      ).addTo(map);
+
+	
 		  
 
-	  });
+	
+		$("#toggleBikeways").show();
 
+		   $("#toggleBikeways").click( function() {
+              if (bikewaysVisible) {
+                    bikewaysVisible = false;
+                   bikewaysLayer.removeFrom(map);
+              }
+
+              else {
+                 bikewaysVisible = true;
+                bikewaysLayer.addTo(map);
+              }
+            });
+
+	  });
 	      
  	var response = $.ajax({
             url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataEnvironment/MapServer/1/query?outFields=*&where=1%3D1&f=geojson",
