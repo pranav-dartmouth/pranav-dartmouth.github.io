@@ -82,6 +82,10 @@
         
           var farmsLayer;
           var farmsVisible = true;
+	var naturalareasLayer;
+	      var naturalareasVisible = true;
+	      var bikewayLayer;
+	      var bikewayVisible = true;
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map = L.map('map', {
 		  center: [38.2527, -85.7585],
@@ -175,6 +179,38 @@
             });
 
           });
+
+	      var response = $.ajax({
+            url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataTransportation/MapServer/0/query?outFields=*&where=1%3D1&f=geojson",
+            dataType: "json",
+            success: console.log("Bikeway data loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+          $.when(response).done(function() {
+   
+	  });
+
+	      
+ 	var response = $.ajax({
+            url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataEnvironment/MapServer/1/query?outFields=*&where=1%3D1&f=geojson",
+            dataType: "json",
+            success: console.log("Naturalareadata loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+          $.when(response).done(function() {
+   
+	  });
+
+
+	    
+
+	      
               
       </script>
   </body>
