@@ -215,7 +215,7 @@
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
                             feature.properties.ROADNAME + "</b><br>" +
-					   "Bikeway Length: " + Math.round(parseFloat(feature.properties.SHAPELEN), 2) + " units"); }
+					   "Bikeway Length: " + Math.round(parseFloat(feature.properties.SHAPELEN)) + " units"); }
 
                        }
 
@@ -227,7 +227,7 @@
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Natural Area: " + 
                             feature.properties.IDENTIFIER + "</b><br>" +
-			    "Size: " +  feature.properties.ACRES + " acres"); }
+			    "Size: " +  Math.round(parseFloat(feature.properties.ACRES)) + " acres"); }
 
                        }
 
@@ -243,11 +243,11 @@
                             layer.bindPopup('<b>Urban Farm: ' + 
                             feature.properties.Name + '</b><br>' + 
                             'Change in Nearby Median Home Values (2018-2023): ' + 
-                            feature.properties.ChangeMHV + '%' + '<br>' + 
+                            Math.round(parseFloat(feature.properties.ChangeMHV)) + '%' + '<br>' + 
                             'Change in Nearby Median Household Incomes (2018-2023): ' + 
-                            feature.properties.ChangeMHI + '%' + '<br>' + 
+                            Math.round(parseFloat(feature.properties.ChangeMHI)) + '%' + '<br>' + 
                             'Change in Nearby White Populations (2018-2023): ' + 
-                            feature.properties.ChangeWHP + '%' + '<br>' +
+                            Math.round(parseFloat(feature.properties.ChangeWHP)) + '%' + '<br>' +
 			'<img src="' + feature.properties.Image + '" alt="No image available" style="width:100px;height:100px;display:block;margin-right:auto;margin-left:auto;">'); 
 
                        },
