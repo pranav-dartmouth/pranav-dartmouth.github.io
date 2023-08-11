@@ -108,6 +108,103 @@
 
           L.control.layers(baseMaps).addTo(map);
 
+	        function lineSymbology(feature) {
+                var length = feature.properties.SHAPELEN;
+		var lineOpacity;
+
+		if (length > 0) {
+			lineOpacity = 0.2;
+
+		}
+
+		if (length > 200) {
+			lineOpacity = 0.6;
+
+		}
+
+		if (length > 400) {
+			lineOpacity = 0.8;
+		}
+
+  		return {
+			opacity: lineOpacity,
+   			color: "#BD9A73",
+      			weight: 1
+
+    };
+		      
+          } 
+
+	       function polygonSymbology(feature) {
+                var size = feature.properties.ACRES;
+		var polygoncolor;
+
+		if (size > 0) {
+			polygoncolor = "#e5f5f9";
+
+		}
+
+		if (size > 30) {
+			polygoncolor = "#99d8c9";
+
+		}
+
+		if (size > 60) {
+			polygoncolor = "#2ca25f";
+		}
+
+		return {
+		 fillColor: polygoncolor,
+		color: polygoncolor,
+		fillOpacity: 1
+			
+	       };	       
+	      }
+
+          function pointSymbology(feature) {
+                var a = parseFloat(feature.properties.ChangeMHV);
+		var b = parseFloat(feature.properties.ChangeMHI);
+		var c = parseFloat(feature.properties.ChangeWHP);
+		var holisticgentrificationindicator = a + b + c;  
+                 var color;
+		  var size;
+
+		  	if (holisticgentrificationindicator > -11) {
+				color = "#3182bd";
+				size = 7;
+
+			}
+                      if (holisticgentrificationindicator > 14.6) {
+                            	color = "#9ecae1";
+			      size = 5;
+			      
+                      }
+		  	if (holisticgentrificationindicator > 34.6) {
+				color = "#deebf7";
+				size = 3;
+			}
+		  if (holisticgentrificationindicator > 54.6) {
+				color = "#fee0d2";
+			  size = 3;
+			}
+		  
+                      if (holisticgentrificationindicator > 74.6) {
+				color = "#fc9272";
+			      size = 5;
+		      }
+
+		  if (holisticgentrificationindicator > 94.6) {
+				color = "#de2d26";
+			  size = 7;
+
+		  }
+                return {
+                      fillColor: color,
+			color: color,
+			radius: size
+                }
+          }
+
          
 
           var response = $.ajax({
