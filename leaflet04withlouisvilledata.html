@@ -226,11 +226,11 @@
                             layer.bindPopup('<b>Urban Farm: ' + 
                             feature.properties.Name + '</b><br>' + 
                             'Change in Nearby Median Home Values (2018-2023): ' + 
-                            feature.properties.ChangeMHV + '%' + '<br>' + 
+                            Math.round(parseFloat(feature.properties.ChangeMHV)) + '%' + '<br>' + 
                             'Change in Nearby Median Household Incomes (2018-2023): ' + 
-                            feature.properties.ChangeMHI + '%' + '<br>' + 
+                            Math.round(parseFloat(feature.properties.ChangeMHI)) + '%' + '<br>' + 
                             'Change in Nearby White Populations (2018-2023): ' + 
-                            feature.properties.ChangeWHP + '%' +
+                            Math.round(parseFloat(feature.properties.ChangeWHP)) + '%' +
 			'<img src="' + feature.properties.Image + '" alt="No image available" style="width:100px;height:100px;display:block;margin-right:auto;margin-left:auto;">'); 
 
                        },
@@ -277,7 +277,7 @@
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
                             feature.properties.ROADNAME + "</b><br>" +
-					   "Bikeway Length: " + feature.properties["SHAPE.LEN"] + " units"); } /* Help with debugging on this: https://community.esri.com/t5/arcgis-javascript-maps-sdk-questions/leaflet-dynamicmaplayer-popup-help/td-p/141588 */
+					   "Bikeway Length: " + Math.round(parseFloat(feature.properties["SHAPE.LEN"])) + " units"); } /* Help with debugging on this: https://community.esri.com/t5/arcgis-javascript-maps-sdk-questions/leaflet-dynamicmaplayer-popup-help/td-p/141588 */
 
                        }
 
@@ -319,7 +319,7 @@
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Natural Area: " + 
                             feature.properties.IDENTIFIER + "</b><br>" +
-			    "Size: " +  feature.properties.ACRES + " acres"); }
+			    "Size: " +  Math.round(parseFloat(feature.properties.ACRES)) + " acres"); }
 
                        }
 
