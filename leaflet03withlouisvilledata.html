@@ -76,25 +76,7 @@
 
           L.control.layers(baseMaps).addTo(map);
 
-          function pointSymbology(feature) {
-                var a = parseFloat(feature.properties.ChangeMHV);
-		var b = parseFloat(feature.properties.ChangeMHI);
-		var c = parseFloat(feature.properties.ChangeWHP);
-		var holisticgentrificationindicator = a + b + c;  
-                 var color;
-		  
-                      if (holisticgentrificationindicator > 54.6) {
-                            color = "#FF0000";
-                      }
-                      else {
-                            color = "#0000FF";
-                      }
-                return {
-                      fillColor: color
-                }
-          }
-
-	  function lineSymbology(feature) {
+	       function lineSymbology(feature) {
                 var length = feature.properties.SHAPELEN;
 		var lineOpacity;
 
@@ -146,9 +128,75 @@
 			
 	       };	       
 	      }
-		      
-        
-          
+
+          function pointSymbology(feature) {
+                var a = parseFloat(feature.properties.ChangeMHV);
+		var b = parseFloat(feature.properties.ChangeMHI);
+		var c = parseFloat(feature.properties.ChangeWHP);
+		var holisticgentrificationindicator = a + b + c;  
+                 var color;
+		  var size;
+
+		  	if (holisticgentrificationindicator > -11) {
+				color = "#3182bd";
+				size = 7;
+
+			}
+                      if (holisticgentrificationindicator > 14.6) {
+                            	color = "#9ecae1";
+			      size = 5;
+			      
+                      }
+		  	if (holisticgentrificationindicator > 34.6) {
+				color = "#deebf7";
+				size = 3;
+			}
+		  if (holisticgentrificationindicator > 54.6) {
+				color = "#fee0d2";
+			  size = 3;
+			}
+		  
+                      if (holisticgentrificationindicator > 74.6) {
+				color = "#fc9272";
+			      size = 5;
+		      }
+
+		  if (holisticgentrificationindicator > 94.6) {
+				color = "#de2d26";
+			  size = 7;
+
+		  }
+                return {
+                      fillColor: color,
+			radius: size
+                }
+          }
+
+
+  var bikewaysLayer = L.geoJson(bikeways_geojson,
+                      { style: lineSymbology,
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Bikeway: " + 
+                            feature.properties.ROADNAME + "</b><br>" +
+					   "Bikeway Length: " + feature.properties.SHAPELEN); }
+
+                       }
+
+
+                      );
+
+	      var naturalareasLayer = L.geoJson(naturalareas_geojson,
+                      { style: polygonSymbology, 
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Natural Area: " + 
+                            feature.properties.IDENTIFIER + "</b><br>" +
+			    "Size: " +  feature.properties.ACRES + " acres"); }
+
+                       }
+
+
+                      );
+
    
             var farmsLayer = L.geoJson(urbanfarms_geojson, {
 
@@ -170,51 +218,28 @@
                       pointToLayer: function (feature, latlng) { 
                           return L.circleMarker(latlng, {
                             
-                          radius: 8, 
                           weight: 1,
                           opacity: 1,
                           fillOpacity: 1
               });
               },
-            });
-
-	     var naturalareasLayer = L.geoJson(naturalareas_geojson,
-                      { style: polygonSymbology, 
-                       onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Natural Area: " + 
-                            feature.properties.IDENTIFIER + "</b><br>" +
-			    "Size: " +  feature.properties.ACRES + " acres"); }
-
-                       }
-
-
-                      );
-
-	      var bikewaysLayer = L.geoJson(bikeways_geojson,
-                      { style: lineSymbology,
-                       onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Bikeway: " + 
-                            feature.properties.ROADNAME + "</b><br>" +
-					   "Bikeway Length: " + feature.properties.SHAPELEN); }
-
-                       }
-
-
-                      );
-
-           $("#toggleFarms").click( function() {
-              if (farmsVisible) {
-                    farmsVisible = false;
-                    farmsLayer.removeFrom(map);
+            });   
+	    
+	      $("#toggleBikeways").click( function() {
+              if (bikewaysVisible) {
+                   bikewaysVisible = false;
+                    bikewaysLayer.removeFrom(map);
 		    
               }
 
               else {
-                  farmsVisible = true;
-                  farmsLayer.addTo(map);
+                  bikewaysVisible = true;
+                 bikewaysLayer.addTo(map);
 		
               }
-            });
+            }); 
+
+           
 
 	     $("#toggleNaturalAreas").click( function() {
               if (naturalareasVisible) {
@@ -230,19 +255,21 @@
               }
             }); 
 
-	      $("#toggleBikeways").click( function() {
-              if (bikewaysVisible) {
-                   bikewaysVisible = false;
-                    bikewaysLayer.removeFrom(map);
+	      $("#toggleFarms").click( function() {
+              if (farmsVisible) {
+                    farmsVisible = false;
+                    farmsLayer.removeFrom(map);
 		    
               }
 
               else {
-                  bikewaysVisible = true;
-                 bikewaysLayer.addTo(map);
+                  farmsVisible = true;
+                  farmsLayer.addTo(map);
 		
               }
-            }); 
+            });
+
+	      
               
       </script>
   </body>
