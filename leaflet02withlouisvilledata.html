@@ -37,6 +37,33 @@
           var map = L.map('map').setView([38.2527, -85.7585], 10);
 
            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'}).addTo(map);
+
+	      L.geoJson(bikeways_geojson,
+                      { color: "#BD9A73",
+                       opacity: 1,
+		       width: 0.5,
+		       weight: 1,
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Bikeway: " + 
+                            feature.properties.ROADNAME + "</b>"); }
+
+                       }
+
+
+                      ).addTo(map);  
+
+	       L.geoJson(naturalareas_geojson,
+                      { color: "#2ca25f",
+		       fillColor: "#2ca25f",
+                       opacity: 1,
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Natural Area: " + 
+                            feature.properties.IDENTIFIER + "</b>"); }
+
+                       }
+
+
+                      ).addTo(map);
    
            L.geoJson(urbanfarms_geojson, {
 
@@ -61,32 +88,9 @@
                       ,
             }).addTo(map);
         
-        L.geoJson(naturalareas_geojson,
-                      { color: "#2ca25f",
-		       fillColor: "#2ca25f",
-                       opacity: 1,
-                       onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Natural Area: " + 
-                            feature.properties.IDENTIFIER + "</b>"); }
+       
 
-                       }
-
-
-                      ).addTo(map);
-
-	    L.geoJson(bikeways_geojson,
-                      { color: "#BD9A73",
-                       opacity: 1,
-		       width: 0.5,
-		       weight: 1,
-                       onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Bikeway: " + 
-                            feature.properties.ROADNAME + "</b>"); }
-
-                       }
-
-
-                      ).addTo(map);  
+	    
 
         
       
