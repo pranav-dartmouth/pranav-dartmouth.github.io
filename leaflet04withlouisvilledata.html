@@ -277,7 +277,7 @@
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
                             feature.properties.ROADNAME + "</b><br>" +
-					   "Bikeway Length: " + feature.properties["SHAPE.LEN"] + " units"); }
+					   "Bikeway Length: " + feature.properties["SHAPE.LEN"] + " units"); } /* Help with debugging on this: https://community.esri.com/t5/arcgis-javascript-maps-sdk-questions/leaflet-dynamicmaplayer-popup-help/td-p/141588 */
 
                        }
 
