@@ -62,7 +62,8 @@
             }).addTo(map);
         
         L.geoJson(naturalareas_geojson,
-                      { color: "green",
+                      { color: "#2ca25f",
+		       fillColor: "#2ca25f",
                        opacity: 1,
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Natural Area: " + 
