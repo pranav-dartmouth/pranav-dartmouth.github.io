@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "CSAs",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4269" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "Lakshmi Farms", "Latitude": 38.290722815931403, "Longitude": -85.497214550925193 }, "geometry": { "type": "Point", "coordinates": [ -85.497214550925193, 38.290722815931403 ] } },
+{ "type": "Feature", "properties": { "Name": "Field Day Family Farm", "Latitude": 38.252480775614501, "Longitude": -85.567574590254296 }, "geometry": { "type": "Point", "coordinates": [ -85.567574590254296, 38.252480775614501 ] } },
+{ "type": "Feature", "properties": { "Name": "Falls City Farm", "Latitude": 38.269479724087198, "Longitude": -85.709647746591799 }, "geometry": { "type": "Point", "coordinates": [ -85.709647746591799, 38.269479724087198 ] } },
+{ "type": "Feature", "properties": { "Name": "Union Microgreens Farm", "Latitude": 38.165298754148097, "Longitude": -85.525629182192702 }, "geometry": { "type": "Point", "coordinates": [ -85.525629182192702, 38.165298754148097 ] } },
+{ "type": "Feature", "properties": { "Name": "New Roots", "Latitude": 38.2801020469783, "Longitude": -85.721825445706401 }, "geometry": { "type": "Point", "coordinates": [ -85.721825445706401, 38.2801020469783 ] } },
+{ "type": "Feature", "properties": { "Name": "Spade and Table Farm", "Latitude": 38.213899617791, "Longitude": -85.5072582326966 }, "geometry": { "type": "Point", "coordinates": [ -85.5072582326966, 38.213899617791 ] } }
+]
+}
