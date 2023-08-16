@@ -258,9 +258,8 @@
           $.when(response2).done(function() {
    		var foodsitesLayer = L.geoJson(response2.responseJSON, { 
                        onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Bikeway: " + 
-                            feature.properties.ROADNAME + "</b><br>" +
-					   "Bikeway Length: " + Math.round(parseFloat(feature.properties["SHAPE.LEN"])) + " units"); }, /* Help with debugging on this: https://community.esri.com/t5/arcgis-javascript-maps-sdk-questions/leaflet-dynamicmaplayer-popup-help/td-p/141588 */
+                            layer.bindPopup("<b>Food Site: " + 
+                            feature.properties.premise_name + "</b><br>") }, /* Help with debugging on this: https://community.esri.com/t5/arcgis-javascript-maps-sdk-questions/leaflet-dynamicmaplayer-popup-help/td-p/141588 */
                       
                         pointToLayer: function (feature, latlng) { 
                           return L.circleMarker(latlng, {
@@ -268,13 +267,12 @@
                          
                           weight: 1,
                           opacity: 1,
-                          fillOpacity: 1
-                          radius: 4;
+                          fillOpacity: 1,
                           fillColor: "yellow"
+			});
 
-                        });
-          }
-          }).addTo(map);
+                        }
+	  }).addTo(map);
 
 	
 		  
