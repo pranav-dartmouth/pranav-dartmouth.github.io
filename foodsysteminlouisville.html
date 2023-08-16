@@ -439,7 +439,7 @@
       var data = Papa.parse(csvString.trim()).data.filter(
         function(row) { return row.length === 2 }
       ).map(function(a) {
-        return [ parseFloat(a[0]), parseFloat(a[1]) ]
+        return [ parseFloat(a[0]), parseFloat(a[1]), 1]
       })
 
       var fastfoodheatmapLayer = L.heatLayer(data, {
