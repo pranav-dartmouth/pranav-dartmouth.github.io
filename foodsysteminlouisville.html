@@ -73,6 +73,11 @@
 
 	      }
 
+	      #toggleCSAs {
+		
+
+	      }
+
         
         
       </style>
@@ -81,10 +86,11 @@
   <body>
       <h1>Food Sites in Louisville</h1>
       <div id="map"></div>
-    		<div class="buttontext"><button id="toggleFarms" hidden>Toggle Louisville's gardens</button></div><br>
-	  	<div class="buttontext"><button id="toggleFoodSites" hidden>Toggle Louisville's food sites</button></div><br>
-		<div class="buttontext"><button id="toggleGroceryStores" hidden>Toggle Louisville's grocery stores</button></div><br>
-	  	<div class="buttontext"><button id="toggleFarmersMarkets" hidden>Toggle Louisville's farmers' markets</button></div>
+    		<div class="buttontext"><button id="toggleFarms" hidden>Urban Farms</button></div><br>
+	  	<div class="buttontext"><button id="toggleFoodSites" hidden>Food Sites</button></div><br>
+		<div class="buttontext"><button id="toggleGroceryStores" hidden>Grocery stores</button></div><br>
+	  	<div class="buttontext"><button id="toggleFarmersMarkets" hidden>Farmers' markets</button></div>
+	  	<div class="buttontext"><button id="toggleCSAs" hidden>CSAs</button></div>
 
       <script>
         
@@ -96,6 +102,8 @@
 	        var grocerystoresVisible = true;
 	        var farmersmarketsLayer;
 	        var farmersmarketsVisible = true;
+	      	var csasLayer;
+	      	var csasVisible = true;
 	        var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
          	var map = L.map('map', {
 		  	center: [38.2527, -85.7585],
@@ -342,7 +350,102 @@
 
 	  });  
 
+	      var response3 = $.ajax({
+            url: "farmermarkets.geojson",
+            dataType: "json",
+            success: console.log("Farmers markets loaded."),
+            error: function(xhr) {
+            alert(xhr.statusText);
+            }
+          });
+
+          $.when(response3).done(function() {
+   		var csasLayer = L.geoJson(response3.responseJSON,
+                      { 
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Farmers Market: " + 
+                            feature.properties.Name + "</b>"); },
+
+			pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+                          fillColor: "#000000"
+			});
+
+                        }
+
+			
+
+                       }).addTo(map);
+
+		    $("#toggleFarmersMarkets").show();
+
+		   $("#toggleFarmersMarkets").click( function() {
+              if (farmersmarketsVisible) {
+                    farmersmarketsVisible = false;
+                    farmersmarketsLayer.removeFrom(map);
+              }
+
+              else {
+                  farmersmarketsVisible = true;
+                  farmersmarketsLayer.addTo(map);
+              }
+            });
+
+	  });   
 	      
+
+	var response4 = $.ajax({
+            url: "csas.geojson",
+            dataType: "json",
+            success: console.log("CSAs loaded."),
+            error: function(xhr) {
+            alert(xhr.statusText);
+            }
+          });
+
+          $.when(response4).done(function() {
+   		var csasLayer = L.geoJson(response3.responseJSON,
+                      { 
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>CSA: " + 
+                            feature.properties.Name + "</b>"); },
+
+			pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+                          fillColor: "#FF0000"
+			});
+
+                        }
+
+			
+
+                       }).addTo(map);
+
+		    $("#toggleCSAs").show();
+
+		   $("#toggleCSAs").click( function() {
+              if (csasVisible) {
+                    csasVisible = false;
+                    csasLayer.removeFrom(map);
+              }
+
+              else {
+                  csasVisible = true;
+                  csasLayer.addTo(map);
+              }
+            });
+
+	  });   
               
       </script>
   </body>
