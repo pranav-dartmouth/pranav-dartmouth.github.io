@@ -350,7 +350,7 @@
 
 	  });  
 
-	      var response3 = $.ajax({
+	      var response4 = $.ajax({
             url: "farmermarkets.geojson",
             dataType: "json",
             success: console.log("Farmers markets loaded."),
@@ -359,8 +359,8 @@
             }
           });
 
-          $.when(response3).done(function() {
-   		var csasLayer = L.geoJson(response3.responseJSON,
+          $.when(response4).done(function() {
+   		var farmersmarketsLayer = L.geoJson(response3.responseJSON,
                       { 
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Farmers Market: " + 
@@ -399,8 +399,8 @@
 	  });   
 	      
 
-	var response4 = $.ajax({
-            url: "csas.geojson",
+	var response5 = $.ajax({
+            url: "CSAs.geojson",
             dataType: "json",
             success: console.log("CSAs loaded."),
             error: function(xhr) {
@@ -408,7 +408,7 @@
             }
           });
 
-          $.when(response4).done(function() {
+          $.when(response5).done(function() {
    		var csasLayer = L.geoJson(response3.responseJSON,
                       { 
                        onEachFeature: function(feature, layer) {
