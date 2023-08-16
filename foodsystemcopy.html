@@ -436,7 +436,6 @@
 
 
  /* Source of below code: Leaflet Heatmap Example (https://cautious-fishstick-jjpq4x6v4w35jjg.github.dev/) */
-   var fastfoodcsv, fastfoodheatmapLayer;
 
 
 
@@ -444,23 +443,14 @@
 
 
 
-		  
-	$.get('./fastfoodplaces.csv', function(csvString) {
+
 		
-      fastfoodcsv = Papa.parse(csvString.trim()).data.filter(
-        function(row) { }
-      ).map(function(a) {
-        return [ parseFloat(a[0]), parseFloat(a[1]), 1]
-      })
-
-	console.log(fastfoodcsv);
+     console.log(fastfoodcsv);
 
       fastfoodheatmapLayer = L.heatLayer(fastfoodcsv, {
         radius: 25
       }).addTo(map);
 
-
-	})
  
 
             $("#toggleFastFoodPlaces").show();
