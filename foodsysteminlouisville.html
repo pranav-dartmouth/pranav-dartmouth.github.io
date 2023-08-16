@@ -88,9 +88,7 @@
       <h1>Food Sites in Louisville</h1>
       <div id="map"></div>
     		<div class="buttontext"><button id="toggleFarms" hidden>Urban Farms</button></div><br>
-	  	<div class="buttontext"><button id="toggleFoodSites" hidden>Food Sites</button></div><br>
 		<div class="buttontext"><button id="toggleGroceryStores" hidden>Grocery stores</button></div><br>
-	  	<div class="buttontext"><button id="toggleFarmersMarkets" hidden>Farmers' markets</button></div>
 	  	<div class="buttontext"><button id="toggleCSAs" hidden>CSAs</button></div>
 	  	<div class="buttontext"><button id="toggleFastFoodPlaces" hidden>Fast Food Places</button></div>
 
@@ -98,12 +96,8 @@
         
           	var farmsLayer;
           	var farmsVisible = true;
-	        var foodsitesLayer;
-          	var foodsitesVisible = true;
 	        var grocerystoresLayer;
 	        var grocerystoresVisible = true;
-	        var farmersmarketsLayer;
-	        var farmersmarketsVisible = true;
 	      	var csasLayer;
 	      	var csasVisible = true;
 	        var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
@@ -268,7 +262,7 @@
           });
 
           $.when(response2).done(function() {
-   		var grocerystoresLayer = L.geoJson(response3.responseJSON,
+   		var grocerystoresLayer = L.geoJson(response2.responseJSON,
                       { 
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Grocery Store: " + 
@@ -281,7 +275,7 @@
                           weight: 1,
                           opacity: 1,
                           fillOpacity: 1,
-                          fillColor: "#0000F"
+                          fillColor: "#FFA500"
 			});
 
                         }
@@ -378,7 +372,7 @@
                           weight: 1,
                           opacity: 1,
                           fillOpacity: 1,
-                          fillColor: "#FF0000"
+                          fillColor: "#EADDCA"
 			});
 
                         }
