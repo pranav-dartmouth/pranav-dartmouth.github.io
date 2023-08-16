@@ -1,1 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Food Sites in Louisville!</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      
+      <style>
+          body {
+            background-color: #90DBD1;
+          }
+
+          h1 {
+            text-align: center;
+          }
+          #map {
+              height: 400px;
+              width: 50%;
+              margin-left: auto;
+              margin-right: auto;
+              display: block;
+              border-radius: 20px;
+            
+          }
+
+	      .buttontext {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	      button {
+				background-color: white; 
+				border: solid 2px;
+				font-weight: bold;
+				font-size: 15px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				padding-right: 10px;
+				padding-left: 10px;
+				margin-bottom: 5px;
+				margin-right: auto;
+				margin-left: auto;
+				border-radius: 15px;
+				text-align: center;
+				text-decoration: none;
+				width: 200px;
+			}
+
+	      #toggleFarms {
+		margin-top: 5px;
+		border-color: #de2d26;
+		color: #de2d26;
+	      }
+
+	      #toggleGroceryStores {
+		border-color: #2ca25f;
+		color: #2ca25f;
+
+	      }
+
+	      #toggleFarmersMarkets {
+		border-color: #BD9A73;
+		color: #BD9A73;
+
+	      }
+
+        
+        
+      </style>
+      
+  </head>
+  <body>
+      <h1>Food Sites in Louisville</h1>
+      <div id="map"></div>
+     <div class="buttontext"><button id="toggleFarms" hidden>Toggle Louisville's gardens</button></div><br>
+<div class="buttontext"><button id="toggleGroceryStores" hidden>Toggle Louisville's grocery stores</button></div><br>
+	  <div class="buttontext"><button id="toggleFarmersMarkets" hidden>Toggle Louisville's farmers' markets</button></div>
+
+      <script>
+        
+          var farmsLayer;
+          var farmsVisible = true;
+	        var grocerystoresLayer;
+	        var grocerystoresVisible = true;
+	        var farmersmarketsLayer;
+	        var farmersmarketsVisible = true;
+	        var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+          var map = L.map('map', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+        
+         
+
+           var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
+
+          
+
+          var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        maxZoom: 20,
+	        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          });
+
+	
+	      var Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+});
+
+	      var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
+});
+
+	      var Esri_WorldShadedRelief = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+	maxZoom: 13
+});
+
+          var baseMaps = {"OSM" : OpenStreetMap,
+			  "CTBD" : CartoDB_DarkMatter,
+                          "USGS" : USGS_USImageryTopo,
+			  "EWGC": Esri_WorldGrayCanvas,
+			  "EWT": Esri_WorldTerrain,
+			  "EWSR": Esri_WorldShadedRelief
+                         };
+
+          L.control.layers(baseMaps).addTo(map);
+
+          function pointSymbology(feature) {
+                var a = parseFloat(feature.properties.ChangeMHV);
+		            var b = parseFloat(feature.properties.ChangeMHI);
+		            var c = parseFloat(feature.properties.ChangeWHP);
+		            var holisticgentrificationindicator = a + b + c;  
+                var color;
+		            var size;
+
+		  	if (holisticgentrificationindicator > -11) {
+				color = "#3182bd";
+				size = 7;
+
+			}
+                      if (holisticgentrificationindicator > 14.6) {
+                            	color = "#9ecae1";
+			      size = 5;
+			      
+                      }
+		  	if (holisticgentrificationindicator > 34.6) {
+				color = "#deebf7";
+				size = 3;
+			}
+		  if (holisticgentrificationindicator > 54.6) {
+				color = "#fee0d2";
+			  size = 3;
+			}
+		  
+                      if (holisticgentrificationindicator > 74.6) {
+				color = "#fc9272";
+			      size = 5;
+		      }
+
+		  if (holisticgentrificationindicator > 94.6) {
+				color = "#de2d26";
+			  size = 7;
+
+		  }
+                return {
+                      fillColor: color,
+			color: color,
+			radius: size
+                };
+          }
+
+         
+
+          var response = $.ajax({
+            url: "urbanfarms2final.geojson",
+            dataType: "json",
+            success: console.log("Farm data loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+          $.when(response).done(function() {
+   
+            var farmsLayer = L.geoJson(response.responseJSON, {
+
+                  
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup('<b>Urban Farm: ' + 
+                            feature.properties.Name + '</b><br>' + 
+                            'Change in Nearby Median Home Values (2018-2023): ' + 
+                            Math.round(parseFloat(feature.properties.ChangeMHV)) + '%' + '<br>' + 
+                            'Change in Nearby Median Household Incomes (2018-2023): ' + 
+                            Math.round(parseFloat(feature.properties.ChangeMHI)) + '%' + '<br>' + 
+                            'Change in Nearby White Populations (2018-2023): ' + 
+                            Math.round(parseFloat(feature.properties.ChangeWHP)) + '%' +
+			'<img src="' + feature.properties.Image + '" alt="No image available" style="width:100px;height:100px;display:block;margin-right:auto;margin-left:auto;">'); 
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1
+                          radius: 4;
+                          fillColor: "green"
+              });
+              }
+            }).addTo(map);
+
+            $("#toggleFarms").show();
+
+           $("#toggleFarms").click( function() {
+              if (farmsVisible) {
+                    farmsVisible = false;
+                    farmsLayer.removeFrom(map);
+              }
+
+              else {
+                  farmsVisible = true;
+                  farmsLayer.addTo(map);
+              }
+            });
+
+          });
+
+	      var response2 = $.ajax({
+            url: "https://services1.arcgis.com/79kfd2K6fskCAkyg/arcgis/rest/services/Louisville_Metro_KY_Inspection_Results_School_Food_Service/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+            dataType: "json",
+            success: console.log("Bikeway data loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+          $.when(response2).done(function() {
+   		var bikewaysLayer = L.geoJson(response2.responseJSON, { 
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Bikeway: " + 
+                            feature.properties.ROADNAME + "</b><br>" +
+					   "Bikeway Length: " + Math.round(parseFloat(feature.properties["SHAPE.LEN"])) + " units"); }, /* Help with debugging on this: https://community.esri.com/t5/arcgis-javascript-maps-sdk-questions/leaflet-dynamicmaplayer-popup-help/td-p/141588 */
+                      
+                        pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1
+                          radius: 4;
+                          fillColor: "yellow"
+
+                        };
+          }
+          }).addTo(map);
+
+	
+		  
+
+	
+		$("#toggleFoodSites").show();
+
+		   $("#toggleFoodSites").click( function() {
+              if (foodsitesVisible) {
+                   foodsitesVisible = false;
+                   foodsitesLayer.removeFrom(map);
+              }
+
+              else {
+                 foodsitesVisible = true;
+                foodsitesLayer.addTo(map);
+              }
+            });
+
+	  });
+	      
+ 	var response3 = $.ajax({
+            url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataEnvironment/MapServer/1/query?outFields=*&where=1%3D1&f=geojson",
+            dataType: "json",
+            success: console.log("Naturalareadata loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+          $.when(response3).done(function() {
+   		var naturalareasLayer = L.geoJson(response3.responseJSON,
+                      { style: polygonSymbology, 
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Natural Area: " + 
+                            feature.properties.IDENTIFIER + "</b><br>" +
+			    "Size: " +  Math.round(parseFloat(feature.properties.ACRES)) + " acres"); }
+
+                       }
+
+
+                      ).addTo(map);
+
+		    $("#toggleNaturalAreas").show();
+
+		   $("#toggleNaturalAreas").click( function() {
+              if (naturalareasVisible) {
+                    naturalareasVisible = false;
+                    naturalareasLayer.removeFrom(map);
+              }
+
+              else {
+                  naturalareasVisible = true;
+                  naturalareasLayer.addTo(map);
+              }
+            });
+
+	  });
+
+
+	    
+
+	      
+              
+      </script>
+  </body>
+</html>
 
