@@ -211,13 +211,7 @@
                   
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup('<b>Urban Farm: ' + 
-                            feature.properties.Name + '</b><br>' + 
-                            'Change in Nearby Median Home Values (2018-2023): ' + 
-                            Math.round(parseFloat(feature.properties.ChangeMHV)) + '%' + '<br>' + 
-                            'Change in Nearby Median Household Incomes (2018-2023): ' + 
-                            Math.round(parseFloat(feature.properties.ChangeMHI)) + '%' + '<br>' + 
-                            'Change in Nearby White Populations (2018-2023): ' + 
-                            Math.round(parseFloat(feature.properties.ChangeWHP)) + '%' +
+                            feature.properties.Name + '</b>' + 
 			'<img src="' + feature.properties.Image + '" alt="No image available" style="width:100px;height:100px;display:block;margin-right:auto;margin-left:auto;">'); 
 
                        },
@@ -229,7 +223,8 @@
                           weight: 1,
                           opacity: 1,
                           fillOpacity: 1,
-                          fillColor: "green"
+                          fillColor: "green",
+			color: "green"
 		      });
               		}
 				}).addTo(map);
@@ -275,7 +270,8 @@
                           weight: 1,
                           opacity: 1,
                           fillOpacity: 1,
-                          fillColor: "#FFA500"
+                          fillColor: "#FFA500",
+				  color: "#FFA500"
 			});
 
                         }
@@ -372,7 +368,8 @@
                           weight: 1,
                           opacity: 1,
                           fillOpacity: 1,
-                          fillColor: "#EADDCA"
+                          fillColor: "#EADDCA",
+			color: "#EADDCA"
 			});
 
                         }
@@ -424,7 +421,8 @@
                           weight: 1,
                           opacity: 1,
                           fillOpacity: 1,
-                          fillColor: "#553B32"
+                          fillColor: "#553B32",
+			color: "#553B32"
 		      });
               		}
 				}).addTo(map);
