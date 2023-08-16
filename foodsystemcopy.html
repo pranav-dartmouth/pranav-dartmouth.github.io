@@ -406,15 +406,18 @@
             }
           });
 
+
+	      var fastfoodcsv;
+	      
           $.when(response4).done(function() {
    
             var fastfoodLayer = L.geoJson(response4.responseJSON, {
-
+			
                   
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Fast Food Restaurant: " + 
                             feature.properties.Name + "</b>"); 
-
+				fastfoodcsv.push([feature.geometry.coordinates]);
                        },
 
                       pointToLayer: function (feature, latlng) { 
