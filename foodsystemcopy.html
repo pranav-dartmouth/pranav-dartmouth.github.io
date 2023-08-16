@@ -417,7 +417,7 @@
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Fast Food Restaurant: " + 
                             feature.properties.Name + "</b>"); 
-				fastfoodcsv.push([feature.geometry.coordinates]);
+				fastfoodcsv.push([feature.geometry.coordinates.x, feature.geometry.coordinates.y, 1]);
                        },
 
                       pointToLayer: function (feature, latlng) { 
