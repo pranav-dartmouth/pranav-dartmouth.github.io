@@ -450,7 +450,7 @@
         return [ parseFloat(a[0]), parseFloat(a[1]), 1]
       })
 
-      fastfoodheatmapLayer = L.heatLayer(data, {
+      fastfoodheatmapLayer = L.heatLayer(fastfoodcsv, {
         radius: 25
       }).addTo(map);
 
