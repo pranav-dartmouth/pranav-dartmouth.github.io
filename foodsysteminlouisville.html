@@ -56,6 +56,11 @@
 		color: #de2d26;
 	      }
 
+	      #toggleFoodSites {
+		border-color: #ffff00;
+		color: #ffff00;
+	      }
+
 	      #toggleGroceryStores {
 		border-color: #2ca25f;
 		color: #2ca25f;
@@ -76,55 +81,58 @@
   <body>
       <h1>Food Sites in Louisville</h1>
       <div id="map"></div>
-     <div class="buttontext"><button id="toggleFarms" hidden>Toggle Louisville's gardens</button></div><br>
-<div class="buttontext"><button id="toggleGroceryStores" hidden>Toggle Louisville's grocery stores</button></div><br>
-	  <div class="buttontext"><button id="toggleFarmersMarkets" hidden>Toggle Louisville's farmers' markets</button></div>
+    		<div class="buttontext"><button id="toggleFarms" hidden>Toggle Louisville's gardens</button></div><br>
+	  	<div class="button"><button id="toggleFoodSites" hidden>Toggle Louisville's food sites</button></div><br>
+		<div class="buttontext"><button id="toggleGroceryStores" hidden>Toggle Louisville's grocery stores</button></div><br>
+	  	<div class="buttontext"><button id="toggleFarmersMarkets" hidden>Toggle Louisville's farmers' markets</button></div>
 
       <script>
         
-          var farmsLayer;
-          var farmsVisible = true;
+          	var farmsLayer;
+          	var farmsVisible = true;
+	        var foodsitesLayer;
+          	var foodsitesVisible = true;
 	        var grocerystoresLayer;
 	        var grocerystoresVisible = true;
 	        var farmersmarketsLayer;
 	        var farmersmarketsVisible = true;
 	        var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
-          var map = L.map('map', {
-		  center: [38.2527, -85.7585],
-		  zoom: 10,
-		  layers: [OpenStreetMap]
-	  });
+         	var map = L.map('map', {
+		  	center: [38.2527, -85.7585],
+		  	zoom: 10,
+		  	layers: [OpenStreetMap]
+	 	});
         
          
 
-           var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	subdomains: 'abcd',
-	maxZoom: 20
-});
+           	var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+			subdomains: 'abcd',
+			maxZoom: 20
+		});
 
           
 
-          var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
-	        maxZoom: 20,
-	        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
-          });
+          	var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        	maxZoom: 20,
+	        	attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          	});
 
 	
 	      var Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-	maxZoom: 16
-});
+			attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+			maxZoom: 16
+		});
 
 	      var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
-	maxZoom: 13
-});
+			attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+			maxZoom: 13
+		});
 
 	      var Esri_WorldShadedRelief = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
-	maxZoom: 13
-});
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+			maxZoom: 13
+		});
 
           var baseMaps = {"OSM" : OpenStreetMap,
 			  "CTBD" : CartoDB_DarkMatter,
@@ -132,16 +140,16 @@
 			  "EWGC": Esri_WorldGrayCanvas,
 			  "EWT": Esri_WorldTerrain,
 			  "EWSR": Esri_WorldShadedRelief
-                         };
+           };
 
           L.control.layers(baseMaps).addTo(map);
 
-          function pointSymbology(feature) {
-                var a = parseFloat(feature.properties.ChangeMHV);
+          function gardenSymbology(feature) {
+               		 var a = parseFloat(feature.properties.ChangeMHV);
 		            var b = parseFloat(feature.properties.ChangeMHI);
 		            var c = parseFloat(feature.properties.ChangeWHP);
 		            var holisticgentrificationindicator = a + b + c;  
-                var color;
+               		var color;
 		            var size;
 
 		  	if (holisticgentrificationindicator > -11) {
@@ -218,9 +226,9 @@
                           fillOpacity: 1
                           radius: 4;
                           fillColor: "green"
-              });
-              }
-            }).addTo(map);
+		      });
+              		}
+				}).addTo(map);
 
             $("#toggleFarms").show();
 
@@ -241,14 +249,14 @@
 	      var response2 = $.ajax({
             url: "https://services1.arcgis.com/79kfd2K6fskCAkyg/arcgis/rest/services/Louisville_Metro_KY_Inspection_Results_School_Food_Service/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
             dataType: "json",
-            success: console.log("Bikeway data loaded."),
+            success: console.log("Food sites data loaded."),
             error: function(xhr) {
               alert(xhr.statusText);
             }
           });
 
           $.when(response2).done(function() {
-   		var bikewaysLayer = L.geoJson(response2.responseJSON, { 
+   		var foodsitesLayer = L.geoJson(response2.responseJSON, { 
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Bikeway: " + 
                             feature.properties.ROADNAME + "</b><br>" +
@@ -264,7 +272,7 @@
                           radius: 4;
                           fillColor: "yellow"
 
-                        };
+                        });
           }
           }).addTo(map);
 
@@ -288,7 +296,7 @@
 
 	  });
 	      
- 	var response3 = $.ajax({
+ 	/* var response3 = $.ajax({
             url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataEnvironment/MapServer/1/query?outFields=*&where=1%3D1&f=geojson",
             dataType: "json",
             success: console.log("Naturalareadata loaded."),
@@ -327,7 +335,7 @@
 	  });
 
 
-	    
+	*/    
 
 	      
               
