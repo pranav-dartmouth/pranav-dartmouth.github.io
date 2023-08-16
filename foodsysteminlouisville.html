@@ -259,7 +259,7 @@
    		var foodsitesLayer = L.geoJson(response2.responseJSON, { 
                        onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Food Site: " + 
-                            feature.properties.premise_name + "</b><br>") }, /* Help with debugging on this: https://community.esri.com/t5/arcgis-javascript-maps-sdk-questions/leaflet-dynamicmaplayer-popup-help/td-p/141588 */
+                            feature.properties.premise_name + "</b>") }, 
                       
                         pointToLayer: function (feature, latlng) { 
                           return L.circleMarker(latlng, {
@@ -294,39 +294,49 @@
 
 	  });
 	      
- 	/* var response3 = $.ajax({
-            url: "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataEnvironment/MapServer/1/query?outFields=*&where=1%3D1&f=geojson",
+ 	 var response3 = $.ajax({
+            url: "grocerystores.geojson",
             dataType: "json",
-            success: console.log("Naturalareadata loaded."),
+            success: console.log("Grocery stores loaded."),
             error: function(xhr) {
-              alert(xhr.statusText);
+            alert(xhr.statusText);
             }
           });
 
           $.when(response3).done(function() {
-   		var naturalareasLayer = L.geoJson(response3.responseJSON,
-                      { style: polygonSymbology, 
+   		var grocerystoresLayer = L.geoJson(response3.responseJSON,
+                      { 
                        onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Natural Area: " + 
-                            feature.properties.IDENTIFIER + "</b><br>" +
-			    "Size: " +  Math.round(parseFloat(feature.properties.ACRES)) + " acres"); }
+                            layer.bindPopup("<b>Grocery Store: " + 
+                            feature.properties.NAME + "</b>"); },
 
-                       }
+			pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+                          fillColor: "#0000F"
+			});
 
+                        }
 
-                      ).addTo(map);
+			
 
-		    $("#toggleNaturalAreas").show();
+                       }).addTo(map);
 
-		   $("#toggleNaturalAreas").click( function() {
-              if (naturalareasVisible) {
-                    naturalareasVisible = false;
-                    naturalareasLayer.removeFrom(map);
+		    $("#toggleGroceryStores").show();
+
+		   $("#toggleGroceryStores").click( function() {
+              if (groceryStoresVisible) {
+                    groceryStoresVisible = false;
+                    groceryStoresLayer.removeFrom(map);
               }
 
               else {
-                  naturalareasVisible = true;
-                  naturalareasLayer.addTo(map);
+                  groceryStoresVisible = true;
+                  groceryStoresLayer.addTo(map);
               }
             });
 
