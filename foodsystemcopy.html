@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Louisville's Urban Food System</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+	   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script> <!-- From Leafleat Heatmap Template -->
+      
+      <style>
+          body {
+            background-color: #FFFFFF;
+	background: #D6F656;
+          }
+
+          h1 {
+            text-align: center;
+          }
+          #map {
+              height: 400px;
+              width: 50%;
+              margin-left: auto;
+              margin-right: auto;
+              display: block;
+              border-radius: 20px;
+            
+          }
+
+	      .buttontext {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	      button {
+		background-color: white; 
+		border: solid 2px;
+		font-weight: bold;
+		font-size: 15px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-right: 10px;
+		padding-left: 10px;
+		margin-bottom: 5px;
+		margin-right: auto;
+		margin-left: auto;
+		border-radius: 15px;
+		text-align: center;
+		text-decoration: none;
+		width: 200px;
+			}
+
+	      #toggleFarms {
+		margin-top: 5px;
+		border-color: #de2d26;
+		color: #de2d26;
+	      }
+
+	      #toggleGroceryStores {
+		border-color: #FFA500;
+		color: #FFA500;
+	      }
+	      #toggleCSAs {
+		border-color: #EADDCA;
+		color: #EADDCA;
+	      }
+
+		#toggleFastFoodPlaces {
+		border-color: #553B32;
+		color: #553B32;
+
+
+		}
+
+        
+        
+      </style>
+      
+  </head>
+  <body>
+      <h1>Louisville's Food System</h1>
+      <div id="map"></div>
+    		<div class="buttontext"><button id="toggleFarms" hidden>Urban Farms</button></div><br>
+		<div class="buttontext"><button id="toggleGroceryStores" hidden>Grocery stores</button></div><br>
+	  	<div class="buttontext"><button id="toggleCSAs" hidden>CSAs</button></div>
+	  	<div class="buttontext"><button id="toggleFastFoodPlaces" hidden>Fast Food Places</button></div>
+	  	<div class="buttontext"><button id="toggleFastFoodHeatmapLayer" hidden>Fast Food Heatmap</button></div>
+
+      <script>
+        
+          	var farmsLayer;
+          	var farmsVisible = true;
+	        var grocerystoresLayer;
+	        var grocerystoresVisible = true;
+	      	var csasLayer;
+	      	var csasVisible = true;
+	      	var fastfoodLayer;
+	      	var fastfoodVisible = true;
+	      	var fastfoodheatmapLayer;
+	      	var fastfoodheatmapVisible = true;
+	        var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+         	var map = L.map('map', {
+		  	center: [38.2527, -85.7585],
+		  	zoom: 10,
+		  	layers: [OpenStreetMap]
+	 	});
+        
+         
+
+           	var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+			subdomains: 'abcd',
+			maxZoom: 20
+		});
+
+          
+
+          	var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        	maxZoom: 20,
+	        	attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          	});
+
+	
+	      var Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+			maxZoom: 16
+		});
+
+	      var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+			maxZoom: 13
+		});
+
+	      var Esri_WorldShadedRelief = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+			maxZoom: 13
+		});
+
+          var baseMaps = {"OSM" : OpenStreetMap,
+			  "CTBD" : CartoDB_DarkMatter,
+                          "USGS" : USGS_USImageryTopo,
+			  "EWGC": Esri_WorldGrayCanvas,
+			  "EWT": Esri_WorldTerrain,
+			  "EWSR": Esri_WorldShadedRelief
+           };
+
+          L.control.layers(baseMaps).addTo(map);
+
+          /* function gardenSymbology(feature) {
+               		 var a = parseFloat(feature.properties.ChangeMHV);
+		            var b = parseFloat(feature.properties.ChangeMHI);
+		            var c = parseFloat(feature.properties.ChangeWHP);
+		            var holisticgentrificationindicator = a + b + c;  
+               		var color;
+		            var size;
+
+		  	if (holisticgentrificationindicator > -11) {
+				color = "#3182bd";
+				size = 7;
+
+			}
+                      if (holisticgentrificationindicator > 14.6) {
+                            	color = "#9ecae1";
+			      size = 5;
+			      
+                      }
+		  	if (holisticgentrificationindicator > 34.6) {
+				color = "#deebf7";
+				size = 3;
+			}
+		  if (holisticgentrificationindicator > 54.6) {
+				color = "#fee0d2";
+			  size = 3;
+			}
+		  
+                      if (holisticgentrificationindicator > 74.6) {
+				color = "#fc9272";
+			      size = 5;
+		      }
+
+		  if (holisticgentrificationindicator > 94.6) {
+				color = "#de2d26";
+			  size = 7;
+
+		  }
+                return {
+                      fillColor: color,
+			color: color,
+			radius: size
+                };
+          }
+	  */
+
+         
+
+          var response = $.ajax({
+            url: "urbanfarms2final.geojson",
+            dataType: "json",
+            success: console.log("Farm data loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+          $.when(response).done(function() {
+   
+            var farmsLayer = L.geoJson(response.responseJSON, {
+
+                  
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup('<b>Urban Farm: ' + 
+                            feature.properties.Name + '</b>' + 
+			'<img src="' + feature.properties.Image + '" alt="No image available" style="width:100px;height:100px;display:block;margin-right:auto;margin-left:auto;">'); 
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         radius: 3,
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+                          fillColor: "green",
+			color: "green"
+		      });
+              		}
+				}).addTo(map);
+
+            $("#toggleFarms").show();
+
+           $("#toggleFarms").click( function() {
+              if (farmsVisible) {
+                    farmsVisible = false;
+                    farmsLayer.removeFrom(map);
+              }
+
+              else {
+                  farmsVisible = true;
+                  farmsLayer.addTo(map);
+              }
+            });
+
+          });
+
+	   
+	      
+ 	 var response2 = $.ajax({
+            url: "grocerystores.geojson",
+            dataType: "json",
+            success: console.log("Grocery stores loaded."),
+            error: function(xhr) {
+            alert(xhr.statusText);
+            }
+          });
+
+          $.when(response2).done(function() {
+   		var grocerystoresLayer = L.geoJson(response2.responseJSON,
+                      { 
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Grocery Store: " + 
+                            feature.properties.Name + "</b>"); },
+
+			pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+			radius: 3,
+                          opacity: 1,
+                          fillOpacity: 1,
+                          fillColor: "#FFA500",
+				  color: "#FFA500"
+			});
+
+                        }
+
+			
+
+                       }).addTo(map);
+
+		    $("#toggleGroceryStores").show();
+
+		   $("#toggleGroceryStores").click( function() {
+              if (grocerystoresVisible) {
+                    grocerystoresVisible = false;
+                    grocerystoresLayer.removeFrom(map);
+              }
+
+              else {
+                  grocerystoresVisible = true;
+                  grocerystoresLayer.addTo(map);
+              }
+            });
+
+	  });  
+
+	  /*    var response4 = $.ajax({
+            url: "farmermarkets.geojson",
+            dataType: "json",
+            success: console.log("Farmers markets loaded."),
+            error: function(xhr) {
+            alert(xhr.statusText);
+            }
+          });
+
+          $.when(response4).done(function() {
+   		var farmersmarketsLayer = L.geoJson(response3.responseJSON,
+                      { 
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Farmers Market: " + 
+                            feature.properties.Name + "</b>"); },
+
+			pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+                          fillColor: "#000000"
+			});
+
+                        }
+
+			
+
+                       }).addTo(map);
+
+		    $("#toggleFarmersMarkets").show();
+
+		   $("#toggleFarmersMarkets").click( function() {
+              if (farmersmarketsVisible) {
+                    farmersmarketsVisible = false;
+                    farmersmarketsLayer.removeFrom(map);
+              }
+
+              else {
+                  farmersmarketsVisible = true;
+                  farmersmarketsLayer.addTo(map);
+              }
+            });
+
+	  });   
+	      */
+
+	var response3 = $.ajax({
+            url: "CSAs.geojson",
+            dataType: "json",
+            success: console.log("CSAs loaded."),
+            error: function(xhr) {
+            alert(xhr.statusText);
+            }
+          });
+
+          $.when(response3).done(function() {
+   		var csasLayer = L.geoJson(response3.responseJSON,
+                      { 
+                       onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>CSA: " + 
+                            feature.properties.Name + "</b>"); },
+
+			pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+			radius: 3,
+                          fillOpacity: 1,
+                          fillColor: "#EADDCA",
+			color: "#EADDCA"
+			});
+
+                        }
+
+			
+
+                       }).addTo(map);
+
+		    $("#toggleCSAs").show();
+
+		   $("#toggleCSAs").click( function() {
+              if (csasVisible) {
+                    csasVisible = false;
+                    csasLayer.removeFrom(map);
+              }
+
+              else {
+                  csasVisible = true;
+                  csasLayer.addTo(map);
+              }
+            });
+
+	  });   
+
+		  var response4 = $.ajax({
+            url: "fastfood.geojson",
+            dataType: "json",
+            success: console.log("Fast foods loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+          $.when(response4).done(function() {
+   
+            var fastfoodLayer = L.geoJson(response4.responseJSON, {
+
+                  
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Fast Food Restaurant: " + 
+                            feature.properties.Name + "</b>"); 
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+			radius: 3,
+                          fillOpacity: 1,
+                          fillColor: "#553B32",
+			color: "#553B32"
+		      });
+              		}
+				}).addTo(map);
+
+
+ /* Source of below code: Leaflet Heatmap Example (https://cautious-fishstick-jjpq4x6v4w35jjg.github.dev/) */
+   var fastfoodcsv, fastfoodheatmapLayer;
+
+
+
+
+
+
+
+		  
+	$.get('./fastfoodplaces.csv', function(csvString) {
+		
+      fastfoodcsv = Papa.parse(csvString.trim()).data.filter(
+        function(row) { }
+      ).map(function(a) {
+        return [ parseFloat(a[0]), parseFloat(a[1]), 1]
+      })
+
+	console.log(fastfoodcsv);
+
+      fastfoodheatmapLayer = L.heatLayer(fastfoodcsv, {
+        radius: 25
+      }).addTo(map);
+
+
+	})
+ 
+
+            $("#toggleFastFoodPlaces").show();
+
+           $("#toggleFastFoodPlaces").click( function() {
+              if (fastfoodVisible) {
+                    fastfoodVisible = false;
+                    fastfoodLayer.removeFrom(map);
+
+              }
+
+              else {
+                  fastfoodVisible = true;
+                  fastfoodLayer.addTo(map);
+              }
+
+	   });
+
+		  /*
+		$("#toggleFastFoodHeatmapLayer").show();
+
+		$("#toggleFastFoodHeatmapLayer").click( function() {
+			if (fastfoodheatmapVisible) {
+				fastfoodheatmapVisible = false;
+				fastfoodheatmapLayer.removeFrom(map);
+			}
+
+			else {
+				fastfoodheatmapVisible = true;
+				fastfoodheatmapLayer.addTo(map);
+			}
+
+
+		});
+
+  */ 
+
+          });
+  
+      </script>
+  </body>
+</html>
+
