@@ -468,8 +468,14 @@
             var urbanfarmscensustractsLayer = L.geoJson(response3.responseJSON, {
               
                      onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Census Tract: " + 
-                            feature.properties.NAME1 + "</b>"); 
+                            layer.bindPopup("In Census Tract" + 
+                            feature.properties.NAME1 + "...<br>" + 
+				"The percentage of the population in poverty is " +
+				feature.properties.Pctpov + "%<br>" +
+				"The percentage of the population who is Black and/or Hispanic is " +
+				(parseFloat(feature.properties.Pctblack) + parseFloat(feature.properties.Pcthispani)) + "%<br>" +
+				"The percentage of the population who is on SNAP is " +
+				feature.properties.PctSNAP + "%"); 
 			   
 
                        }
