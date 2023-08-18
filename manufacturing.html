@@ -130,6 +130,7 @@
       <div id="map"></div>
      <div class="buttontext"><button id="toggleManufacturers" hidden>Louisville's Food Manufacturers</button></div><br>
      <div class="buttontext"><button id="toggleManufacturersHeatmap" hidden>Louisville's Food Manufacturers Heatmap</button></div>
+	<div class="buttontext"><button id="toggleCensusTracts" hidden>Census Tracts</button></div>
 
 
       <script>
@@ -138,6 +139,8 @@
           var manufacturersVisible = true;
 	var manufacturersheatmapLayer;
 	      var manufacturersheatmapVisible = true;
+	      var censustractsLayer;
+	      var censustractsVisible = true;
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map = L.map('map', {
 		  center: [38.2527, -85.7585],
@@ -205,7 +208,7 @@
 
          
 
-          var response = $.ajax({
+          var response1 = $.ajax({
             url: "manufacturers.geojson",
             dataType: "json",
             success: console.log("Manufacturers loaded."),
@@ -216,9 +219,9 @@
 
 	      var manufacturerscsv = Array();
 
-          $.when(response).done(function() {
+          $.when(response1).done(function() {
    
-            var manufacturersLayer = L.geoJson(response.responseJSON, {
+            var manufacturersLayer = L.geoJson(response1.responseJSON, {
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Food Manufacturer/Processor: " + 
@@ -276,6 +279,50 @@
             });
 
           });
+
+
+	      var response2 = $.ajax({
+            url: "foodmanufacturersincensustracts.geojson",
+            dataType: "json",
+            success: console.log("Food manufacturers in census tracts loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	    
+          $.when(response2).done(function() {
+   
+            var manufacturerspercensustractLayer = L.geoJson(response2.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Census Tract: " + 
+                            feature.properties.NAME1 + "</b>" +
+					   feature.properties.pctwhite); 
+			    
+                       },
+
+                      
+            }).addTo(map);
+
+		    
+            $("#toggleCensusTracts").show();
+
+           $("#toggleCensusTracts").click( function() {
+              if (censustractsVisible) {
+                    censustractsVisible = false;
+                    censustractsLayer.removeFrom(map);
+              }
+
+              else {
+                  censustractsVisible = true;
+                   censustractsLayer.addTo(map);
+              }
+            });
+
+
+          });
+	      
    
               
       </script>
