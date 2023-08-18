@@ -1,1 +1,393 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Food Retail in Louisville!</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
 
+      
+      <style>
+          body {
+            background-color: #E2DFCB;
+          }
+
+	       .navigation {
+				background-color: #A6674C;
+				top: 0;
+				left: 0;
+				margin: 0;
+				padding: 0;
+				position: fixed;
+				vertical-align: top;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				z-index: 3;
+			}
+				
+			.navigationleftside {
+				list-style-type: none;
+			}
+
+			.navigationrightside {
+				list-style-type: none;
+				display: flex;
+			}
+
+			nav a {
+				color: white;
+				text-decoration: none;
+				padding: 10px;
+			}
+
+			nav a:hover {
+				font-weight: bold;
+
+			}
+
+			nav a:visited {
+				color: white;
+				text-decoration: none;
+				font-weight: normal;
+			}
+
+			nav a:active {
+				font-weight: bold;
+			}
+
+          h1 {
+            text-align: center;
+          }
+          #map {
+              height: 400px;
+              width: 50%;
+              margin-left: auto;
+              margin-right: auto;
+              display: block;
+              border-radius: 20px;
+            
+          }
+
+	      .buttontext {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	      button {
+		background-color: white; 
+		border: solid 2px;
+		font-weight: bold;
+		font-size: 15px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-right: 10px;
+		padding-left: 10px;
+		margin-bottom: 5px;
+		margin-right: auto;
+		margin-left: auto;
+		border-radius: 15px;
+		text-align: center;
+		text-decoration: none;
+		width: 200px;
+			}
+
+	      #toggleFastFood {
+		margin-top: 5px;
+		border-color: #de2d26;
+		color: #de2d26;
+	      }
+
+          #toggleGroceryStores {
+		margin-top: 5px;
+		border-color: #de2d26;
+		color: #de2d26;
+          }
+
+          #toggleFarmersMarkets {
+		margin-top: 5px;
+		border-color: #de2d26;
+		color: #de2d26;
+          }
+        
+      </style>
+      
+  </head>
+  <body>
+	   <nav>
+			<div class="navigation">
+			<div>
+				<ul class="navigationleftside">
+					<li><a href="louisvillefoodsystemfinal.html">Louisville's Food System</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul class="navigationrightside">
+					<li><a href="overview.html" class="navlinks">Overview</a></li>
+					<li><a href="production.html" class="navlinks">Production</a></li>
+					<li><a href="manufacturing.html" class="navlinks">Manufacturing</a></li>
+					<li><a href="retail.html" class="navlinks">Retail</a></li>
+					<li><a href="consumption.html" class="navlinks">Consumption</a></li>
+					<li><a href="solutions.html" class="navlinks">Solutions</a></li>
+				</ul>
+			</div>
+			</div>
+		</nav>
+      <h1>Food Retail in Louisville</h1>
+      <div id="map1">
+     <div class="buttontext"><button id="toggleFastFood" hidden>Fast Food Establishments</button></div><br>
+    <div class="buttontext"><button id="toggleFastFoodHeatMap" hidden>Fast Food Heatmap</button></div><br>
+      </div>
+     <div id="map2">
+     <div class="buttontext"><button id="toggleGroceryStores" hidden>Grocery Stores</button></div>
+    <div class="buttontext"><button id="toggleGroceryStoresHeatMap" hidden>Grocery Stores Heatmap</button></div>
+     </div>
+    <div id="map3">
+    <div class="buttontext"><button id="toggleFarmersMarkets" hidden>Farmers Markets</button></div>
+    <div class="buttontext"><button id="toggleFarmersMarketsHeatmap" hidden>Farmers Markets Heatmap</button></div>
+    </div>
+    
+
+
+      <script>
+        
+          var fastfoodLayer;
+        var fastfoodVisible = true;
+        var fastfoodheatmapLayer;
+          var fastfoodheatmapVisible = true;
+	        var grocerystoresLayer;
+        var grocerystoresVisible = true;
+         var grocerystoresheatmapLayer;
+	        var grocerystoresheatmapLayerVisible = true;
+          var farmersmarketsLayer;
+        var farmersmarketsVisible = true;
+         var farmersmarketsheatmapLayer;
+	        var farmersmarketsheatmapLayerVisible = true;
+        
+	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+          var map1 = L.map('map1', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+
+         var map2 = L.map('map2', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+
+         
+
+           var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
+
+          
+
+          var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        maxZoom: 20,
+	        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          });
+
+	
+	      var Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+});
+
+	      var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
+});
+
+	      var Esri_WorldShadedRelief = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+	maxZoom: 13
+});
+
+          var baseMaps = {"OSM" : OpenStreetMap,
+			  "CTBD" : CartoDB_DarkMatter,
+                          "USGS" : USGS_USImageryTopo,
+			  "EWGC": Esri_WorldGrayCanvas,
+			  "EWT": Esri_WorldTerrain,
+			  "EWSR": Esri_WorldShadedRelief
+                         };
+
+          L.control.layers(baseMaps).addTo(map1);
+
+        L.control.layers(baseMaps).addTo(map2);
+
+	  
+
+         /*  function pointSymbology(feature) {
+                 var color;
+		  var size;
+
+		  
+
+		 
+                return {
+                      fillColor: color,
+			color: color,
+			radius: size
+                };
+          }
+          */
+
+         
+
+          var response1 = $.ajax({
+            url: "fastfood.geojson",
+            dataType: "json",
+            success: console.log("Fast food loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	      var fastfoodcsv = Array();
+
+          $.when(response).done(function() {
+   
+            var fastfoodLayer = L.geoJson(response1.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Fast Food: " + 
+                            feature.properties.Name + "</b>"); 
+			     fastfoodcsv.push([feature.geometry.coordinates[1], feature.geometry.coordinates[0], 1]);
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+                            fillColor: "#3BB143",
+                            color: "#3BB143"
+              });
+              },
+            }).addTo(map);
+
+		     console.log(fastfoodcsv);
+
+      fastfoodheatmapLayer = L.heatLayer(fastfoodcsv, {
+        radius: 25
+      }).addTo(map);
+
+
+            $("#toggleFastFood").show();
+
+           $("#toggleFastFood").click( function() {
+              if (fastfoodVisible) {
+                    fastfoodVisible = false;
+                    fastfoodLayer.removeFrom(map);
+              }
+
+              else {
+                  fastfoodVisible = true;
+                  fastfoodLayer.addTo(map);
+              }
+            });
+
+            $("#toggleFastFoodHeatMap").show();
+
+           $("#toggleFastFoodHeatMap").click( function() {
+              if (fastfoodheatmapVisible) {
+                   fastfoodheatmapVisible = false;
+                    fastfoodheatmapLayer.removeFrom(map);
+              }
+
+              else {
+                 fastfoodheatmapVisible = true;
+                  fastfoodheatmapLayer.addTo(map);
+              }
+            });
+
+          });
+
+        var response2 = $.ajax({
+            url: "farmersmarkets.geojson",
+            dataType: "json",
+            success: console.log("Farmers markets loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	      var farmersmarketscsv = Array();
+
+          $.when(response).done(function() {
+   
+            var farmersmarketsLayer = L.geoJson(response2.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Farmers Market: " + 
+                            feature.properties.Name + "</b>"); 
+			     farmersmarketscsv.push([feature.geometry.coordinates[1], feature.geometry.coordinates[0], 1]);
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+                            fillColor: "#3BB143",
+                            color: "#3BB143"
+              });
+              },
+            }).addTo(map);
+
+		     console.log(farmersmarketscsv);
+
+     farmersmarketsmapLayer = L.heatLayer(farmersmarketscsv, {
+        radius: 25
+      }).addTo(map);
+
+
+            $("#toggleFarmersMarkets").show();
+
+           $("#toggleFarmersMarkets").click( function() {
+              if (farmersmarketsVisible) {
+                    farmersmarketsVisible = false;
+                    farmersmarketsLayer.removeFrom(map);
+              }
+
+              else {
+                  farmersmarketsVisible = true;
+                  farmersmarketsLayer.addTo(map);
+              }
+            });
+
+            $("#toggleFarmersMarketsHeatMap").show();
+
+           $("#toggleFarmersMarketsHeatmap").click( function() {
+              if (farmersmarketsheatmapVisible) {
+                   farmersmarketsheatmapVisible = false;
+                   farmersmarketsheatmapLayer.removeFrom(map);
+              }
+
+              else {
+                 farmersmarketsheatmapVisible = true;
+                  farmersmarketsheatmapLayer.addTo(map);
+              }
+            });
+
+          });
+   
+              
+      </script>
+  </body>
+</html>
