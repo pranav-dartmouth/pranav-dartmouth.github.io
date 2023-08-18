@@ -470,6 +470,8 @@
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("In " + 
                             feature.properties.NAME1 + "...<br>" + 
+				"There are " + feature.properties.NUM_POINTS + " community gardens<br>" +
+				"Meanwhile...<br>" + 
 				"The percentage of the population in poverty is " +
 				feature.properties.pctpov + "%<br>" +
 				"The percentage of the population who is Black and/or Hispanic is " +
