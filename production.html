@@ -139,8 +139,8 @@
           var csasVisible = true;
          var urbanfarmsLayer;
           var urbanfarmsVisible = true;
-	var urbanfarmsheatmapLayer;
-	      var urbanfarmsheatmapVisible = true;
+	var urbanfarmheatmapLayer;
+	      var urbanfarmheatmapVisible = true;
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map1 = L.map('map1', {
 		  center: [38.2527, -85.7585],
@@ -316,14 +316,14 @@
             $("#toggleUrbanFarmsHeatmap").show();
 
            $("#toggleUrbanFarmsHeatmap").click( function() {
-              if (urbanfarmsheatmapVisible) {
-                    urbanfarmsheatmapVisible = false;
-                    urbanfarmsheatmapLayer.removeFrom(map2);
+              if (urbanfarmheatmapVisible) {
+                    urbanfarmheatmapVisible = false;
+                    urbanfarmheatmapLayer.removeFrom(map2);
               }
 
               else {
-                  urbanfarmsheatmapVisible = true;
-                   urbanfarmsheatmapLayer.addTo(map2);
+                  urbanfarmheatmapVisible = true;
+                   urbanfarmheatmapLayer.addTo(map2);
               }
             });
 
