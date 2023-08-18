@@ -188,9 +188,11 @@
 		  <h3>Community Gardening</h3>
 		  <p>Community gardening is the practice wherein a small or large group of people, particularly in urban areas, cultivate and harvest produce from a shared gardening space. It is supposed to allow individuals to grow fresh produce on their own plot of land</p>
     <div id="map2"></div>
-     <div class="buttontext"><button id="toggleUrbanFarms" hidden>Louisville's Urban Farms</button></div>
+     <div class="buttontext"><button id="toggleUrbanFarms" hidden>Urban Farms</button></div>
+		  
 	  
 <div class="buttontext"><button id="toggleUrbanFarmHeatmap" hidden>Louisville's Urban Farm Heatmap</button></div>
+		  <div class="buttontext"><button id="toggleUrbanFarmsCensusTracts" hidden>Census Tracts</button></div><br>
 	  </div>
 
       <script>
@@ -203,6 +205,8 @@
           var urbanfarmsVisible = true;
 	var urbanfarmheatmapLayer;
 	      var urbanfarmheatmapVisible = true;
+	      var urbanfarmscensustractsLayer;
+          var urbanfarmscensustractsVisible = true;
 	      
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map1 = L.map('map1', {
@@ -433,8 +437,52 @@
                    urbanfarmheatmapLayer.addTo(map2);
               }
             });
+	  });
 
+
+	     var response3 = $.ajax({
+            url: "gardensbycensustract.geojson",
+            dataType: "json",
+            success: console.log("Urban farms by census tract loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
           });
+
+	     
+
+          $.when(response3).done(function() {
+   
+            var urbanfarmscensustractsLayer = L.geoJson(response3.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Census Tract: " + 
+                            feature.properties.NAME1 + "</b>"); 
+			   
+
+                       }
+
+                    
+            }).addTo(map2);
+
+
+
+		  
+		   $("#toggleUrbanFarmsCensusTracts").show();
+
+           $("#toggleUrbanFarmsCensusTracts").click( function() {
+              if (urbanfarmscensustractsVisible) {
+                    urbanfarmscensustractsVisible = false;
+                    urbanfarmscensustractsLayer.removeFrom(map2);
+              }
+
+              else {
+                  urbanfarmscensustractsVisible = true;
+                   urbanfarmscensustractsLayer.addTo(map2);
+              }
+            });
+
+       
 
 	    
    
