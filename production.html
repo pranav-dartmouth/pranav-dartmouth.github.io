@@ -141,8 +141,9 @@
       <div id="map1"></div>
      <div class="buttontext"><button id="toggleCSAs" hidden>Louisville's CSAs</button></div><br>
     <div id="map2"></div>
-     <div class="buttontext"><button id="toggleUrbanFarms" hidden>Louisville's Community Gardens</button></div>
-
+     <div class="buttontext"><button id="toggleUrbanFarms" hidden>Louisville's Urban Farms</button></div>
+	  
+<div class="buttontext"><button id="toggleUrbanFarmHeatmap" hidden>Louisville's Urban Farm Heatmap</button></div>
 
       <script>
         
@@ -332,9 +333,9 @@
               }
             });
 
-            $("#toggleUrbanFarmsHeatmap").show();
+            $("#toggleUrbanFarmHeatmap").show();
 
-           $("#toggleUrbanFarmsHeatmap").click( function() {
+           $("#toggleUrbanFarmHeatmap").click( function() {
               if (urbanfarmheatmapVisible) {
                     urbanfarmheatmapVisible = false;
                     urbanfarmheatmapLayer.removeFrom(map2);
