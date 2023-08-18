@@ -309,13 +309,13 @@
             $("#toggleCensusTracts").show();
 
            $("#toggleCensusTracts").click( function() {
-              if (censustractsVisible) {
-                    censustractsVisible = false;
+              if (manufacturerspercensustractsVisible) {
+                    manufacturerspercensustractsVisible = false;
                     manufacturerspercensustractsLayer.removeFrom(map);
               }
 
               else {
-                  censustractsVisible = true;
+                  manufacturerspercensustractsVisible = true;
                    manufacturerspercensustractsLayer.addTo(map);
               }
             });
