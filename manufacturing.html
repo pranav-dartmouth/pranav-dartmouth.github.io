@@ -223,6 +223,7 @@
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Food Manufacturer/Processor: " + 
                             feature.properties.Name + "</b>"); 
+			     manufacturerscsv.push([feature.geometry.coordinates[1], feature.geometry.coordinates[0], 1]);
 
                        },
 
