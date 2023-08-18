@@ -1,1 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Food Manufacturing in Louisville!</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      
+      <style>
+          body {
+            background-color: #90DBD1;
+          }
+
+          h1 {
+            text-align: center;
+          }
+          #map {
+              height: 400px;
+              width: 50%;
+              margin-left: auto;
+              margin-right: auto;
+              display: block;
+              border-radius: 20px;
+            
+          }
+
+	      .buttontext {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	      button {
+				background-color: white; 
+				border: solid 2px;
+				font-weight: bold;
+				font-size: 15px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				padding-right: 10px;
+				padding-left: 10px;
+				margin-bottom: 5px;
+				margin-right: auto;
+				margin-left: auto;
+				border-radius: 15px;
+				text-align: center;
+				text-decoration: none;
+				width: 200px;
+			}
+
+	      #toggleManufacturers {
+		margin-top: 5px;
+		border-color: #de2d26;
+		color: #de2d26;
+	      }
+	    
+        
+      </style>
+      
+  </head>
+  <body>
+      <h1>Food Manufacturing in Louisville</h1>
+      <div id="map"></div>
+     <div class="buttontext"><button id="toggleManufacturers" hidden>Louisville's Food Manufacturers</button></div><br>
+     <div class="buttontext"><button id="toggleManufacturersHeatmap" hidden>Louisville's Food Manufacturers Heatmap</button></div>
+
+
+      <script>
+        
+          var manufacturersLayer;
+          var manufacturersVisible = true;
+	var manufacturersheatmapLayer;
+	      var manufacturersheatmapVisible = true;
+	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+          var map = L.map('map', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+        
+         
+
+           var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
+
+          
+
+          var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        maxZoom: 20,
+	        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          });
+
+	
+	      var Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+});
+
+	      var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
+});
+
+	      var Esri_WorldShadedRelief = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+	maxZoom: 13
+});
+
+          var baseMaps = {"OSM" : OpenStreetMap,
+			  "CTBD" : CartoDB_DarkMatter,
+                          "USGS" : USGS_USImageryTopo,
+			  "EWGC": Esri_WorldGrayCanvas,
+			  "EWT": Esri_WorldTerrain,
+			  "EWSR": Esri_WorldShadedRelief
+                         };
+
+          L.control.layers(baseMaps).addTo(map);
+
+	  
+
+         /*  function pointSymbology(feature) {
+                 var color;
+		  var size;
+
+		  
+
+		 
+                return {
+                      fillColor: color,
+			color: color,
+			radius: size
+                };
+          }
+          */
+
+         
+
+          var response = $.ajax({
+            url: "manufacturers.geojson",
+            dataType: "json",
+            success: console.log("Manufacturers loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+          $.when(response).done(function() {
+   
+            var farmsLayer = L.geoJson(response.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Food Manufacturer/Processor: " + 
+                            feature.properties.Name + "</b>"); 
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+                            fillColor: "#3BB143",
+                            color: "#3BB143"
+              });
+              },
+            }).addTo(map);
+
+            $("#toggleManufacturers").show();
+
+           $("#toggleManufacturers").click( function() {
+              if (manufacturersVisible) {
+                    manufacturersVisible = false;
+                    manufacturersLayer.removeFrom(map);
+              }
+
+              else {
+                  manufacturersVisible = true;
+                   manufacturersLayer.addTo(map);
+              }
+            });
+
+            $("#toggleManufacturersHeatmap").show();
+
+           $("#toggleManufacturersHeatmap").click( function() {
+              if (manufacturersheatmapVisible) {
+                    manufacturersheatmapVisible = false;
+                    manufacturersheatmapLayer.removeFrom(map);
+              }
+
+              else {
+                  manufacturersheatmapVisible = true;
+                   manufacturersheatmapLayer.addTo(map);
+              }
+            });
+
+          });
+   
+              
+      </script>
+  </body>
+</html>
 
