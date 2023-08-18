@@ -176,10 +176,13 @@
         
           var csasLayer;
           var csasVisible = true;
+	    var  csascensustractsLayer;
+	    var  csascensustractsVisible = true;
          var urbanfarmsLayer;
           var urbanfarmsVisible = true;
 	var urbanfarmheatmapLayer;
 	      var urbanfarmheatmapVisible = true;
+	      
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map1 = L.map('map1', {
 		  center: [38.2527, -85.7585],
@@ -303,7 +306,43 @@
 
           });
 
-  
+   var response1 = $.ajax({
+            url: "csascensustracts.geojson",
+            dataType: "json",
+            success: console.log("CSA census data loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	     
+
+          $.when(response1).done(function() {
+   
+            var csasLayer = L.geoJson(response1.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>CSA: " + 
+                            feature.properties.NAME1 + "</b>"); 
+
+                       }
+            }).addTo(map1);
+
+             $("#toggleCSACensusTracts").show();
+
+           $("#toggleCSACensusTracts").click( function() {
+              if (csascensustractsVisible) {
+                    csascensustractsVisible = false;
+                    csascensustractsLayer.removeFrom(map1);
+              }
+
+              else {
+                  csascensustractsVisible = true;
+                   csascensustractsLayer.addTo(map1);
+              }
+            });
+
+          });
           var response2 = $.ajax({
             url: "urbanfarms2final.geojson",
             dataType: "json",
@@ -375,6 +414,8 @@
             });
 
           });
+
+	    
    
               
       </script>
