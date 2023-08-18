@@ -1,0 +1,33 @@
+{
+"type": "FeatureCollection",
+"name": "Farmers_Markets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4269" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "New Roots", "Latitude": 38.2710747873573, "Longitude": -85.779620539815198 }, "geometry": { "type": "Point", "coordinates": [ -85.779620539815198, 38.2710747873573 ] } },
+{ "type": "Feature", "properties": { "Name": "Beechmont Open-Air Market", "Latitude": 38.1890543173023, "Longitude": -85.776414850166404 }, "geometry": { "type": "Point", "coordinates": [ -85.776414850166404, 38.1890543173023 ] } },
+{ "type": "Feature", "properties": { "Name": "Douglass Loop Farmers Market", "Latitude": 38.231515055751998, "Longitude": -85.675664604058397 }, "geometry": { "type": "Point", "coordinates": [ -85.675664604058397, 38.231515055751998 ] } },
+{ "type": "Feature", "properties": { "Name": "Phoenix Hill\/NuLu Farmers Market", "Latitude": 38.261007080568298, "Longitude": -85.734740884730797 }, "geometry": { "type": "Point", "coordinates": [ -85.734740884730797, 38.261007080568298 ] } },
+{ "type": "Feature", "properties": { "Name": "Westport Road Baptist Farmers Market", "Latitude": 38.291985071600102, "Longitude": -85.552848497254203 }, "geometry": { "type": "Point", "coordinates": [ -85.552848497254203, 38.291985071600102 ] } },
+{ "type": "Feature", "properties": { "Name": "East End Farmers Market", "Latitude": 38.290125671743297, "Longitude": -85.495056088420696 }, "geometry": { "type": "Point", "coordinates": [ -85.495056088420696, 38.290125671743297 ] } },
+{ "type": "Feature", "properties": { "Name": "Crescent Hill Farmers Market", "Latitude": 38.2561982939324, "Longitude": -85.688112470315602 }, "geometry": { "type": "Point", "coordinates": [ -85.688112470315602, 38.2561982939324 ] } },
+{ "type": "Feature", "properties": { "Name": "Logan Street Market", "Latitude": 38.239211876273302, "Longitude": -85.750940531164005 }, "geometry": { "type": "Point", "coordinates": [ -85.750940531164005, 38.239211876273302 ] } },
+{ "type": "Feature", "properties": { "Name": "Eastwood Village Farmers Market", "Latitude": 38.2327235374566, "Longitude": -85.455259665683698 }, "geometry": { "type": "Point", "coordinates": [ -85.455259665683698, 38.2327235374566 ] } },
+{ "type": "Feature", "properties": { "Name": "Louisville Winter Farmers Market", "Latitude": 38.253414870362398, "Longitude": -85.634603947578796 }, "geometry": { "type": "Point", "coordinates": [ -85.634603947578796, 38.253414870362398 ] } },
+{ "type": "Feature", "properties": { "Name": "Jeffersontown Farmers Market", "Latitude": 38.1981249344364, "Longitude": -85.550833199780897 }, "geometry": { "type": "Point", "coordinates": [ -85.550833199780897, 38.1981249344364 ] } },
+{ "type": "Feature", "properties": { "Name": "Farm+House Louisville", "Latitude": 38.239394083946202, "Longitude": -85.768156494846195 }, "geometry": { "type": "Point", "coordinates": [ -85.768156494846195, 38.239394083946202 ] } },
+{ "type": "Feature", "properties": { "Name": "North Village Market", "Latitude": 38.334922898647903, "Longitude": -85.548293979156895 }, "geometry": { "type": "Point", "coordinates": [ -85.548293979156895, 38.334922898647903 ] } },
+{ "type": "Feature", "properties": { "Name": "Wide Abide", "Latitude": 38.241001206099703, "Longitude": -85.721303378100501 }, "geometry": { "type": "Point", "coordinates": [ -85.721303378100501, 38.241001206099703 ] } },
+{ "type": "Feature", "properties": { "Name": "Terminal Dr Farmers Market", "Latitude": 38.1878606447385, "Longitude": -85.741902742313101 }, "geometry": { "type": "Point", "coordinates": [ -85.741902742313101, 38.1878606447385 ] } },
+{ "type": "Feature", "properties": { "Name": "Fresh Air Foods", "Latitude": 38.231562823906401, "Longitude": -85.693150909282906 }, "geometry": { "type": "Point", "coordinates": [ -85.693150909282906, 38.231562823906401 ] } },
+{ "type": "Feature", "properties": { "Name": "Stable Roots Farm", "Latitude": 38.104470688387998, "Longitude": -85.489192833894407 }, "geometry": { "type": "Point", "coordinates": [ -85.489192833894407, 38.104470688387998 ] } },
+{ "type": "Feature", "properties": { "Name": "Market Wagon Louisville", "Latitude": 38.323664967469902, "Longitude": -85.824694279368103 }, "geometry": { "type": "Point", "coordinates": [ -85.824694279368103, 38.323664967469902 ] } },
+{ "type": "Feature", "properties": { "Name": "Gray Street Farmers Market", "Latitude": 38.2517145414227, "Longitude": -85.742296822517801 }, "geometry": { "type": "Point", "coordinates": [ -85.742296822517801, 38.2517145414227 ] } },
+{ "type": "Feature", "properties": { "Name": "Jiggs Fruit Market", "Latitude": 38.110042170640703, "Longitude": -85.853812284 }, "geometry": { "type": "Point", "coordinates": [ -85.853812284, 38.110042170640703 ] } },
+{ "type": "Feature", "properties": { "Name": "Sunny Acres Farm", "Latitude": 38.170351560758, "Longitude": -85.485245733174096 }, "geometry": { "type": "Point", "coordinates": [ -85.485245733174096, 38.170351560758 ] } },
+{ "type": "Feature", "properties": { "Name": "Shively Farmers and Artisans Market", "Latitude": 38.216757767135, "Longitude": -85.827715443695297 }, "geometry": { "type": "Point", "coordinates": [ -85.827715443695297, 38.216757767135 ] } },
+{ "type": "Feature", "properties": { "Name": "Shepherdsville Farmers Market", "Latitude": 38.015838409405099, "Longitude": -85.799668355333694 }, "geometry": { "type": "Point", "coordinates": [ -85.799668355333694, 38.015838409405099 ] } },
+{ "type": "Feature", "properties": { "Name": "Louisville Produce Terminal", "Latitude": 38.210958608562201, "Longitude": -85.637290475345196 }, "geometry": { "type": "Point", "coordinates": [ -85.637290475345196, 38.210958608562201 ] } },
+{ "type": "Feature", "properties": { "Name": "English Station Farmers Market", "Latitude": 38.299029740734099, "Longitude": -85.322198196200304 }, "geometry": { "type": "Point", "coordinates": [ -85.322198196200304, 38.299029740734099 ] } },
+{ "type": "Feature", "properties": { "Name": "Parkway Produce", "Latitude": 38.258064035298197, "Longitude": -85.731438898556704 }, "geometry": { "type": "Point", "coordinates": [ -85.731438898556704, 38.258064035298197 ] } }
+]
+}
