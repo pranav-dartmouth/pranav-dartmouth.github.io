@@ -139,8 +139,8 @@
           var manufacturersVisible = true;
 	var manufacturersheatmapLayer;
 	      var manufacturersheatmapVisible = true;
-	      var censustractsLayer;
-	      var censustractsVisible = true;
+	      var manufacturerspercensustractsLayer;
+	      var manufacturerspercensustractsVisible = true;
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map = L.map('map', {
 		  center: [38.2527, -85.7585],
@@ -293,7 +293,7 @@
 	    
           $.when(response2).done(function() {
    
-            var manufacturerspercensustractLayer = L.geoJson(response2.responseJSON, {
+            var manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Census Tract: " + 
