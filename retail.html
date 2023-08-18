@@ -282,7 +282,7 @@
 
       fastfoodheatmapLayer = L.heatLayer(fastfoodcsv, {
         radius: 25
-      }).addTo(map);
+      }).addTo(map1);
 
 
             $("#toggleFastFood").show();
@@ -290,12 +290,12 @@
            $("#toggleFastFood").click( function() {
               if (fastfoodVisible) {
                     fastfoodVisible = false;
-                    fastfoodLayer.removeFrom(map);
+                    fastfoodLayer.removeFrom(map1);
               }
 
               else {
                   fastfoodVisible = true;
-                  fastfoodLayer.addTo(map);
+                  fastfoodLayer.addTo(map1);
               }
             });
 
@@ -304,12 +304,12 @@
            $("#toggleFastFoodHeatMap").click( function() {
               if (fastfoodheatmapVisible) {
                    fastfoodheatmapVisible = false;
-                    fastfoodheatmapLayer.removeFrom(map);
+                    fastfoodheatmapLayer.removeFrom(map1);
               }
 
               else {
                  fastfoodheatmapVisible = true;
-                  fastfoodheatmapLayer.addTo(map);
+                  fastfoodheatmapLayer.addTo(map1);
               }
             });
 
@@ -348,13 +348,13 @@
                             color: "#3BB143"
               });
               },
-            }).addTo(map);
+            }).addTo(map2);
 
 		     console.log(farmersmarketscsv);
 
      farmersmarketsmapLayer = L.heatLayer(farmersmarketscsv, {
         radius: 25
-      }).addTo(map);
+      }).addTo(map2);
 
 
             $("#toggleFarmersMarkets").show();
@@ -362,12 +362,12 @@
            $("#toggleFarmersMarkets").click( function() {
               if (farmersmarketsVisible) {
                     farmersmarketsVisible = false;
-                    farmersmarketsLayer.removeFrom(map);
+                    farmersmarketsLayer.removeFrom(map2);
               }
 
               else {
                   farmersmarketsVisible = true;
-                  farmersmarketsLayer.addTo(map);
+                  farmersmarketsLayer.addTo(map2);
               }
             });
 
@@ -376,12 +376,84 @@
            $("#toggleFarmersMarketsHeatmap").click( function() {
               if (farmersmarketsheatmapVisible) {
                    farmersmarketsheatmapVisible = false;
-                   farmersmarketsheatmapLayer.removeFrom(map);
+                   farmersmarketsheatmapLayer.removeFrom(map2);
               }
 
               else {
                  farmersmarketsheatmapVisible = true;
-                  farmersmarketsheatmapLayer.addTo(map);
+                  farmersmarketsheatmapLayer.addTo(map2);
+              }
+            });
+
+          });
+
+	       var response3 = $.ajax({
+            url: "grocerystores.geojson",
+            dataType: "json",
+            success: console.log("Grocery stores loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	      var grocerystorescsv = Array();
+
+          $.when(response3).done(function() {
+   
+            var grocerystoresLayer = L.geoJson(response3.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Grocery Store: " + 
+                            feature.properties.Name + "</b>"); 
+			     grocerystorescsv.push([feature.geometry.coordinates[1], feature.geometry.coordinates[0], 1]);
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+                            fillColor: "#3BB143",
+                            color: "#3BB143"
+              });
+              },
+            }).addTo(map2);
+
+		     console.log(grocerystorescsv);
+
+    grocerystoresheatmapLayer = L.heatLayer(grocerystorescsv, {
+        radius: 25
+      }).addTo(map2);
+
+
+            $("#toggleGroceryStores").show();
+
+           $("#toggleGroceryStores").click( function() {
+              if (grocerystoresVisible) {
+                    grocerystoresVisible = false;
+                    grocerystoresLayer.removeFrom(map2);
+              }
+
+              else {
+                  grocerystoresVisible = true;
+                  grocerystoresLayer.addTo(map2);
+              }
+            });
+
+            $("#toggleGroceryStoresHeatmap").show();
+
+           $("#toggleGroceryStoresHeatmap").click( function() {
+              if (grocerystoresheatmapLayerVisible) {
+                   grocerystoresheatmapLayerVisible = false;
+                   grocerystoresheatmapLayer.removeFrom(map2);
+              }
+
+              else {
+                 grocerystoresheatmapLayerVisible = true;
+                  grocerystoresheatmapLayer.addTo(map2);
               }
             });
 
