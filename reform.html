@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" width="width-device-width">
+      <title>Overview of Louisville's Food System</title>
+      
+    </head>
+    <style>
 
+	    body {
+		    background-color: #E2DFCB;
+		    font-family: Arial, sans-serif;
+	    }
+	    
+        .navigation {
+				background-color: #A6674C;
+				top: 0;
+				left: 0;
+				margin: 0;
+				padding: 0;
+				position: fixed;
+				vertical-align: top;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				z-index: 3;
+			}
+				
+			.navigationleftside {
+				list-style-type: none;
+			}
+
+			.navigationrightside {
+				list-style-type: none;
+				display: flex;
+			}
+
+			nav a {
+				color: white;
+				text-decoration: none;
+				padding: 10px;
+			}
+
+			nav a:hover {
+				font-weight: bold;
+
+			}
+
+			nav a:visited {
+				color: white;
+				text-decoration: none;
+				font-weight: normal;
+			}
+
+			nav a:active {
+				font-weight: bold;
+			}
+
+			h1 {
+				text-align: center;
+				font-size: xxx-large;
+				font-family: Georgia, Calibri, serif;
+			}
+
+	    .component {
+		    margin-top: 5%;
+	    }
+        
+    </style>
+<body>
+
+    <nav>
+			<div class="navigation">
+			<div>
+				<ul class="navigationleftside">
+					<li><a href="louisvillefoodsystemfinal.html">Louisville's Food System</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul class="navigationrightside">
+					<li><a href="overview.html" class="navlinks">Overview</a></li>
+					<li><a href="production.html" class="navlinks">Production</a></li>
+					<li><a href="manufacturing.html" class="navlinks">Manufacturing</a></li>
+					<li><a href="retail.html" class="navlinks">Retail</a></li>
+					<li><a href="consumption.html" class="navlinks">Consumption</a></li>
+					<li><a href="solutions.html" class="navlinks">Solutions</a></li>
+				</ul>
+			</div>
+			</div>
+		</nav>
+   <div class="component">
+	   <div class="section">
+ 		 <h1>Overview of Louisville's Food System</h1>
+	   </div>
+	<div class="section">
+		<div id="map1"></div>
+
+	</div>
+<div class="section">
+	<div id="map2">
+
+   	</div>
+</div>
+
+	
+  
+	   
+   </div>
+<script>
+	 var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+          var map = L.map('map1', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+
+	var map = L.map('map2', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+         
+
+           var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
+
+          
+
+          var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        maxZoom: 20,
+	        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          });
+
+	
+	      var Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+});
+
+	      var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
+});
+
+	      var Esri_WorldShadedRelief = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+	maxZoom: 13
+});
+
+          var baseMaps = {"OSM" : OpenStreetMap,
+			  "CTBD" : CartoDB_DarkMatter,
+                          "USGS" : USGS_USImageryTopo,
+			  "EWGC": Esri_WorldGrayCanvas,
+			  "EWT": Esri_WorldTerrain,
+			  "EWSR": Esri_WorldShadedRelief
+                         };
+
+          L.control.layers(baseMaps).addTo(map1);
+
+	L.control.layers(baseMaps).addTo(map2);
+</script>
+</body>
+</html>
