@@ -269,22 +269,7 @@
           var urbanfarmscensustractsVisible = true;
 	      
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
-           var map = L.map('map', {
-		  center: [0, 0],
-		  zoom: 2,
-		  layers: [OpenStreetMap]
-	  });
-	      var map1 = L.map('map1', {
-		  center: [38.2527, -85.7585],
-		  zoom: 10,
-		  layers: [OpenStreetMap]
-	  });
-
-	       var map2 = L.map('map2', {
-		  center: [38.2527, -85.7585],
-		  zoom: 10,
-		  layers: [OpenStreetMap]
-	  });
+           
 
 	     
         
@@ -318,6 +303,23 @@
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
 	maxZoom: 13
 });
+
+	      var map = L.map('map', {
+		  center: [0, 0],
+		  zoom: 2,
+		  layers: [OpenStreetMap]
+	  });
+	      var map1 = L.map('map1', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+
+	       var map2 = L.map('map2', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
 
           var baseMaps = {"OSM" : OpenStreetMap,
 			  "CTBD" : CartoDB_DarkMatter,
