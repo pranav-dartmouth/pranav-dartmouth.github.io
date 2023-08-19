@@ -61,7 +61,7 @@
           h1 {
             text-align: center;
           }
-          #map1 {
+          #map, #map1 {
               height: 400px;
               margin-right: 20px;
     		margin-left: 20px;
@@ -107,6 +107,12 @@
 		text-decoration: none;
 		width: 200px;
 			}
+
+	      #toggleCompanies {
+		margin-top: 5px;
+		border-color: blue;
+		color: blue;
+	      }
 
 	      #toggleCSAs {
 		margin-top: 5px;
@@ -210,17 +216,17 @@
 	</div>
 	<div class="section">
 		<p class="part">Most of the food that ends up in Louisville's consumer market isn't actually produced within the city itself, but rather transported via global and national supply chains who in turn source their produce from innumerable (primarily agricultural) enterprises. In this way, Louisville's food system is implicated in the inherent inequalities characterizing broader food systems.<p>
-			<p class="part">Some of the <a href="https://agrolearner.com/biggest-agricultural-companies-in-usa/" target="_blank">largest agricultural corporations</a> that likely facilitate much of Louisville's food production include: </p>
+			<p class="part">Some of the <a href="https://agrolearner.com/biggest-agricultural-companies-in-usa/" target="_blank">largest agricultural corporations</a> that likely play a significant role in food production for Louisville include: </p>
 		<ol class="part" class="list">
 			<li>Cargill</li>
-			<li>Bayer</li>
-			<li>John Deere</li>
 			<li>Syngenta</li>
 			<li>Tyson Foods</li>
 			<li>BASF</li>
 			<li>Nutrien</li>
 		</ol>
-	
+
+		<div id="map"></div>
+		<div class="buttontext"><button id="toggleCompanies" hidden>Companies</button></div>
 	
 		<p class="part">Yet there is some food production occurring in Louisville, albeit at a very small scale. According to the United States Department of Agriculture's 2017 "Census," Jefferson County, Kentucky is home to 343 farms with an average acreage of 59 acres per farm. Two of the most prominent forms of agriculture that have became popularized in recent years, particularly in an urban context like Louisville, are community-supported agriculture and community gardening. </p>
 </div>
@@ -249,7 +255,9 @@
 
       <script>
         
-          var csasLayer;
+          var companiesLayer;
+	      var companiesVisible = true;
+	      var csasLayer;
           var csasVisible = true;
 	    var  csascensustractsLayer;
 	    var  csascensustractsVisible = true;
@@ -260,7 +268,7 @@
 	      var urbanfarmscensustractsLayer;
           var urbanfarmscensustractsVisible = true;
 	      
-	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+	  var OpenStreetMap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map1 = L.map('map1', {
 		  center: [38.2527, -85.7585],
 		  zoom: 10,
@@ -270,6 +278,12 @@
 	       var map2 = L.map('map2', {
 		  center: [38.2527, -85.7585],
 		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+
+	      var map = L.map('map', {
+		  center: [0, 0],
+		  zoom: 0,
 		  layers: [OpenStreetMap]
 	  });
         
@@ -315,6 +329,8 @@
           L.control.layers(baseMaps).addTo(map1);
 
 	       L.control.layers(baseMaps).addTo(map2);
+
+	      L.control.layers(baseMaps).addTo(map);
 
 	 function csaSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
@@ -604,6 +620,57 @@
               }
             });
 	  });
+
+	       var response4 = $.ajax({
+            url: "agriculturalcompanies.geojson",
+            dataType: "json",
+            success: console.log("Company data loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	     
+
+          $.when(response4).done(function() {
+   
+            var companiesLayer = L.geoJson(response4.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Company: " + 
+                            feature.properties.Name + "</b><br>" + feature.properties.Name + ", " + feature.properties.Description + " ," + feature.properties.Issue + "<br>"); 
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+			radius: 7,
+                          fillOpacity: 1,
+                            fillColor: "blue",
+                            color: "blue"
+              });
+              },
+            }).addTo(map);
+
+             $("#toggleCompanies").show();
+
+           $("#toggleCompanies").click( function() {
+              if (companiesVisible) {
+                    companiesVisible = false;
+                    companiesLayer.removeFrom(map1);
+              }
+
+              else {
+                  companiesVisible = true;
+                   companiesLayer.addTo(map1);
+              }
+            });
+
+          });
 
        
 
