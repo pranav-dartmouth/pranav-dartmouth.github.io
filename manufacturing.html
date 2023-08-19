@@ -354,6 +354,8 @@
           $.when(response2).done(function() {
    
             var manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
+
+		    style: manufacturingSymbology,
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Census Tract: " + 
