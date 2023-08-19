@@ -173,14 +173,17 @@
       <div id="map1"></div>
      <div class="buttontext"><button id="toggleFastFood" hidden>Fast Food Establishments</button></div><br>
     <div class="buttontext"><button id="toggleFastFoodHeatMap" hidden>Fast Food Heatmap</button></div><br>
+	    <div class="buttontext"><button id="toggleFastFoodCensusTracts" hidden>Census Tracts</button></div><br>
       </div>
   </div>
   <div id="map2container">
      <div id="map2"></div>
      <div class="buttontext"><button id="toggleGroceryStores" hidden>Grocery Stores</button></div>
     <div class="buttontext"><button id="toggleGroceryStoresHeatMap" hidden>Grocery Stores Heatmap</button></div>
+	  <div class="buttontext"><button id="toggleGroceryStoresCensusTracts" hidden>Census Tracts</button></div>
     <div class="buttontext"><button id="toggleFarmersMarkets" hidden>Farmers Markets</button></div>
     <div class="buttontext"><button id="toggleFarmersMarketsHeatMap" hidden>Farmers Markets Heatmap</button></div>
+	  <div class="buttontext"><button id="toggleFarmersMarketsCensusTracts" hidden>Farmers Markets Census Tracts</button></div>
     </div>
     
 
@@ -191,14 +194,20 @@
         var fastfoodVisible = true;
         var fastfoodheatmapLayer;
           var fastfoodheatmapVisible = true;
+	      var fastfoodcensustractLayer;
+	      var fastfoodcensustractVisible = true;
 	        var grocerystoresLayer;
         var grocerystoresVisible = true;
          var grocerystoresheatmapLayer;
 	        var grocerystoresheatmapLayerVisible = true;
+	      var grocerystorecensustractLayer;
+	      var grocerystorecensustractVisible = true;
           var farmersmarketsLayer;
         var farmersmarketsVisible = true;
          var farmersmarketsheatmapLayer;
 	        var farmersmarketsheatmapVisible = true;
+	        var farmermarketcensustractLayer;
+	        var farmermarketcensustractVisible = true;
         
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map1 = L.map('map1', {
@@ -347,7 +356,54 @@
 
           });
 
-        var response2 = $.ajax({
+
+
+	 var response2 = $.ajax({
+            url: "fastfoodcensustracts.geojson",
+            dataType: "json",
+            success: console.log("Fast food census tracts loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	     $.when(response2).done(function() {
+   
+            var fastfoodcensustractLayer = L.geoJson(response2.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>: Census Tract" + 
+                            feature.properties.NAME1 + "</b>"); 
+			    
+
+                       }
+            }).addTo(map1);
+
+		  
+
+
+            $("#toggleFastFoodCensusTracts").show();
+
+           $("#toggleFastFoodCensusTracts").click( function() {
+              if (fastfoodcensustractVisible) {
+                    fastfoodcensustractVisible = false;
+                    fastfoodcensustractLayer.removeFrom(map1);
+              }
+
+              else {
+                  fastfoodcensustractVisible = true;
+                  fastfoodcensustractLayer.addTo(map1);
+              }
+            });
+
+           
+           
+
+          }); 
+
+	      
+
+        var response3 = $.ajax({
             url: "farmersmarkets.geojson",
             dataType: "json",
             success: console.log("Farmers markets loaded."),
@@ -358,9 +414,9 @@
 
 	      var farmersmarketscsv = Array();
 
-          $.when(response2).done(function() {
+          $.when(response3).done(function() {
    
-            var farmersmarketsLayer = L.geoJson(response2.responseJSON, {
+            var farmersmarketsLayer = L.geoJson(response3.responseJSON, {
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Farmers Market: " + 
@@ -419,7 +475,7 @@
 
           });
 
-	       var response3 = $.ajax({
+	       var response4 = $.ajax({
             url: "grocerystores.geojson",
             dataType: "json",
             success: console.log("Grocery stores loaded."),
@@ -430,9 +486,9 @@
 
 	      var grocerystorescsv = Array();
 
-          $.when(response3).done(function() {
+          $.when(response4).done(function() {
    
-            var grocerystoresLayer = L.geoJson(response3.responseJSON, {
+            var grocerystoresLayer = L.geoJson(response4.responseJSON, {
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Grocery Store: " + 
