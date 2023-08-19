@@ -5,7 +5,7 @@
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+	  
 
       
       <style>
@@ -189,8 +189,6 @@
         
           var manufacturersLayer;
           var manufacturersVisible = true;
-	var manufacturersheatmapLayer;
-	      var manufacturersheatmapVisible = true;
 	      var manufacturerspercensustractsLayer;
 	      var manufacturerspercensustractsVisible = true;
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
@@ -253,8 +251,7 @@
           }
 
           info.update = function (props) {
-          this._div.innerHTML = '<p>Food Manufacturing Presence</p>' + (props
-          ?
+          this._div.innerHTML = '<p>Food Manufacturing Presence</p>' + (props ? +
           props.NAME1 + '<br>' + props.NUMPOINTS : 'Hover over a census tract');
           };
 
@@ -277,8 +274,6 @@ layer.bringToFront();
 
 info.update(layer.feature.properties);
 }
-
-var geojson;
 
 function resetHighlight(e) {
 	geojson.resetStyle(e.target);
@@ -389,15 +384,10 @@ layer.on({
                             fillColor: "red",
                             color: "red"
               });
-              },
+              }
             }).addTo(map);
 
-		     console.log(manufacturerscsv);
-
-      manufacturersheatmapLayer = L.heatLayer(manufacturerscsv, {
-        radius: 25
-      }).addTo(map);
-
+		     
 
             $("#toggleManufacturers").show();
 
@@ -439,12 +429,13 @@ layer.on({
             }
           });
 
+		  var geojson;
 	    
           $.when(response2).done(function() {
 
 		  geojson = L.geoJson(response2.responseJSON, {
-style: manufacturingSymbology,
-onEachFeature: onEachFeature
+		style: manufacturingSymbology,
+		onEachFeature: onEachFeature
 }).addTo(map);
 	  
 	
