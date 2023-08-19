@@ -11,6 +11,7 @@
       <style>
           body {
             background-color: #E2DFCB;
+		  font-family: Arial, sans-serif;
           }
 
 	       .navigation {
@@ -62,12 +63,10 @@
           }
           #map {
               height: 400px;
-              width: 50%;
-              margin-left: auto;
-              margin-right: auto;
-              display: block;
-              border-radius: 20px;
-            
+              margin-left: 20px;
+		  margin-right: 20px;
+		  
+              
           }
 
 	      .buttontext {
@@ -113,6 +112,36 @@
 			border-color: red;
 			color: red;
 	      }
+
+	       .section, #firstsection {
+		      padding-top: 30px;
+		      margin-bottom: 30px;
+		      
+	      }
+
+	      .section {
+		      background-color: white;
+		      margin-right: auto;
+		      margin-left: auto;
+		      width: 50%;
+		      border-radius: 20px;
+		      padding-bottom: 30px;
+		      border-radius: 20px;
+	      }
+
+	      
+
+	      h1, h3 {
+		      text-align: center;
+	      }
+
+	      .part {
+		      
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+	      }
+
 	    
         
       </style>
@@ -138,16 +167,19 @@
 			</div>
 			</div>
 		</nav>
+	<div id="firstsection">
       <h1>Food Manufacturing in Louisville</h1>
-	<div class="section">
-		<p>Despite the fact that food production (especially agriculture) in Louisville is quite limited, Louisville has been considered a food manufacturing and processing hub for quite some time. The city even describes itself on its website as "a hub for food and beverage companies of all sizes, from local to global, including...manufacturing, beverage development..." (LouisvilleKy.gov). Yet the nature and dynamics of the food manufacturing and processing industry have far from equally distributed impacts across the city. Low-income, minority, and immigrant labor disproportionately drives the lower echelons of the food manufacturing and processing industry, both in Louisville and elsewhere. And both manufacturers and processors, particularly larger and more corporatized ones, have faced significant scrutiny for the treatment and labor conditions of these vulnerable workers in the food manufacturing and processing industry.</p>
 	</div>
+	<div class="section">
+		<p class="part">Despite the fact that food production (especially agriculture) in Louisville is quite limited, Louisville has been considered a food manufacturing and processing hub for quite some time. The city even describes itself on its website as "a hub for food and beverage companies of all sizes, from local to global, including...manufacturing, beverage development..." (LouisvilleKy.gov). Yet the nature and dynamics of the food manufacturing and processing industry have far from equally distributed impacts across the city. Low-income, minority, and immigrant labor disproportionately drives the lower echelons of the food manufacturing and processing industry, both in Louisville and elsewhere. And both manufacturers and processors, particularly larger and more corporatized ones, have faced significant scrutiny for the treatment and labor conditions of these vulnerable workers in the food manufacturing and processing industry.</p>
+	
+	  
       <div id="map"></div>
      <div class="buttontext"><button id="toggleManufacturers" hidden>Food Manufacturers</button></div><br>
      <div class="buttontext"><button id="toggleManufacturersHeatmap" hidden>Food Manufacturers Heatmap</button></div>
 	<div class="buttontext"><button id="toggleCensusTracts" hidden>Census Tracts</button></div>
-<div class="section">
-<p>As the map shows, there seems to be at least a slight concentration of Louisville's food manufacturing plants in areas in the West End with high poverty rates and high minority populations. A few examples include in Census Tract 128.02, 50, 91.03, 113.01, etc. The fact that so many of these plants are concentrated in such areas leads one to infer who is serving as the labor pool for them. More than likely, due to the presence of a cheap labor pool in those areas, food manufacturing and processing plants are being sited (intentionally or unintentionally) there. Nonetheless, it is important to note the significant outliers: the area in the city with the greatest recorded concentration of food manufacturing and processing sites is Census Tract 111.6, with 6 of them. It is situated firmly in the East End, with little poverty or racial diversity. In spite of this, the fact that some of Louisville's food processing and manufacturing sites seem to be situated in privileged portions of the city does not in any way preclude them from (likely) still being serviced by a low-inome and underprivileged labor pool, as is true across the food manufacturing and processing industry. </p>
+
+<p class="part">As the map shows, there seems to be at least a slight concentration of Louisville's food manufacturing plants in areas in the West End with high poverty rates and high minority populations. A few examples include in Census Tract 128.02, 50, 91.03, 113.01, etc. The fact that so many of these plants are concentrated in such areas leads one to infer who is serving as the labor pool for them. More than likely, due to the presence of a cheap labor pool in those areas, food manufacturing and processing plants are being sited (intentionally or unintentionally) there. Nonetheless, it is important to note the significant outliers: the area in the city with the greatest recorded concentration of food manufacturing and processing sites is Census Tract 111.6, with 6 of them. It is situated firmly in the East End, with little poverty or racial diversity. In spite of this, the fact that some of Louisville's food processing and manufacturing sites seem to be situated in privileged portions of the city does not in any way preclude them from (likely) still being serviced by a low-inome and underprivileged labor pool, as is true across the food manufacturing and processing industry. </p>
 	
 </div>
 
