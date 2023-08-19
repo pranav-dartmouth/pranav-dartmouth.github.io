@@ -281,7 +281,7 @@
    
             var manufacturersLayer = L.geoJson(response1.responseJSON, {
 
-		    style: manufacturingSymbology,
+		   
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Food Manufacturer/Processor: " + 
@@ -358,11 +358,16 @@
 		    style: manufacturingSymbology,
               
                      onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Census Tract: " + 
-                            feature.properties.NAME1 + "</b>" +
-					   feature.properties.pctwhite); 
-			    
-                       },
+                            layer.bindPopup("In " + 
+                            feature.properties.NAME1 + "...<br>" + 
+				"There are " + feature.properties.NUMPOINTS + " food manufacturing and processing sites.<br>" +
+				"Meanwhile...<br>" + 
+				"The percentage of the population in poverty is " +
+				feature.properties.pctpov + "%<br>" +
+				"The percentage of the population who is Black and/or Hispanic is " +
+				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				"The percentage of the population who is on SNAP is " +
+				feature.properties.pctSNAP + "%"); 
 
                       
             }).addTo(map);
