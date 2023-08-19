@@ -276,23 +276,57 @@
 
 	       L.control.layers(baseMaps).addTo(map2);
 
-	  /* 
+	 function csaSymbology(feature) {
+                var count = feature.properties.NUMPOINTS;
+		var polygoncolor;
 
-        function csaSymbology(feature) {
-                 var color1;
-		  var color2;
-	if (feature.properties.NUMPOINTS >= 0) {
-		color 1 = "
-		  
+		if (count = 0) {
+			polygoncolor = "#FFFFFF";
 
-		 
-                return {
-                      fillColor: color,
-			color: color,
-			radius: size
-                };
-          }
-          */
+		}
+
+		if (count = 1) {
+			polygoncolor = "#a6bddb";
+
+		}
+
+		return {
+		 fillColor: polygoncolor,
+		color: polygoncolor,
+		fillOpacity: 1
+			
+	       };	       
+	      }
+
+	      function urbanfarmsSymbology(feature) {
+                var count = feature.properties.NUMPOINTS;
+		var polygoncolor;
+
+		if (count >= 0) {
+			polygoncolor = "#FFFFFF";
+
+		}
+
+		if (count >= 1) {
+			polygoncolor = "#e5f5f9";
+
+		}
+
+		if (count >= 2) {
+			polygoncolor = "#99d8c9";
+		}
+
+		if (count >= 3) {
+			polygoncolor = "#2ca25f";
+		}
+
+		return {
+		 fillColor: polygoncolor,
+		color: polygoncolor,
+		fillOpacity: 1
+			
+	       };	       
+	      }
 
                   var response = $.ajax({
             url: "CSAs.geojson",
@@ -359,7 +393,7 @@
    
             var csascensustractsLayer = L.geoJson(response1.responseJSON, {
 
-		    style: csasymbology,
+		    style: csaSymbology,
               
                       onEachFeature: function(feature, layer) {
                             layer.bindPopup("In " + 
@@ -406,6 +440,8 @@
           $.when(response2).done(function() {
    
             var urbanfarmsLayer = L.geoJson(response2.responseJSON, {
+
+		   
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Urban Farm: " + 
@@ -478,6 +514,8 @@
           $.when(response3).done(function() {
    
             var urbanfarmscensustractsLayer = L.geoJson(response3.responseJSON, {
+
+		    style: urbanfarmsSymbology, 
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("In " + 
