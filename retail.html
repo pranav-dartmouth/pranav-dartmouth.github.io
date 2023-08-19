@@ -332,6 +332,37 @@
 	       };	       
 	      }
 
+	       function grocerystoreSymbology(feature) {
+                var count = feature.properties.NUMPOINTS;
+		var polygoncolor;
+		var polygonopacity;
+
+		if (count >= 0) {
+			polygoncolor = "#FFFFFF";
+			polygonopacity = 1;
+
+		}
+
+		if (count >= 1) {
+			polygoncolor = "#756bb1";
+			polygonopacity = 1;
+
+		}
+
+		if (count >= 2) {
+			polygoncolor = "#54278f";
+			polygonopacity = 1;
+		}
+
+		return {
+		 fillColor: polygoncolor,
+		color: polygoncolor,
+		fillOpacity: polygonopacity,
+		opacity: polygonopacity
+			
+	       };	       
+	      }
+
          
 
           var response1 = $.ajax({
@@ -390,9 +421,9 @@
               }
             });
 
-            $("#toggleFastFoodHeatMap").show();
+            $("#toggleFastFoodHeatmap").show();
 
-           $("#toggleFastFoodHeatMap").click( function() {
+           $("#toggleFastFoodHeatmap").click( function() {
               if (fastfoodheatmapVisible) {
                    fastfoodheatmapVisible = false;
                     fastfoodheatmapLayer.removeFrom(map1);
@@ -606,6 +637,59 @@
             });
 
           });
+
+	     var response5 = $.ajax({
+            url: "grocerystorecensustracts.geojson",
+            dataType: "json",
+            success: console.log("Grocery store census tracts loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	     $.when(response5).done(function() {
+   
+            var grocerystorecensustractLayer = L.geoJson(response5.responseJSON, {
+
+		    style: grocerystoreSymbology,
+              
+                      onEachFeature: function(feature, layer) {
+                            layer.bindPopup("In " + 
+                            feature.properties.NAME1 + "...<br>" + 
+				"There are " + feature.properties.NUMPOINTS + " grocery stores.<br>" +
+				"Meanwhile...<br>" + 
+				"The percentage of the population in poverty is " +
+				feature.properties.pctpov + "%<br>" +
+				"The percentage of the population who is Black and/or Hispanic is " +
+				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				"The percentage of the population who is on SNAP is " +
+				feature.properties.pctSNAP + "%")
+
+                      
+            }
+            }).addTo(map2);
+
+		  
+
+
+            $("#toggleGroceryStoresCensusTracts").show();
+
+           $("#toggleGroceryStoresCensusTracts").click( function() {
+              if (grocerystorecensustractVisible) {
+                    grocerystorecensustractVisible = false;
+                    grocerystorecensustractLayer.removeFrom(map2);
+              }
+
+              else {
+                  grocerystorecensustractVisible = true;
+                  grocerystorecensustractLayer.addTo(map2);
+              }
+            });
+
+           
+           
+
+          });  
    
               
       </script>
