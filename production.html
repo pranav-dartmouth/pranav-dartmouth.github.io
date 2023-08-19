@@ -276,12 +276,13 @@
 
 	       L.control.layers(baseMaps).addTo(map2);
 
-	  
+	  /* 
 
-         /*  function pointSymbology(feature) {
-                 var color;
-		  var size;
-
+        function csaSymbology(feature) {
+                 var color1;
+		  var color2;
+	if (feature.properties.NUMPOINTS >= 0) {
+		color 1 = "
 		  
 
 		 
@@ -357,6 +358,8 @@
           $.when(response1).done(function() {
    
             var csascensustractsLayer = L.geoJson(response1.responseJSON, {
+
+		    style: csasymbology,
               
                       onEachFeature: function(feature, layer) {
                             layer.bindPopup("In " + 
