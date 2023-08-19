@@ -269,7 +269,12 @@
           var urbanfarmscensustractsVisible = true;
 	      
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
-          var map1 = L.map('map1', {
+           var map = L.map('map', {
+		  center: [0, 0],
+		  zoom: 0,
+		  layers: [OpenStreetMap]
+	  });
+	      var map1 = L.map('map1', {
 		  center: [38.2527, -85.7585],
 		  zoom: 10,
 		  layers: [OpenStreetMap]
@@ -281,11 +286,7 @@
 		  layers: [OpenStreetMap]
 	  });
 
-	      var map = L.map('map', {
-		  center: [0, 0],
-		  zoom: 0,
-		  layers: [OpenStreetMap]
-	  });
+	     
         
          
 
@@ -326,11 +327,13 @@
 			  "EWSR": Esri_WorldShadedRelief
                          };
 
+	       L.control.layers(baseMaps).addTo(map);
+
           L.control.layers(baseMaps).addTo(map1);
 
 	       L.control.layers(baseMaps).addTo(map2);
 
-	      L.control.layers(baseMaps).addTo(map);
+	     
 
 	 function csaSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
@@ -394,7 +397,58 @@
 	       };	       
 	      }
 
-                  var response = $.ajax({
+	        var response = $.ajax({
+            url: "agriculturalcompanies.geojson",
+            dataType: "json",
+            success: console.log("Company data loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	     
+
+          $.when(response).done(function() {
+   
+            var companiesLayer = L.geoJson(response.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Company: " + 
+                            feature.properties.Name + "</b><br>" + feature.properties.Name + ", " + feature.properties.Description + " ," + feature.properties.Issue + "<br>"); 
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+			radius: 7,
+                          fillOpacity: 1,
+                            fillColor: "blue",
+                            color: "blue"
+              });
+              },
+            }).addTo(map);
+
+             $("#toggleCompanies").show();
+
+           $("#toggleCompanies").click( function() {
+              if (companiesVisible) {
+                    companiesVisible = false;
+                    companiesLayer.removeFrom(map);
+              }
+
+              else {
+                  companiesVisible = true;
+                   companiesLayer.addTo(map);
+              }
+            });
+
+          });
+
+                  var response1 = $.ajax({
             url: "CSAs.geojson",
             dataType: "json",
             success: console.log("CSA data loaded."),
@@ -405,9 +459,9 @@
 
 	     
 
-          $.when(response).done(function() {
+          $.when(response1).done(function() {
    
-            var csasLayer = L.geoJson(response.responseJSON, {
+            var csasLayer = L.geoJson(response1.responseJSON, {
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>CSA: " + 
@@ -445,7 +499,7 @@
 
           });
 
-   var response1 = $.ajax({
+   var response2 = $.ajax({
             url: "csascensustracts.geojson",
             dataType: "json",
             success: console.log("CSA census data loaded."),
@@ -456,9 +510,9 @@
 
 	     
 
-          $.when(response1).done(function() {
+          $.when(response2).done(function() {
    
-            var csascensustractsLayer = L.geoJson(response1.responseJSON, {
+            var csascensustractsLayer = L.geoJson(response2.responseJSON, {
 
 		    style: csaSymbology,
               
@@ -493,7 +547,7 @@
             });
 
           });
-          var response2 = $.ajax({
+          var response3 = $.ajax({
             url: "urbanfarms2final.geojson",
             dataType: "json",
             success: console.log("Urban farm data loaded."),
@@ -504,9 +558,9 @@
 
 	      var urbanfarmscsv = Array();
 
-          $.when(response2).done(function() {
+          $.when(response3).done(function() {
    
-            var urbanfarmsLayer = L.geoJson(response2.responseJSON, {
+            var urbanfarmsLayer = L.geoJson(response3.responseJSON, {
 
 		   
               
@@ -568,7 +622,7 @@
 	  });
 
 
-	     var response3 = $.ajax({
+	     var response4 = $.ajax({
             url: "gardensbycensustract.geojson",
             dataType: "json",
             success: console.log("Urban farms by census tract loaded."),
@@ -579,9 +633,9 @@
 
 	     
 
-          $.when(response3).done(function() {
+          $.when(response4).done(function() {
    
-            var urbanfarmscensustractsLayer = L.geoJson(response3.responseJSON, {
+            var urbanfarmscensustractsLayer = L.geoJson(response4.responseJSON, {
 
 		    style: urbanfarmsSymbology, 
               
@@ -621,56 +675,7 @@
             });
 	  });
 
-	       var response4 = $.ajax({
-            url: "agriculturalcompanies.geojson",
-            dataType: "json",
-            success: console.log("Company data loaded."),
-            error: function(xhr) {
-              alert(xhr.statusText);
-            }
-          });
-
-	     
-
-          $.when(response4).done(function() {
-   
-            var companiesLayer = L.geoJson(response4.responseJSON, {
-              
-                     onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Company: " + 
-                            feature.properties.Name + "</b><br>" + feature.properties.Name + ", " + feature.properties.Description + " ," + feature.properties.Issue + "<br>"); 
-
-                       },
-
-                      pointToLayer: function (feature, latlng) { 
-                          return L.circleMarker(latlng, {
-                            
-                         
-                          weight: 1,
-                          opacity: 1,
-			radius: 7,
-                          fillOpacity: 1,
-                            fillColor: "blue",
-                            color: "blue"
-              });
-              },
-            }).addTo(map);
-
-             $("#toggleCompanies").show();
-
-           $("#toggleCompanies").click( function() {
-              if (companiesVisible) {
-                    companiesVisible = false;
-                    companiesLayer.removeFrom(map);
-              }
-
-              else {
-                  companiesVisible = true;
-                   companiesLayer.addTo(map);
-              }
-            });
-
-          });
+	      
 
        
 
