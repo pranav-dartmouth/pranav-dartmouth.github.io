@@ -243,8 +243,8 @@
 
 
 
-          <!-- Source of code: leaflet example -->
-var geojson;
+         /* Source of code: leaflet example */
+	      
           var info = L.control();
 
           info.onAdd = function (map) {
@@ -446,44 +446,8 @@ layer.on({
 style: manufacturingSymbology,
 onEachFeature: onEachFeature
 }).addTo(map);
-
-   
-            /* var manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
-
-		    style: manufacturingSymbology,
-              
-                     onEachFeature: function(feature, layer) {
-                            layer.bindPopup("In " + 
-                            feature.properties.NAME1 + "...<br>" + 
-				"There are " + feature.properties.NUMPOINTS + " food manufacturing and processing sites.<br>" +
-				"Meanwhile...<br>" + 
-				"The percentage of the population in poverty is " +
-				feature.properties.pctpov + "%<br>" +
-				"The percentage of the population who is Black and/or Hispanic is " +
-				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
-				"The percentage of the population who is on SNAP is " +
-				feature.properties.pctSNAP + "%")
-
-                      
-            }
-	    }).addTo(map);
-
-		    
-            $("#toggleCensusTracts").show();
-
-           $("#toggleCensusTracts").click( function() {
-              if (manufacturerspercensustractsVisible) {
-                    manufacturerspercensustractsVisible = false;
-                    manufacturerspercensustractsLayer.removeFrom(map);
-              }
-
-              else {
-                  manufacturerspercensustractsVisible = true;
-                   manufacturerspercensustractsLayer.addTo(map);
-              }
-            });
-
-     */
+	  
+	
 
 
           });
