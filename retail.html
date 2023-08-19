@@ -202,7 +202,7 @@
 	  <div class="buttontext"><button id="toggleGroceryStoreCensusTracts" hidden>Census Tracts</button></div>
     <div class="buttontext"><button id="toggleFarmersMarkets" hidden>Farmers Markets</button></div>
     <div class="buttontext"><button id="toggleFarmersMarketsHeatmap" hidden>Farmers Markets Heatmap</button></div>
-	  <div class="buttontext"><button id="toggleFarmersMarketsCensusTracts" hidden>Farmers Markets Census Tracts</button></div>
+	  <div class="buttontext"><button id="toggleFarmerMarketCensusTracts" hidden>Farmers Markets Census Tracts</button></div>
     </div>
     
 
@@ -638,9 +638,9 @@
 		  
 
 
-            $("#toggleFarmersMarketsCensusTracts").show();
+            $("#toggleFarmerMarketCensusTracts").show();
 
-           $("#toggleFarmersMarketsCensusTracts").click( function() {
+           $("#toggleFarmerMarketCensusTracts").click( function() {
               if (farmermarketcensustractVisible) {
                     farmermarketcensustractVisible = false;
                     farmermarketcensustractLayer.removeFrom(map2);
