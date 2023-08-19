@@ -162,6 +162,13 @@
 	      h1, h3 {
 		      text-align: center;
 	      }
+
+	      .part {
+		      
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+	      }
 	    
         
       </style>
@@ -191,9 +198,9 @@
       <h1>Food Production in Louisville</h1>
 	</div>
 	<div class="section">
-		<p>Most of the food produced for Louisville isn't actually produced within the city itself, but is transported from global and national supply chains who source from various agricultural enterprises at a number of different locations.<br>
+		<p class="part">Most of the food produced for Louisville isn't actually produced within the city itself, but is transported from global and national supply chains who source from various agricultural enterprises at a number of different locations.<br>
 			Some of the largest agricultural corporations that are the source of much of Louisville's food likely include: </p>
-		<ol>
+		<ol class="part">
 			<li>Cargill</li>
 			<li>Bayer</li>
 			<li>John Deere</li>
@@ -204,28 +211,28 @@
 		</ol>
 	
 	
-		<p>Yet there is some food production occurring in Louisville, albeit at a very small scale. According to the United States Department of Agriculture's 2017 "Census," Jefferson County, Kentucky is home to 343 farms with an average acreage of 59 acres per farm. Two of the most prominent forms of agriculture that have became popularized in recent years, particularly in an urban context like Louisville, are community-supported agriculture and community gardening. </p>
+		<p class="part">Yet there is some food production occurring in Louisville, albeit at a very small scale. According to the United States Department of Agriculture's 2017 "Census," Jefferson County, Kentucky is home to 343 farms with an average acreage of 59 acres per farm. Two of the most prominent forms of agriculture that have became popularized in recent years, particularly in an urban context like Louisville, are community-supported agriculture and community gardening. </p>
 </div>
 		<div class="section">	
   
       		<h3>Community-Supported Agriculture</h3>
-		<p>Community-supported agriculture (known as CSA for short) is a system that allows consumers to subscribe to and support a particular farm of their choosing, in turn being able to share in its produce on a weekly basis. It is a system that is supposed to increase the proximity between food producers and consumers by allowing "both the eater and the grower share the risks and rewards from what comes out of the ground." It has grown in popularity across the U.S., to the point where there are more than 7,000 farms that practice the CSA model all across the country. Some of the factors behind the newfound popularization of CSAs include: the impetus to "eat healthy," the desire to "support local farmers," the perception that such a model could be more sustainable and better for the environment, and the overall notion on the part of both consumers and producers that it's important to get to know where their food is coming from and coming to, respectively. Yet CSAs, despite all of their popularization and supposed benefits, have been unevenly distributed with respect to axes of race and income. Because participating in a CSA program requires paying upfront for the farmer's inputs and sharing in the farmer's own losses, CSA members tend to overwhelmingly skew towards privileged sectors of society. </p><br>
+		<p class="part">Community-supported agriculture (known as CSA for short) is a system that allows consumers to subscribe to and support a particular farm of their choosing, in turn being able to share in its produce on a weekly basis. It is a system that is supposed to increase the proximity between food producers and consumers by allowing "both the eater and the grower share the risks and rewards from what comes out of the ground." It has grown in popularity across the U.S., to the point where there are more than 7,000 farms that practice the CSA model all across the country. Some of the factors behind the newfound popularization of CSAs include: the impetus to "eat healthy," the desire to "support local farmers," the perception that such a model could be more sustainable and better for the environment, and the overall notion on the part of both consumers and producers that it's important to get to know where their food is coming from and coming to, respectively. Yet CSAs, despite all of their popularization and supposed benefits, have been unevenly distributed with respect to axes of race and income. Because participating in a CSA program requires paying upfront for the farmer's inputs and sharing in the farmer's own losses, CSA members tend to overwhelmingly skew towards privileged sectors of society. </p><br>
 		
-		<div id="map1"></div>
+		<div id="map1" class="part"></div>
      		<div class="buttontext"><button id="toggleCSAs" hidden>CSAs</button></div><br>
 		<div class="buttontext"><button id="toggleCSACensusTracts" hidden>Census Tracts</button></div><br>
-		<p>In this map (where you can toggle Louisville's CSAs and CSA concentration by census tract), you can see how nearly all farms that have a CSA program are in the relatively privileged Eastern End of the city. The CSA scene in Louisville clearly seems to have a correlation to the most privileged sectors of Louisville's urban fabric, and this comes as no surprise as the same is true in many other urban contexts. </p>
+		<p class="part">In this map (where you can toggle Louisville's CSAs and CSA concentration by census tract), you can see how nearly all farms that have a CSA program are in the relatively privileged Eastern End of the city. The CSA scene in Louisville clearly seems to have a correlation to the most privileged sectors of Louisville's urban fabric, and this comes as no surprise as the same is true in many other urban contexts. </p>
 		</div>
 	  <div class="section">	
 		  <h3>Community Gardening</h3>
-		  <p>Community gardening is the practice wherein a small or large group of people, particularly in urban areas, cultivate and harvest produce from a shared gardening space. It is supposed to allow individuals to grow fresh produce on their own plot of land and to induce a degree of localization within the food supply chain. Some of the oft-cited benefits of community gardens and reasons people partake in it include: beautifying the urban landscape, promoting a healthier lifestyle, increasing wellness, and, above all, rupturing the distance between urbanites and the food production process. Yet, as with community supported agriculture, there does seem to be a degree of privilege and financial security involved in community gardening. The fact that underprivileged urbanites without the time and resources to maintain upkeep of their own garden are often excluded from community gardening has been growingly recognized in scholarly and popular literature, both in the context of Louisville and beyond.</p>
-    <div id="map2"></div>
+		  <p class="part">Community gardening is the practice wherein a small or large group of people, particularly in urban areas, cultivate and harvest produce from a shared gardening space. It is supposed to allow individuals to grow fresh produce on their own plot of land and to induce a degree of localization within the food supply chain. Some of the oft-cited benefits of community gardens and reasons people partake in it include: beautifying the urban landscape, promoting a healthier lifestyle, increasing wellness, and, above all, rupturing the distance between urbanites and the food production process. Yet, as with community supported agriculture, there does seem to be a degree of privilege and financial security involved in community gardening. The fact that underprivileged urbanites without the time and resources to maintain upkeep of their own garden are often excluded from community gardening has been growingly recognized in scholarly and popular literature, both in the context of Louisville and beyond.</p>
+    <div id="map2" class="part"></div> <!-- Source for help on this: W3Schools -->
      <div class="buttontext"><button id="toggleUrbanFarms" hidden>Urban Farms</button></div>
 		
 	  
 <div class="buttontext"><button id="toggleUrbanFarmHeatmap" hidden>Urban Farms Heatmap</button></div>
 		  <div class="buttontext"><button id="toggleUrbanFarmsCensusTracts" hidden>Census Tracts</button></div><br>
-<p>In this map (where you can toggle Louisville's urban gardens and urban garden concentration by census tract), you can see how most urban farms are concentrated in the Eastern neighborhoods once more. </p>  
+<p class="part">In this map (where you can toggle Louisville's urban gardens and urban garden concentration by census tract), you can see how most urban farms are concentrated in the Eastern neighborhoods once more. </p>  
 	  </div>
 
       <script>
