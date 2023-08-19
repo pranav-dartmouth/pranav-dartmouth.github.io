@@ -423,12 +423,20 @@
 
 		    style: fastfoodSymbology,
               
-                     onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>: Census Tract" + 
-                            feature.properties.NAME1 + "</b>"); 
-			    
+                      onEachFeature: function(feature, layer) {
+                            layer.bindPopup("In " + 
+                            feature.properties.NAME1 + "...<br>" + 
+				"There are " + feature.properties.NUMPOINTS + " fast food establishments.<br>" +
+				"Meanwhile...<br>" + 
+				"The percentage of the population in poverty is " +
+				feature.properties.pctpov + "%<br>" +
+				"The percentage of the population who is Black and/or Hispanic is " +
+				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				"The percentage of the population who is on SNAP is " +
+				feature.properties.pctSNAP + "%")
 
-                       }
+                      
+            }
             }).addTo(map1);
 
 		  
