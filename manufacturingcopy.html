@@ -297,10 +297,6 @@ layer.on({
 });
 }
 
-geojson = L.geoJson(manufacturingData, {
-style: manufacturingSymbology,
-onEachFeature: onEachFeature
-}).addTo(map);
 
 
 
@@ -417,7 +413,7 @@ onEachFeature: onEachFeature
               }
             });
 
-            $("#toggleManufacturersHeatmap").show();
+           /*  $("#toggleManufacturersHeatmap").show();
 
            $("#toggleManufacturersHeatmap").click( function() {
               if (manufacturersheatmapVisible) {
@@ -431,7 +427,7 @@ onEachFeature: onEachFeature
               }
             });
 
-          });
+          }); */
 
 
 	      var response2 = $.ajax({
@@ -445,8 +441,14 @@ onEachFeature: onEachFeature
 
 	    
           $.when(response2).done(function() {
+
+		  geojson = L.geoJson(response2.responseJSON, {
+style: manufacturingSymbology,
+onEachFeature: onEachFeature
+}).addTo(map);
+
    
-            var manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
+            /* var manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
 
 		    style: manufacturingSymbology,
               
@@ -480,6 +482,8 @@ onEachFeature: onEachFeature
                    manufacturerspercensustractsLayer.addTo(map);
               }
             });
+
+     */
 
 
           });
