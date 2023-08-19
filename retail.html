@@ -332,6 +332,37 @@
 	       };	       
 	      }
 
+		    function farmermarketSymbology(feature) {
+                var count = feature.properties.NUMPOINTS;
+		var polygoncolor;
+		var polygonopacity;
+
+		if (count >= 0) {
+			polygoncolor = "#FFFFFF";
+			polygonopacity = 1;
+
+		}
+
+		if (count >= 1) {
+			polygoncolor = "#feedde";
+			polygonopacity = 1;
+
+		}
+
+		if (count >= 2) {
+			polygoncolor = "#fdd0a2";
+			polygonopacity = 1;
+		}
+
+		return {
+		 fillColor: polygoncolor,
+		color: polygoncolor,
+		fillOpacity: polygonopacity,
+		opacity: polygonopacity
+			
+	       };	       
+	      }
+
 	       function grocerystoreSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
@@ -574,6 +605,58 @@
           });
 
 	       var response4 = $.ajax({
+            url: "farmermarketecensustract.geojson",
+            dataType: "json",
+            success: console.log("Farmers markets census tracts loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	     $.when(response4).done(function() {
+   
+            var farmermarketcensustractLayer = L.geoJson(response4.responseJSON, {
+
+		    style: farmermarketSymbology,
+              
+                      onEachFeature: function(feature, layer) {
+                            layer.bindPopup("In " + 
+                            feature.properties.NAME1 + "...<br>" + 
+				"There are " + feature.properties.NUMPOINTS + " farmers markets.<br>" +
+				"Meanwhile...<br>" + 
+				"The percentage of the population in poverty is " +
+				feature.properties.pctpov + "%<br>" +
+				"The percentage of the population who is Black and/or Hispanic is " +
+				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				"The percentage of the population who is on SNAP is " +
+				feature.properties.pctSNAP + "%")
+
+                      
+            }
+            }).addTo(map2);
+
+		  
+
+
+            $("#toggleFarmersMarketsCensusTracts").show();
+
+           $("#toggleFarmersMarketsCensusTracts").click( function() {
+              if (farmermarketcensustractVisible) {
+                    farmermarketcensustractVisible = false;
+                    farmermarketcensustractLayer.removeFrom(map2);
+              }
+
+              else {
+                  farmermarketcensustractVisible = true;
+                  farmermarketcensustractLayer.addTo(map2);
+              }
+            });
+
+           
+           
+
+          }); 
+	       var response5 = $.ajax({
             url: "grocerystores.geojson",
             dataType: "json",
             success: console.log("Grocery stores loaded."),
@@ -584,9 +667,9 @@
 
 	      var grocerystorescsv = Array();
 
-          $.when(response4).done(function() {
+          $.when(response5).done(function() {
    
-            var grocerystoresLayer = L.geoJson(response4.responseJSON, {
+            var grocerystoresLayer = L.geoJson(response5.responseJSON, {
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Grocery Store: " + 
@@ -645,7 +728,7 @@
 
           });
 
-	     var response5 = $.ajax({
+	     var response6 = $.ajax({
             url: "grocerystorecensustracts.geojson",
             dataType: "json",
             success: console.log("Grocery store census tracts loaded."),
@@ -654,9 +737,9 @@
             }
           });
 
-	     $.when(response5).done(function() {
+	     $.when(response6).done(function() {
    
-            var grocerystorecensustractLayer = L.geoJson(response5.responseJSON, {
+            var grocerystorecensustractLayer = L.geoJson(response6.responseJSON, {
 
 		    style: grocerystoreSymbology,
               
