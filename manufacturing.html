@@ -201,7 +201,53 @@
 
           L.control.layers(baseMaps).addTo(map);
 
-	  
+	   function manufacturingSymbology(feature) {
+                var count = feature.properties.NUMPOINTS;
+		var polygoncolor;
+		var polygonopacity;
+
+		if (count >= 0) {
+			polygoncolor = "#FFFFFF";
+			polygonopacity = 1;
+
+		}
+
+		if (count >= 1) {
+			polygoncolor = "#fee5d9";
+			polygonopacity = 1;
+
+		}
+
+		if (count >= 2) {
+			polygoncolor = "#fcbba1";
+			polygonopacity = 1;
+		}
+
+		if (count >= 3) {
+			polygoncolor = "#fc9272";
+			polygonopacity = 1;
+		}
+		  if (count >= 4) {
+			polygoncolor = "#fb6a4a";
+			polygonopacity = 1;
+		}
+		   if (count >= 5) {
+			polygoncolor = "#de2d26";
+			polygonopacity = 1;
+		}
+		   if (count >= 6) {
+			polygoncolor = "#a50f15";
+			polygonopacity = 1;
+		}
+
+		return {
+		 fillColor: polygoncolor,
+		color: polygoncolor,
+		fillOpacity: polygonopacity,
+		opacity: polygonopacity
+			
+	       };	       
+	      }
 
          /*  function pointSymbology(feature) {
                  var color;
@@ -234,6 +280,8 @@
           $.when(response1).done(function() {
    
             var manufacturersLayer = L.geoJson(response1.responseJSON, {
+
+		    style: manufacturingSymbology,
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Food Manufacturer/Processor: " + 
