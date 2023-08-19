@@ -279,21 +279,24 @@
 	 function csaSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
+		 var polygonopacity;
 
-		if (count = 0) {
-			polygoncolor = "#FFFFFF";
+		if (count == 0) {
+			opacity = 0;
 
 		}
 
-		if (count = 1) {
+		if (count == 1) {
 			polygoncolor = "#a6bddb";
+			opacity = 1;
 
 		}
 
 		return {
 		 fillColor: polygoncolor,
 		color: polygoncolor,
-		fillOpacity: 1
+		fillOpacity: polygonopacity,
+		opacity: polygonopacity
 			
 	       };	       
 	      }
@@ -301,9 +304,11 @@
 	      function urbanfarmsSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
+		var polygonopacity;
 
 		if (count >= 0) {
 			polygoncolor = "#FFFFFF";
+			polygonopacity = 0;
 
 		}
 
@@ -323,7 +328,8 @@
 		return {
 		 fillColor: polygoncolor,
 		color: polygoncolor,
-		fillOpacity: 1
+		fillOpacity: polygonopacity,
+		opacity: polygonopacity
 			
 	       };	       
 	      }
