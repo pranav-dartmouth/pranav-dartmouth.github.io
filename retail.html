@@ -265,22 +265,53 @@
 
         L.control.layers(baseMaps).addTo(map2);
 
-	  
+	  function fastfoodSymbology(feature) {
+                var count = feature.properties.NUMPOINTS;
+		var polygoncolor;
+		var polygonopacity;
 
-         /*  function pointSymbology(feature) {
-                 var color;
-		  var size;
+		if (count >= 0) {
+			polygoncolor = "#FFFFFF";
+			polygonopacity = 1;
 
-		  
+		}
 
-		 
-                return {
-                      fillColor: color,
-			color: color,
-			radius: size
-                };
-          }
-          */
+		if (count >= 1) {
+			polygoncolor = "#feedde";
+			polygonopacity = 1;
+
+		}
+
+		if (count >= 2) {
+			polygoncolor = "#fdd0a2";
+			polygonopacity = 1;
+		}
+
+		if (count >= 3) {
+			polygoncolor = "#fdae6b";
+			polygonopacity = 1;
+		}
+		  if (count >= 4) {
+			polygoncolor = "#fd8d3c";
+			polygonopacity = 1;
+		}
+		   if (count >= 5) {
+			polygoncolor = "#e6550d";
+			polygonopacity = 1;
+		}
+		   if (count >= 6) {
+			polygoncolor = "#a63603";
+			polygonopacity = 1;
+		}
+
+		return {
+		 fillColor: polygoncolor,
+		color: polygoncolor,
+		fillOpacity: polygonopacity,
+		opacity: polygonopacity
+			
+	       };	       
+	      }
 
          
 
@@ -370,6 +401,8 @@
 	     $.when(response2).done(function() {
    
             var fastfoodcensustractLayer = L.geoJson(response2.responseJSON, {
+
+		    style: fastfoodSymbology,
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>: Census Tract" + 
