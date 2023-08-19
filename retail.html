@@ -342,17 +342,24 @@
 			polygonopacity = 1;
 
 		}
+		  if (count >= 1) {
+			polygoncolor = "#9e9ac8";
+			polygonopacity = 1;
 
-		if (count >= 1) {
+		}     
+
+		if (count >= 2) {
 			polygoncolor = "#756bb1";
 			polygonopacity = 1;
 
 		}
 
-		if (count >= 2) {
+		if (count >= 3) {
 			polygoncolor = "#54278f";
 			polygonopacity = 1;
 		}
+
+		
 
 		return {
 		 fillColor: polygoncolor,
@@ -622,9 +629,9 @@
               }
             });
 
-            $("#toggleGroceryStoresHeatMap").show();
+            $("#toggleGroceryStoresHeatmap").show();
 
-           $("#toggleGroceryStoresHeatMap").click( function() {
+           $("#toggleGroceryStoresHeatmap").click( function() {
               if (grocerystoresheatmapLayerVisible) {
                    grocerystoresheatmapLayerVisible = false;
                    grocerystoresheatmapLayer.removeFrom(map2);
