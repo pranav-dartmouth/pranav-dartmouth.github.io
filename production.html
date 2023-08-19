@@ -269,11 +269,6 @@
           var urbanfarmscensustractsVisible = true;
 	      
 	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
-           
-
-	     
-        
-         
 
            var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -304,22 +299,7 @@
 	maxZoom: 13
 });
 
-	      var map = L.map('map', {
-		  center: [0, 0],
-		  zoom: 2,
-		  layers: [OpenStreetMap]
-	  });
-	      var map1 = L.map('map1', {
-		  center: [38.2527, -85.7585],
-		  zoom: 10,
-		  layers: [OpenStreetMap]
-	  });
-
-	       var map2 = L.map('map2', {
-		  center: [38.2527, -85.7585],
-		  zoom: 10,
-		  layers: [OpenStreetMap]
-	  });
+	      
 
           var baseMaps = {"OSM" : OpenStreetMap,
 			  "CTBD" : CartoDB_DarkMatter,
@@ -329,11 +309,9 @@
 			  "EWSR": Esri_WorldShadedRelief
                          };
 
-	       L.control.layers(baseMaps).addTo(map);
-
-          L.control.layers(baseMaps).addTo(map1);
-
-	       L.control.layers(baseMaps).addTo(map2);
+	      
+         
+	       
 
 	     
 
@@ -408,7 +386,16 @@
             }
           });
 
-	     
+	    var map = L.map('map', {
+		  center: [0, 0],
+		  zoom: 2,
+		  layers: [OpenStreetMap]
+	  });
+
+	       L.control.layers(baseMaps).addTo(map);
+
+
+	      
 
           $.when(response).done(function() {
    
@@ -459,7 +446,13 @@
             }
           });
 
-	     
+	      var map1 = L.map('map1', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+
+	 L.control.layers(baseMaps).addTo(map1);
 
           $.when(response1).done(function() {
    
@@ -557,6 +550,15 @@
               alert(xhr.statusText);
             }
           });
+
+	       var map2 = L.map('map2', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+
+	      L.control.layers(baseMaps).addTo(map2);
+	      
 
 	      var urbanfarmscsv = Array();
 
