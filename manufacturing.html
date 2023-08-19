@@ -367,10 +367,11 @@
 				"The percentage of the population who is Black and/or Hispanic is " +
 				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
 				"The percentage of the population who is on SNAP is " +
-				feature.properties.pctSNAP + "%"); 
+				feature.properties.pctSNAP + "%")
 
                       
-            }).addTo(map);
+            }
+	    }).addTo(map);
 
 		    
             $("#toggleCensusTracts").show();
