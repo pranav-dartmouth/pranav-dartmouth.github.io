@@ -250,9 +250,9 @@
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup('Nonprofit: ' + 
-                            feature.properties.Organization + '<br>' + 'Find out more information <a href="' + feature.properties.Link + '">here</a>;'); 
+                            feature.properties.Organization + '<br>' + 'Find out more information at: ' + feature.properties.Link + '<br>'); 
 
-			     '<img src="' + feature.properties.Image + '" alt="No image available" style="width:100px;height:100px;display:block;margin-right:auto;margin-left:auto;">'
+			     /* '<img src="' + feature.properties.Image + '" alt="No image available" style="width:100px;height:100px;display:block;margin-right:auto;margin-left:auto;">' */
 
                        },
 
