@@ -343,13 +343,13 @@
 		  layers: [OpenStreetMap]
 	  });
 
-	    var map3 = L.map('map1', {
+	    var map3 = L.map('map3', {
 		  center: [38.2527, -85.7585],
 		  zoom: 10,
 		  layers: [OpenStreetMap]
 	  });
 
-         var map4 = L.map('map2', {
+         var map4 = L.map('map4', {
 		  center: [38.2527, -85.7585],
 		  zoom: 10,
 		  layers: [OpenStreetMap]
@@ -397,6 +397,10 @@
           L.control.layers(baseMaps).addTo(map1);
 
         L.control.layers(baseMaps).addTo(map2);
+
+	        L.control.layers(baseMaps).addTo(map3);
+
+        L.control.layers(baseMaps).addTo(map4);
 
 	  function fastfoodSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
