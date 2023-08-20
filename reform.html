@@ -126,6 +126,7 @@
 		<h3>Advocacy and Organizing</h3>
 		<p class="part">There are a number of nonprofits in the Louisville area who work to address the inequalities in the city's food system at various points. Click the points in the map below to check them out.</p>
 		<div id="map1"></div>
+		<div id="buttontext"><button id="toggleOrganizations">Organizations</button></div>
 
 	</div>
 
@@ -136,7 +137,9 @@
 	   
    </div>
 <script>
-	 var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+	
+	var organizationsVisible = true;
+	var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
           var map = L.map('map', {
 		  center: [38.2527, -85.7585],
 		  zoom: 10,
@@ -189,7 +192,66 @@
 
           L.control.layers(baseMaps).addTo(map);
 
-	L.control.layers(baseMaps).addTo(map1);
+	
+
+	 var response1 = $.ajax({
+            url: "organizations.geojson",
+            dataType: "json",
+            success: console.log("Organizations loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	    var map1 = L.map('map1', {
+		  center: [40, -35],
+		  zoom: 2,
+		  layers: [Esri_WorldTerrain]
+	  });
+
+	   L.control.layers(baseMaps).addTo(map1);  
+
+	      
+
+          $.when(response1).done(function() {
+   
+            var organizationsLayer = L.geoJson(response1.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup('Company: ' + 
+                            feature.properties.Organization + '<br>' + 'Find out more information <a href=" + feature.properties.link + ">here</a>'); 
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+			radius: 3,
+                          fillOpacity: 1,
+                            fillColor: "brown",
+                            color: "brown"
+              });
+              },
+            }).addTo(map);
+
+             $("#toggleOrganizations").show();
+
+           $("#toggleOrganizations").click( function() {
+              if (organizationsVisible) {
+                    organizationsVisible = false;
+                    organizationsLayer.removeFrom(map);
+              }
+
+              else {
+                  organizationsVisible = true;
+                   organizationsLayer.addTo(map);
+              }
+            });
+
+          });
 
 	
 
