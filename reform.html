@@ -118,6 +118,13 @@
 	<div class="section">
 		<h3>Policymaking</h3>
 		<p class="part">There have been numerous policy changes at the municipal, state, and national levels to make the food system more equitable and just in Louisville. These include: the government-subsidized development of a recent Food Truck Clinic, the passage of an ordinance that broadens permissions for market gardens and community gardens throughout vacant lots, etc. (Ghabour, 2023; Courier Journal, 2020).</p>
+		<div id="map"></div>
+
+	</div>
+
+	<div class="section">
+		<h3>Advocacy and Organizing</h3>
+		<p class="part">There are a number of nonprofits in the Louisville area who work to address the inequalities in the city's food system at various points. Click the points in the map below to check them out.</p>
 		<div id="map1"></div>
 
 	</div>
@@ -130,13 +137,13 @@
    </div>
 <script>
 	 var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
-          var map = L.map('map1', {
+          var map = L.map('map', {
 		  center: [38.2527, -85.7585],
 		  zoom: 10,
 		  layers: [OpenStreetMap]
 	  });
 
-	var map = L.map('map2', {
+	var map1 = L.map('map1', {
 		  center: [38.2527, -85.7585],
 		  zoom: 10,
 		  layers: [OpenStreetMap]
@@ -180,9 +187,11 @@
 			  "EWSR": Esri_WorldShadedRelief
                          };
 
-          L.control.layers(baseMaps).addTo(map1);
+          L.control.layers(baseMaps).addTo(map);
 
-	L.control.layers(baseMaps).addTo(map2);
+	L.control.layers(baseMaps).addTo(map1);
+
+	
 </script>
 </body>
 </html>
