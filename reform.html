@@ -89,6 +89,38 @@
     padding-left: 20px;
     padding-right: 20px;
 	      }
+
+	    .buttontext {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	      button {
+		background-color: white; 
+		border: solid 2px;
+		font-weight: bold;
+		font-size: 15px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-right: 10px;
+		padding-left: 10px;
+		margin-bottom: 5px;
+		margin-right: auto;
+		margin-left: auto;
+		border-radius: 15px;
+		text-align: center;
+		text-decoration: none;
+		width: 200px;
+			}
+
+	      #toggleOrganizations {
+		margin-top: 5px;
+		border-color: brown;
+		color: brown;
+	      }
         
     </style>
 <body>
@@ -146,11 +178,7 @@
 		  layers: [OpenStreetMap]
 	  });
 
-	var map1 = L.map('map1', {
-		  center: [38.2527, -85.7585],
-		  zoom: 10,
-		  layers: [OpenStreetMap]
-	  });
+	
          
 
            var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -235,7 +263,7 @@
                             color: "brown"
               });
               },
-            }).addTo(map);
+            }).addTo(map1);
 
              $("#toggleOrganizations").show();
 
