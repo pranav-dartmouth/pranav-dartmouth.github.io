@@ -77,6 +77,22 @@
             
           }
 
+	       #map3 {
+              height: 400px;
+              margin-left: 20px;
+		      margin-right: 20px;
+		      z-index: 1;
+            
+          }
+
+	       #map4 {
+              height: 400px;
+              margin-left: 20px;
+		      margin-right: 20px;
+		      z-index: 1;
+            
+          }
+
 	     
 	      
 
@@ -161,6 +177,24 @@
 		color: yellow;
 	   }
 
+	      #toggleFoodBanks {
+		margin-top: 5px;
+		border-color: yellow;
+		color: yellow;
+          }
+
+	  #toggleFoodBanksHeatmap {
+		margin-top: 5px;
+		border-color: yellow;
+		color: yellow;
+          }
+
+	      #toggleFoodBanksCensusTracts {
+		margin-top: 5px;
+		border-color: yellow;
+		color: yellow;
+	   }
+
 	      .section, #firstsection {
 		      padding-top: 30px;
 		      margin-bottom: 30px;
@@ -231,25 +265,28 @@
   </div>
 		  <p class="part">As the map shows, there tends to be a concentration of fast food establishments in the middle of the city. This includes Census Tracts like Census Tracts 119.06, 119.07, and 109.1, which have relatively large minority populations and slightly higher poverty rates than average. Notably there aren't a significant number of fast food establishments in either the westernmost or easternmost parts of the city. This seems to belie the pattern in other cities of an overprevalence of fast food establishments (Powell et al., 2007; Kwate, 2008). Yet there still does seem to be a coincidence of many poor, minority parts of the city and the likelihood of having a fast food joint in one's vicinity. Such a configuration of fast food retailers within the city is a public health concern as the overconsumption of fast food is shown to cause a higher incidence of diabetes, obesity, premature death, and other health ailments in impoverished and minority neighborhoods across the country (Freeman, 2007).</p>
 	  </div>
-	  <div class="section">
-		  <h3>"Slower Food" Retailers: Grocery Stores</h3>
-		  <p class="part">In contrast to unhealthy fast food retailers, there exist more "slow food"-oriented retailers that provide healthier, locally sourced, and fresh produce to consumers in the city. While "slow food" as a transformative process implicates all parts of the supply chain, it is particularly manifestant in retail, in terms of the proliferation of farmers markets and other sellers of local food/produce. Yet "slow food" has often been seen as inaccessible to the poorest, most marginalized urban communities, especially considering the heightened costs associated with "slow food"-oriented retailers. Two examples of "slow food"-oriented types of retailers in the context of Louisville include grocery stores and farmers markets. (It is important to note that, while grocery stores aren't typically considered "slow food" retailers per se, they tend to be associated with at the least the possibility of accessing locally sourced, healthy, and fresh produce and have often been seen as a counterweight to fast food establishments in the same way as the farmers markets that epitomize "slow food.")</p>
-		  <div id="map2container">
-     <div id="map2"></div>
-     <div class="buttontext"><button id="toggleGroceryStores" hidden>Grocery Stores</button></div>
-    <div class="buttontext"><button id="toggleGroceryStoresHeatmap" hidden>Grocery Stores Heatmap</button></div>
-	  <div class="buttontext"><button id="toggleGroceryStoreCensusTracts" hidden>Census Tracts</button></div>
-		  </div>
-	  </div>
+	  
 		<div class="section">
 			<h3>"Slow Food" Retailers: Farmers Markets</h3>
-			<p class="part"></p>
-			<div id="map3"></div>	
+			
+			<div id="map2"></div>	
     <div class="buttontext"><button id="toggleFarmersMarkets" hidden>Farmers Markets</button></div>
     <div class="buttontext"><button id="toggleFarmersMarketsHeatmap" hidden>Farmers Markets Heatmap</button></div>
 	  <div class="buttontext"><button id="toggleFarmerMarketCensusTracts" hidden>Farmers Markets Census Tracts</button></div>
     
 		  <p class="part">As the map shows, while there doesn't seem to be a clear pattern with regard to the spatial distribution of grocery stores and farmers markets in Louisville, inequalities along axes of race and class are present. In even small census tracts with lower proportions of poor and minority residents like Census Tracts 107.2, 99, and 105, there exists a grocery store, whereas in parts of the West End with disproportionately high impoverished and minority populations, there are only one or two grocery stores in the vicinity. It is also important to note the generally greater vehicle ownership in the eastern, privileged parts of the city that allow residents there to travel to grocery stores, even as many in poorer neighborhoods do not have that same option. This inequality with regard to grocery store access is even more pronounced when looking at the distribution of farmers markets, whose high costs are often exclusionary towards those urbanites with the least to spend on food. Yet the few farmers markets that exist in Louisville seem to be relatively dispersed throughout the city, with Census Tracts 59.02, 14, and 127.01 having the presence of at least one farmers market in the vicinity of a highly low-income and majority-minority population. While this in no way indicates that the underprivileged urbanites in these communities are accessing or purchasing from farmers markets at the same rate as affluent residents of Louisville, the high incidence of farmers markets in various parts of Louisville may be attributable to a SNAP program that allows food insecure Louisvillians to purchase from farmers markets at a discounted rate (2018 Local Food Guide, 2018).</p>
+	  </div>
+
+	  <div class="section">
+		  <h3>"Slower Food" Retailers: Grocery Stores</h3>
+		  <div id="map3"></div>	
+		  <p class="part">In contrast to unhealthy fast food retailers, there exist more "slow food"-oriented retailers that provide healthier, locally sourced, and fresh produce to consumers in the city. While "slow food" as a transformative process implicates all parts of the supply chain, it is particularly manifestant in retail, in terms of the proliferation of farmers markets and other sellers of local food/produce. Yet "slow food" has often been seen as inaccessible to the poorest, most marginalized urban communities, especially considering the heightened costs associated with "slow food"-oriented retailers. Two examples of "slow food"-oriented types of retailers in the context of Louisville include grocery stores and farmers markets. (It is important to note that, while grocery stores aren't typically considered "slow food" retailers per se, they tend to be associated with at the least the possibility of accessing locally sourced, healthy, and fresh produce and have often been seen as a counterweight to fast food establishments in the same way as the farmers markets that epitomize "slow food.")</p>
+		  
+     <div id="map3"></div>
+     <div class="buttontext"><button id="toggleGroceryStores" hidden>Grocery Stores</button></div>
+    <div class="buttontext"><button id="toggleGroceryStoresHeatmap" hidden>Grocery Stores Heatmap</button></div>
+	  <div class="buttontext"><button id="toggleGroceryStoreCensusTracts" hidden>Census Tracts</button></div>
+		  
 	  </div>
 
 	  <div class="section">
@@ -305,6 +342,18 @@
 		  zoom: 10,
 		  layers: [OpenStreetMap]
 	  });
+
+	    var map3 = L.map('map1', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+
+         var map4 = L.map('map2', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });  
 
          
 
@@ -763,7 +812,7 @@
 
     grocerystoresheatmapLayer = L.heatLayer(grocerystorescsv, {
         radius: 25
-      }).addTo(map2);
+      }).addTo(map3);
 
 
             $("#toggleGroceryStores").show();
@@ -771,12 +820,12 @@
            $("#toggleGroceryStores").click( function() {
               if (grocerystoresVisible) {
                     grocerystoresVisible = false;
-                    grocerystoresLayer.removeFrom(map2);
+                    grocerystoresLayer.removeFrom(map3);
               }
 
               else {
                   grocerystoresVisible = true;
-                  grocerystoresLayer.addTo(map2);
+                  grocerystoresLayer.addTo(map3);
               }
             });
 
@@ -785,12 +834,12 @@
            $("#toggleGroceryStoresHeatmap").click( function() {
               if (grocerystoresheatmapLayerVisible) {
                    grocerystoresheatmapLayerVisible = false;
-                   grocerystoresheatmapLayer.removeFrom(map2);
+                   grocerystoresheatmapLayer.removeFrom(map3);
               }
 
               else {
                  grocerystoresheatmapLayerVisible = true;
-                  grocerystoresheatmapLayer.addTo(map2);
+                  grocerystoresheatmapLayer.addTo(map3);
               }
             });
 
@@ -825,7 +874,7 @@
 
                       
             }
-            }).addTo(map2);
+            }).addTo(map3);
 
 		  
 
@@ -835,12 +884,12 @@
            $("#toggleGroceryStoreCensusTracts").click( function() {
               if (grocerystorecensustractVisible) {
                     grocerystorecensustractVisible = false;
-                    grocerystorecensustractLayer.removeFrom(map2);
+                    grocerystorecensustractLayer.removeFrom(map3);
               }
 
               else {
                   grocerystorecensustractVisible = true;
-                  grocerystorecensustractLayer.addTo(map2);
+                  grocerystorecensustractLayer.addTo(map3);
               }
             });
 
@@ -889,7 +938,7 @@
 
       foodbanksheatmapLayer = L.heatLayer(foodbankscsv, {
         radius: 25
-      }).addTo(map3);
+      }).addTo(map4);
 
 
             $("#toggleFoodBanks").show();
@@ -897,12 +946,12 @@
            $("#toggleFoodBanks").click( function() {
               if (foodbanksVisible) {
                     foodbanksVisible = false;
-                    foodbanksLayer.removeFrom(map3);
+                    foodbanksLayer.removeFrom(map4);
               }
 
               else {
                   foodbanksVisible = true;
-                  foodbanksLayer.addTo(map3);
+                  foodbanksLayer.addTo(map4);
               }
             });
 
@@ -911,12 +960,12 @@
            $("#toggleFoodBanksHeatmap").click( function() {
               if (foodbanksVisible) {
                    foodbanksheatmapVisible = false;
-                    foodbanksheatmapLayer.removeFrom(map3);
+                    foodbanksheatmapLayer.removeFrom(map4);
               }
 
               else {
                  foodbanksheatmapVisible = true;
-                  foodbanksheatmapLayer.addTo(map3);
+                  foodbanksheatmapLayer.addTo(map4);
               }
             });
 
