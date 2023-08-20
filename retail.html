@@ -849,11 +849,84 @@
 
           });  
 
+	      var response7 = $.ajax({
+            url: "foodbanks.geojson",
+            dataType: "json",
+            success: console.log("Food banks loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	      var foodbankscsv = Array();
+
+          $.when(response7).done(function() {
+   
+            var foodbanksLayer = L.geoJson(response7.responseJSON, {
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Food Bank: " + 
+                            feature.properties.Name + "</b>"); 
+			     fastfoodcsv.push([feature.geometry.coordinates[1], feature.geometry.coordinates[0], 1]);
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+				  radius: 3,
+                            fillColor: "orange",
+                            color: "orange"
+              });
+              },
+            }).addTo(map3);
+
+		     
+
+      foodbanksheatmapLayer = L.heatLayer(foodbankscsv, {
+        radius: 25
+      }).addTo(map3);
+
+
+            $("#toggleFoodBanks").show();
+
+           $("#toggleFoodBanks").click( function() {
+              if (foodbanksVisible) {
+                    foodbanksVisible = false;
+                    foodbanksLayer.removeFrom(map3);
+              }
+
+              else {
+                  foodbanksVisible = true;
+                  foodbanksLayer.addTo(map3);
+              }
+            });
+
+            $("#toggleFoodBanksHeatmap").show();
+
+           $("#toggleFoodBanksHeatmap").click( function() {
+              if (foodbanksVisible) {
+                   foodbanksheatmapVisible = false;
+                    foodbanksheatmapLayer.removeFrom(map3);
+              }
+
+              else {
+                 foodbanksheatmapVisible = true;
+                  foodbanksheatmapLayer.addTo(map3);
+              }
+            });
+
+          });
+
 
 	      var response8 = $.ajax({
             url: "foodbanksincensustracts.geojson",
             dataType: "json",
-            success: console.log("Food Banks loaded."),
+            success: console.log("Food Banks in Census Tracts loaded."),
             error: function(xhr) {
               alert(xhr.statusText);
             }
