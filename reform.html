@@ -101,6 +101,12 @@
 		justify-content: center;
 	}
 
+	    #map1 {
+		    height: 400px;
+		    margin-right: 20px;
+		    margin-left: 20px;
+	    }
+
 	      button {
 		background-color: white; 
 		border: solid 2px;
@@ -175,7 +181,7 @@
 	
 	var organizationsVisible = true;
 	var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
-          var map = L.map('map', {
+          var map1 = L.map('map1', {
 		  center: [38.2527, -85.7585],
 		  zoom: 10,
 		  layers: [OpenStreetMap]
@@ -221,11 +227,11 @@
 			  "EWSR": Esri_WorldShadedRelief
                          };
 
-          L.control.layers(baseMaps).addTo(map);
+          L.control.layers(baseMaps).addTo(map1);
 
 	
 
-	 var response1 = $.ajax({
+	 var response = $.ajax({
             url: "organizations.geojson",
             dataType: "json",
             success: console.log("Organizations loaded."),
@@ -234,19 +240,13 @@
             }
           });
 
-	    var map1 = L.map('map1', {
-		  center: [40, -35],
-		  zoom: 2,
-		  layers: [Esri_WorldTerrain]
-	  });
-
-	   L.control.layers(baseMaps).addTo(map1);  
+	    
 
 	      
 
-          $.when(response1).done(function() {
+          $.when(response).done(function() {
    
-            var organizationsLayer = L.geoJson(response1.responseJSON, {
+            var organizationsLayer = L.geoJson(response.responseJSON, {
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup('Company: ' + 
