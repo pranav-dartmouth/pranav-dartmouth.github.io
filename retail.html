@@ -848,7 +848,60 @@
            
 
           });  
+
+
+	      var response8 = $.ajax({
+            url: "foodbanksincensustracts.geojson",
+            dataType: "json",
+            success: console.log("Food Banks loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	     $.when(response8).done(function() {
    
+            var foodbanksLayer = L.geoJson(response8.responseJSON, {
+
+		    style: foodbankSymbology,
+              
+                      onEachFeature: function(feature, layer) {
+                            layer.bindPopup("In " + 
+                            feature.properties.NAME1 + "...<br>" + 
+				"There are " + feature.properties.NUMPOINTS + " food banks/distribution centers.<br>" +
+				"Meanwhile...<br>" + 
+				"The percentage of the population in poverty is " +
+				feature.properties.pctpov + "%<br>" +
+				"The percentage of the population who is Black and/or Hispanic is " +
+				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				"The percentage of the population who is on SNAP is " +
+				feature.properties.pctSNAP + "%")
+
+                      
+            }
+            }).addTo(map4);
+
+		  
+
+
+            $("#toggleFoodBanksCensusTracts").show();
+
+           $("#toggleFoodBanksCensusTracts").click( function() {
+              if (foodbankscensustractsVisible) {
+                    foodbankscensustractsVisible = false;
+                    foodbankscensustractsLayer.removeFrom(map4);
+              }
+
+              else {
+                  foodbankscensustractsVisible = true;
+                  foodbankscensustractsLayer.addTo(map4);
+              }
+            });
+
+           
+           
+
+          });  
               
       </script>
   </body>
