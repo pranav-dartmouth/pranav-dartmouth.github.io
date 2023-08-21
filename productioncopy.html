@@ -480,14 +480,14 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 
 	        var info = L.control();
 
-info.onAdd = function (map) {
+info.onAdd = function (map1) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
     this.update();
     return this._div;
 };
 
 info.update = function (props) {
-    this._div.innerHTML = '<h3>Number of Food Manufacturers</h3>' +  (props ?
+    this._div.innerHTML = '<h3>Number of CSAs</h3>' +  (props ?
         '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' food manufacturing facilities<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
 					: 'Hover over a census tract');
 };
