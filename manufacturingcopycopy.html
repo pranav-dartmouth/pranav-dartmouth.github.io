@@ -290,7 +290,8 @@
 			  "EWSR": Esri_WorldShadedRelief
                          };
 
-         
+         var overlayMaps;
+	      var layerControl;
 
 
 
@@ -481,13 +482,13 @@
             });
 	    */
 
-		  var overlayMaps = {
+		  overlayMaps = {
     "Manufacturing Locations": manufacturersLayer,
 "Manufacturing Heatmap": manufacturersheatmapLayer,
 "Manufacturing Census Tracts": manufacturerspercensustractsLayer
 };
 
-var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 
           });
