@@ -511,14 +511,16 @@ info.addTo(map);
 		   $("#toggleCensusTracts").show();
 
            $("#toggleCensusTracts").click( function() {
-              if (manufacturersVisible) {
+              if (manufacturerspercensustractsVisible) {
                     manufacturerspercensustractsVisible = false;
                     manufacturerspercensustractsLayer.removeFrom(map);
+		      info.removeFrom(map);
               }
 
               else {
                   manufacturerspercensustractsVisible = true;
                    manufacturerspercensustractsLayer.addTo(map);
+		      info.addTo(map);
               }
             });
 
