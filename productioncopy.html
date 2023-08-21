@@ -509,7 +509,7 @@ info.update(layer.feature.properties);
 }
 	     
 	      
-	      function resetHighlightcensustracts(e) {
+	      function resetHighlightcsas(e) {
     csascensustractsLayer.resetStyle(e.target);
 		         info.update();
 
@@ -522,10 +522,10 @@ info.update(layer.feature.properties);
     map.fitBounds(e.target.getBounds());
 }
 
-	      function onEachFeaturecensustracts(feature, layer) {
+	      function onEachFeaturecsas(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
-        mouseout: resetHighlightcensustracts,
+        mouseout: resetHighlightcsas,
         click: zoomToFeature
     });
 
@@ -703,7 +703,7 @@ info1.update = function (props) {
 
 		    style: csaSymbology,
               
-                      onEachFeature: onEachFeature
+                      onEachFeature: onEachFeaturecsas
             }).addTo(map1);
 
 		    info.addTo(map1);
@@ -831,7 +831,7 @@ info1.update = function (props) {
                     
             }).addTo(map2);
 
-info2.addTo(map2);
+info1.addTo(map2);
 
 
 
