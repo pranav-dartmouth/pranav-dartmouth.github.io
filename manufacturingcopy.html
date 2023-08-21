@@ -508,6 +508,22 @@ info.update(layer.feature.properties);
 
 info.addTo(map);
 
+		   $("#toggleCensusTracts").show();
+
+           $("#toggleCensusTracts").click( function() {
+              if (manufacturersVisible) {
+                    manufacturerspercensustractsVisible = false;
+                    manufacturerspercensustractsLayer.removeFrom(map);
+              }
+
+              else {
+                  manufacturerspercensustractsVisible = true;
+                   manufacturerspercensustractsLayer.addTo(map);
+              }
+            });
+
+		  
+
    
             
               
