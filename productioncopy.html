@@ -605,8 +605,8 @@ info1.update(layer1.feature.properties);
     map.fitBounds(e.target.getBounds());
 }
 
-	      function onEachFeatureurbanfarms(feature, layer1) {
-    layer1.on({
+	      function onEachFeatureurbanfarms(feature, layer) {
+    layer.on({
         mouseover: highlightFeatureurbanfarms,
         mouseout: resetHighlighturbanfarms,
         click: zoomToFeatureurbanfarms
