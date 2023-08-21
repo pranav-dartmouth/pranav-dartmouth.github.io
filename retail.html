@@ -788,14 +788,14 @@
                       onEachFeature: function(feature, layer) {
                             layer.bindPopup("In " + 
                             feature.properties.NAME1 + "...<br>" + 
-				"There are " + feature.properties.NUMPOINTS + " fast food establishments.<br>" +
+				"There are " + Math.round(feature.properties.NUMPOINTS) + " fast food establishments.<br>" +
 				"Meanwhile...<br>" + 
 				"The percentage of the population in poverty is " +
-				feature.properties.pctpov + "%<br>" +
+				Math.round(feature.properties.pctpov) + "%<br>" +
 				"The percentage of the population who is Black and/or Hispanic is " +
-				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				Math.round(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
 				"The percentage of the population who is on SNAP is " +
-				feature.properties.pctSNAP + "%")
+				Math.round(feature.properties.pctSNAP) + "%")
 
                       
             }
@@ -916,14 +916,14 @@
                       onEachFeature: function(feature, layer) {
                             layer.bindPopup("In " + 
                             feature.properties.NAME1 + "...<br>" + 
-				"There are " + feature.properties.NUMPOINTS + " farmers markets.<br>" +
+				"There are " + Math.round(feature.properties.NUMPOINTS) + " farmers markets.<br>" +
 				"Meanwhile...<br>" + 
 				"The percentage of the population in poverty is " +
-				feature.properties.pctpov + "%<br>" +
+				Math.round(feature.properties.pctpov) + "%<br>" +
 				"The percentage of the population who is Black and/or Hispanic is " +
-				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				Math.round(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
 				"The percentage of the population who is on SNAP is " +
-				feature.properties.pctSNAP + "%")
+				Math.round(feature.properties.pctSNAP) + "%")
 
                       
             }
@@ -1041,14 +1041,14 @@
                       onEachFeature: function(feature, layer) {
                             layer.bindPopup("In " + 
                             feature.properties.NAME1 + "...<br>" + 
-				"There are " + feature.properties.NUMPOINTS + " grocery stores.<br>" +
+				"There are " + Math.round(feature.properties.NUMPOINTS) + " grocery stores.<br>" +
 				"Meanwhile...<br>" + 
 				"The percentage of the population in poverty is " +
-				feature.properties.pctpov + "%<br>" +
+				Math.round(feature.properties.pctpov) + "%<br>" +
 				"The percentage of the population who is Black and/or Hispanic is " +
-				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				Math.round(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
 				"The percentage of the population who is on SNAP is " +
-				feature.properties.pctSNAP + "%")
+				Math.round(feature.properties.pctSNAP) + "%")
 
                       
             }
@@ -1168,14 +1168,14 @@
                       onEachFeature: function(feature, layer) {
                             layer.bindPopup("In " + 
                             feature.properties.NAME1 + "...<br>" + 
-				"There are " + feature.properties.NUMPOINTS + " food banks/distribution centers.<br>" +
+				"There are " + Math.round(feature.properties.NUMPOINTS) + " food banks/distribution centers.<br>" +
 				"Meanwhile...<br>" + 
 				"The percentage of the population in poverty is " +
-				feature.properties.pctpov + "%<br>" +
+				Math.round(feature.properties.pctpov) + "%<br>" +
 				"The percentage of the population who is Black and/or Hispanic is " +
-				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				Math.round(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
 				"The percentage of the population who is on SNAP is " +
-				feature.properties.pctSNAP + "%")
+				Math.round(feature.properties.pctSNAP) + "%")
 
                       
             }
