@@ -586,7 +586,7 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 
 	       var legend = L.control({position: 'bottomright'});
 
-	      legend.onAdd = function (map) {
+	      legend.onAdd = function (map1) {
 
 		      var div = L.DomUtil.create('div', 'info legend'),
 			      grades = [0, 1],
@@ -601,6 +601,8 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 		      return div;
 
 	      };
+
+	      legend.addTo(map1);
 
 
           $.when(response1).done(function() {
