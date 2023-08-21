@@ -334,9 +334,10 @@
 
 		return {
 		 fillColor: polygoncolor,
-		color: polygoncolor,
+		color: "black",
 		fillOpacity: polygonopacity,
-		opacity: polygonopacity
+		opacity: polygonopacity,
+			dashArray: "3"
 			
 	       };	       
 	      }
@@ -353,7 +354,7 @@
             }
           });
 
-	      var manufacturerscsv = Array();
+	   
 
           $.when(response1).done(function() {
    
@@ -364,7 +365,7 @@
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Food Manufacturer/Processor: " + 
                             feature.properties.Name + "</b>"); 
-			     manufacturerscsv.push([feature.geometry.coordinates[1], feature.geometry.coordinates[0], 1]);
+			    
 
                        },
 
@@ -382,12 +383,7 @@
               },
             }).addTo(map);
 
-		     console.log(manufacturerscsv);
-
-      manufacturersheatmapLayer = L.heatLayer(manufacturerscsv, {
-        radius: 25
-      }).addTo(map);
-
+		   
 
             $("#toggleManufacturers").show();
 
@@ -403,19 +399,7 @@
               }
             });
 
-            $("#toggleManufacturersHeatmap").show();
-
-           $("#toggleManufacturersHeatmap").click( function() {
-              if (manufacturersheatmapVisible) {
-                    manufacturersheatmapVisible = false;
-                    manufacturersheatmapLayer.removeFrom(map);
-              }
-
-              else {
-                  manufacturersheatmapVisible = true;
-                   manufacturersheatmapLayer.addTo(map);
-              }
-            });
+            
 
           });
 
