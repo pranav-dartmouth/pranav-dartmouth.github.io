@@ -442,6 +442,12 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 	       };	       
 	      }
 
+	        function getColor(d) {
+		 return     d > 0 ? "#a6bddb" : 
+		       		
+			      "#ffffff";
+	      }
+
 	      function urbanfarmsSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
