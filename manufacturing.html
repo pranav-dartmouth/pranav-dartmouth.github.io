@@ -342,6 +342,18 @@
 
 	      };
 
+	       function getColor(d) {
+		 return     d > 7 ? "#a50f15" : 
+		       		d > 6 ? "#a50f15" : 
+			      d > 5 ? "#a50f15" :
+			      d > 4 ? "#de2d26" :
+			      d > 3 ? "#fb6a4a" :
+			       d > 2 ? "#fc9272" :
+			       d > 1 ? "#fcbba1" :
+			       d > 0 ? "#fee5d9" :
+			      "#ffffff";
+	      }
+
 
 	   function manufacturingSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
