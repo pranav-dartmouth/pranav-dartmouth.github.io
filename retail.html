@@ -582,6 +582,25 @@
 
 	      }
 
+	       var legend1 = L.control({position: 'bottomright'});
+
+	      legend1.onAdd = function (map1) {
+
+		      var div = L.DomUtil.create('div', 'info legend'),
+			      grades = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+			      labels = [];
+
+		      for (var i = 0; i < grades.length; i++) {
+			      div.innerHTML +=
+			'<i style="background:' + getColorfastfood(grades[i]) + '"></i> ' +
+				      (grades[i] ? grades[i] + '<br>' : '<br>');
+		      }
+
+		      return div;
+
+	      };
+legend1.addTo(map1);
+	      
 	  function fastfoodSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
@@ -639,6 +658,25 @@
 
 	      }
 
+	       var legend2 = L.control({position: 'bottomright'});
+
+	      legend2.onAdd = function (map2) {
+
+		      var div = L.DomUtil.create('div', 'info legend'),
+			      grades = [0, 1, 2],
+			      labels = [];
+
+		      for (var i = 0; i < grades.length; i++) {
+			      div.innerHTML +=
+			'<i style="background:' + getColorfarmersmarkets(grades[i]) + '"></i> ' +
+				      (grades[i] ? grades[i] + '<br>' : '<br>');
+		      }
+
+		      return div;
+
+	      };
+legend2.addTo(map2);
+
 		    function farmermarketSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
@@ -681,6 +719,25 @@
 	      
 
 	      }
+
+	       var legend3 = L.control({position: 'bottomright'});
+
+	      legend3.onAdd = function (map3) {
+
+		      var div = L.DomUtil.create('div', 'info legend'),
+			      grades = [0, 1, 2, 3, 4, 5],
+			      labels = [];
+
+		      for (var i = 0; i < grades.length; i++) {
+			      div.innerHTML +=
+			'<i style="background:' + getColorgrocerystores(grades[i]) + '"></i> ' +
+				      (grades[i] ? grades[i] + '<br>' : '<br>');
+		      }
+
+		      return div;
+
+	      };
+legend3.addTo(map3);
 
 	       function grocerystoreSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
@@ -738,6 +795,25 @@
 	      
 
 	      }
+
+	       var legend4 = L.control({position: 'bottomright'});
+
+	      legend4.onAdd = function (map4) {
+
+		      var div = L.DomUtil.create('div', 'info legend'),
+			      grades = [0, 1, 2, 3],
+			      labels = [];
+
+		      for (var i = 0; i < grades.length; i++) {
+			      div.innerHTML +=
+			'<i style="background:' + getColorfoodbanks(grades[i]) + '"></i> ' +
+				      (grades[i] ? grades[i] + '<br>' : '<br>');
+		      }
+
+		      return div;
+
+	      };
+legend4.addTo(map4);
 	      
 
 	       function foodbankSymbology(feature) {
