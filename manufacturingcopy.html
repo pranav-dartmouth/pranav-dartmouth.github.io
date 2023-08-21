@@ -309,7 +309,37 @@
 	       
 	       L.control.layers(baseMaps).addTo(map);
 
-	      
+	      function getColor(d) {
+		      if (count >= 0) {
+			 return "#FFFFFF";
+		      }
+		       if (count >= 1) {
+			  return "#fee5d9";     
+		       }
+		       if (count >= 2) {
+			    return "#fcbba1";   
+		       }
+		       if (count >= 3) {
+			      return "#fc9272"; 
+		       }
+		       if (count >= 4) {
+			       return #fb6a4a";
+		       }
+		       if (count >= 5) {
+			       return "#de2d26";
+		       }
+		       if (count >= 6) {
+			      return "#a50f15";
+		       }
+		       if (count >= 7) {
+			       return "#a50f15";
+		       }
+		      if (count >= 8) {
+ 				return "#a50f15";
+		      }
+		      
+
+	      }
 
 	   function manufacturingSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
@@ -408,6 +438,29 @@ info.update(layer.feature.properties);
 
 		      
 }
+
+	      var legend = L.control({position: 'bottomright'});
+
+	      legend.onAdd = function (map) {
+
+		      var div = L.DomUtilcreate('div', 'info legend'),
+			      grades = [0, 1, 2, 3, 4, 5, 6, 7, 8],
+			      labels = [];
+
+		      for (var i = 0; i < grades.length; i++) {
+			      div.innerHTML +=
+			'<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+				      grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+		      }
+
+		      return div;
+
+	      };
+
+	      legend.addTo(map);
+	      
+
+		      
 
 	     
 
