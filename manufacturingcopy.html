@@ -491,13 +491,13 @@ info.update(layer.feature.properties);
           });
 
 	     
-
+	var geojson;
 	    
           $.when(response2).done(function() {
 
 		  /* Source of code: Leaflet */
 
-		  manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
+		  geojson = L.geoJson(response2.responseJSON, {
     		style: manufacturingSymbology,
     		onEachFeature: onEachFeature
 		}).addTo(map);
