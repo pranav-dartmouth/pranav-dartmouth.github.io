@@ -306,13 +306,8 @@
 			  "EWSR": Esri_WorldShadedRelief
                          };
 
-	        var overlayMaps = {
-		      "Manufacturing": manufacturersLayer,
-		      "Manufacturing HM": manufacturersheatmapLayer,
-		      "Manufacturers/Census Tract": manufacturerspercensustractsLayer
-	      };
-
-	       L.control(baseMaps, overlayMaps).addTo(map);
+	       
+	       L.control(baseMaps).addTo(map);
 
 	      
 
