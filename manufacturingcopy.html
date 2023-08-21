@@ -370,7 +370,7 @@ info.onAdd = function (map) {
 
 info.update = function (props) {
     this._div.innerHTML = '<h3>Number of Food Manufacturers</h3>' +  (props ?
-        '<b>' + props.NAME1 + '</b><br />' + props.NUMPOINTS + ' food manufacturing facilities<br />' + props.pctpov + '% of the population in poverty<br />' + (props.pctblack + props.pcthispani) + '% of the population is Black/Hispanic<br />' + props.pctSNAP + '% of the population on SNAP'
+        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' food manufacturing facilities<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
 					: 'Hover over a census tract');
 };
 
