@@ -532,21 +532,21 @@ info.update(layer.feature.properties);
 		      
 }
 
-	         var info1 = L.control();
+	      var info1 = L.control();
 
 info1.onAdd = function (map2) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this._div = L.DomUtil.create('div', 'info1'); // create a div with a class "info"
     this.update();
     return this._div;
 };
 
 info1.update = function (props) {
-    this._div.innerHTML = '<h3>Number of Urban Farms</h3>' +  (props ?
-        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' Urban Farms<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
+    this._div.innerHTML = '<h3>Number of CSAs</h3>' +  (props ?
+        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' CSAs<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
 					: 'Hover over a census tract');
 };
 
-	         function highlightFeature(e) {
+	      function highlightFeature(e) {
     var layer = e.target;
 
     layer.setStyle({
@@ -561,13 +561,19 @@ info1.update = function (props) {
     }
 info1.update(layer.feature.properties);
 }
-
-
-	         function resetHighlighturbanfarms(e) {
+	     
+	      
+	      function resetHighlighturbanfarms(e) {
     urbanfarmscensustractsLayer.resetStyle(e.target);
 		         info1.update();
 
 		      
+}
+
+	      
+
+	      function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
 }
 
 	      function onEachFeatureurbanfarms(feature, layer) {
@@ -579,6 +585,7 @@ info1.update(layer.feature.properties);
 
 		      
 }
+
 
 
 	        var response = $.ajax({
