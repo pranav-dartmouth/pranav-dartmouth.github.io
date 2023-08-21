@@ -492,7 +492,7 @@ info.update = function (props) {
 					: 'Hover over a census tract');
 };
 
-	      function highlightFeature(e) {
+	      function highlightFeaturecsas(e) {
     var layer = e.target;
 
     layer.setStyle({
@@ -518,15 +518,15 @@ info.update(layer.feature.properties);
 
 	      
 
-	      function zoomToFeature(e) {
+	      function zoomToFeaturecsas(e) {
     map.fitBounds(e.target.getBounds());
 }
 
 	      function onEachFeaturecsas(feature, layer) {
     layer.on({
-        mouseover: highlightFeature,
+        mouseover: highlightFeaturecsas,
         mouseout: resetHighlightcsas,
-        click: zoomToFeature
+        click: zoomToFeaturecsas
     });
 
 		      
@@ -546,10 +546,10 @@ info1.update = function (props) {
 					: 'Hover over a census tract');
 };
 
-	      function highlightFeature(e) {
-    var layer = e.target;
+	      function highlightFeatureurbanfarms(e) {
+    var layer1 = e.target;
 
-    layer.setStyle({
+    layer1.setStyle({
         weight: 5,
         color: '#666',
         dashArray: '',
@@ -557,9 +557,9 @@ info1.update = function (props) {
     });
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
+        layer1.bringToFront();
     }
-info1.update(layer.feature.properties);
+info1.update(layer1.feature.properties);
 }
 	     
 	      
@@ -572,15 +572,15 @@ info1.update(layer.feature.properties);
 
 	      
 
-	      function zoomToFeature(e) {
+	      function zoomToFeatureurbanfarms(e) {
     map.fitBounds(e.target.getBounds());
 }
 
-	      function onEachFeatureurbanfarms(feature, layer) {
-    layer.on({
-        mouseover: highlightFeature,
+	      function onEachFeatureurbanfarms(feature, layer1) {
+    layer1.on({
+        mouseover: highlightFeatureurbanfarms,
         mouseout: resetHighlighturbanfarms,
-        click: zoomToFeature
+        click: zoomToFeatureurbanfarms
     });
 
 		      
