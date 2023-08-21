@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Food Manufacturing in Louisville!</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+
+      
+      <style>
+          body {
+            background-color: #E2DFCB;
+		  font-family: Arial, sans-serif;
+		   box-sizing: border-box;
+          }
+
+	       .navigation {
+				background-color: #A6674C;
+				top: 0;
+				left: 0;
+				margin: 0;
+				padding: 0;
+				position: fixed;
+				vertical-align: top;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				z-index: 3;
+			}
+				
+			.navigationleftside {
+				list-style-type: none;
+			}
+
+			.navigationrightside {
+				list-style-type: none;
+				display: flex;
+			}
+
+			nav a {
+				color: white;
+				text-decoration: none;
+				padding: 10px;
+			}
+
+			nav a:hover {
+				font-weight: bold;
+
+			}
+
+			nav a:visited {
+				color: white;
+				text-decoration: none;
+				font-weight: normal;
+			}
+
+			nav a:active {
+				font-weight: bold;
+			}
+
+          h1 {
+            text-align: center;
+          }
+          #map {
+              height: 400px;
+              margin-left: 20px;
+		  margin-right: 20px;
+		  z-index: 1;
+		  
+              
+          }
+
+	      .buttontext {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	      button {
+		background-color: white; 
+		border: solid 2px;
+		font-weight: bold;
+		font-size: 15px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-right: 10px;
+		padding-left: 10px;
+		margin-bottom: 5px;
+		margin-right: auto;
+		margin-left: auto;
+		border-radius: 15px;
+		text-align: center;
+		text-decoration: none;
+		width: 200px;
+			}
+
+	      #toggleManufacturers {
+		margin-top: 5px;
+		border-color: red;
+		color: red;
+	      }
+
+	      #toggleManufacturersHeatmap {
+			margin-top: 5px;
+			border-color: red;
+			color: red;
+	      }
+
+	      #toggleCensusTracts {
+			margin-top: 5px;
+			border-color: red;
+			color: red;
+	      }
+
+	       .section, #firstsection {
+		      padding-top: 30px;
+		      margin-bottom: 30px;
+		      
+	      }
+
+	      .section {
+		      background-color: white;
+		      margin-right: auto;
+		      margin-left: auto;
+		      width: 50%;
+		      border-radius: 20px;
+		      padding-bottom: 30px;
+		      border-radius: 20px;
+	      }
+
+	      
+
+	      h1, h3 {
+		      text-align: center;
+	      }
+
+	      .part {
+		      
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+	      }
+
+	      #threeimagesinasingleline {
+				display: flex;
+		      		
+		      box-sizing: border-box;
+			}
+
+	      #aakimage, #drpepperimage, #fritolayimage {
+			height: 80px;
+		      width: 75%;
+	      }
+
+			.eachimage {
+				flex: 33%;
+				padding: 5px;
+				
+			}
+
+	    
+        
+      </style>
+      
+  </head>
+  <body>
+	   <nav>
+			<div class="navigation">
+			<div>
+				<ul class="navigationleftside">
+					<li><a href="louisvillefoodsystemfinal.html">Louisville's Food System</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul class="navigationrightside">
+					<li><a href="overview.html" class="navlinks">Overview</a></li>
+					<li><a href="production.html" class="navlinks">Production</a></li>
+					<li><a href="manufacturing.html" class="navlinks">Manufacturing</a></li>
+					<li><a href="retail.html" class="navlinks">Retail</a></li>
+					
+					<li><a href="reform.html" class="navlinks">Reform</a></li>
+				</ul>
+			</div>
+			</div>
+		</nav>
+	<div id="firstsection">
+      <h1>Food Manufacturing in Louisville</h1>
+	</div>
+	<div class="section">
+		<h3>Manufacturing and Processing Hub</h3>
+		<p class="part">Despite the fact that food production in Louisville is quite limited, Louisville has been considered a food manufacturing and processing hub for quite some time. The city even describes itself on <a href="https://louisvilleky.gov/government/economic-development/food-and-beverage" target="_blank">its website</a> as "a hub for food and beverage companies of all sizes, from local to global, including...manufacturing, beverage development..."<br></p>
+		<p class="part">Some of the main food processing and manufacturing companies with operations in Louisville include:</p>
+		<div id="threeimagesinasingleline"> 
+				<div class="eachimage">
+					
+						<img src="aak.png" id="aakimage" alt="Picture of AAK logo">
+						
+					
+				</div>
+				<div class="eachimage">
+					
+						<img src="drpepper.png" id="drpepperimage" alt="Picture of Dr. Pepper">
+					
+				</div>
+				<div class="eachimage">
+					
+						<img src="fritolay.png" id="fritolayimage" alt="Picture of Frito Lay">
+					
+				</div>
+			
+			
+		</div>
+	</div>
+		<div class="section">
+		<h3>Labor Pool</h3>
+		<p class="part">Yet, despite being crucial to the city's economy, food manufacturing and processing industry have far from equally distributed impacts. In other urban contexts where the food manufacturing and processing industries have a large presence (such as <a href="https://ijsaf.org/index.php/ijsaf/article/view/239" target="blank">in the cities of North Carolina</a>), a low-income, minority, and immigrant labor pool disproportionately drives the industry. And both manufacturers and processors, particularly larger and more corporatized ones, have faced significant scrutiny for the treatment of and wages given to these vulnerable workers.</p>
+		<p class="part" style="text-align:center;font-weight:bold;">What can we tell about the inequality in the food manufacturing and processing industry in Louisville?</p>
+	
+		
+      <div id="map"></div>
+     <div class="buttontext"><button id="toggleManufacturers" hidden>Food Manufacturers</button></div><br>
+     <div class="buttontext"><button id="toggleManufacturersHeatmap" hidden>Food Manufacturers Heatmap</button></div>
+	<div class="buttontext"><button id="toggleCensusTracts" hidden>Census Tracts</button></div>
+
+<p class="part">As the map shows, there seems to be at least a slight concentration of Louisville's food manufacturing plants in census tracts with high poverty rates and high minority populations. A few examples include Census Tracts 91.03 (which has a 7.5% poverty rate and 35.7% Black/Hispanic population), 127.03 (which has a 30% Black/Hispanic population), 50 (which has a 27% poverty rate and 47.8% Black/Hispanic population), 128.2 (which has a 13% poverty rate and 62.9% Black/Hispanic population), and 24.02 (which has a 12% poverty rate and 71% Black/Hispanic population). The fact that so many of these food manufacturing and processing plants are concentrated in the most underprivileged parts of the city means that they are likely (though not definitively) being staffed by low-income and marginalized workers from surrounding communities.<br><br>It is important to note, though, that the pattern is not absolute. One significant outlier in the data: Census Tract 111.6 (which has a whopping 8 food manufacturing and processing facilities within it) has a negligible poverty rate and only a 17% Black/Hispanic population. But the fact that food processing and manufacturing facilities are sometimes sited in places such as these doesn't in any way preclude them from (likely) still being serviced by a low-inome and underprivileged labor pool, as is true across the food manufacturing and processing industry in Louisville.<br><br>Overall, we can say that food manufacturing and processing facilities are somewhat<span style="font-weight:bold;"> unequally spatialized in Louisville</span>, but there are notable counterexamples to that pattern and the exact implications for Louisville's food system are inconclusive. </p>
+	
+</div>
+
+	  <div class="section">
+		  <h3>Case in Point: Butchertown</h3>
+		  <div id="map1"></div>
+	  </div>  
+
+
+      <script>
+        
+          var manufacturersLayer;
+          var manufacturersVisible = true;
+	var manufacturersheatmapLayer;
+	      var manufacturersheatmapVisible = true;
+	      var manufacturerspercensustractsLayer;
+	      var manufacturerspercensustractsVisible = true;
+	  var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+          var map = L.map('map', {
+		  center: [38.2527, -85.7585],
+		  zoom: 10,
+		  layers: [OpenStreetMap]
+	  });
+        
+         
+
+           var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
+
+          
+
+          var USGS_USImageryTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        maxZoom: 20,
+	        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          });
+
+	
+	      var Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+});
+
+	      var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
+});
+
+	      var Esri_WorldShadedRelief = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+	maxZoom: 13
+});
+
+          var baseMaps = {"OSM" : OpenStreetMap,
+			  "CTBD" : CartoDB_DarkMatter,
+                          "USGS" : USGS_USImageryTopo,
+			  "EWGC": Esri_WorldGrayCanvas,
+			  "EWT": Esri_WorldTerrain,
+			  "EWSR": Esri_WorldShadedRelief
+                         };
+
+         var overlayMaps = {
+    "Manufacturing Locations": manufacturersLayer,
+"Manufacturing Heatmap": manufacturersheatmapLayer,
+"Manufacturing Census Tracts": manufacturerspercensustractsLayer
+};
+
+
+
+	   function manufacturingSymbology(feature) {
+                var count = feature.properties.NUMPOINTS;
+		var polygoncolor;
+		var polygonopacity;
+
+		if (count >= 0) {
+			polygoncolor = "#FFFFFF";
+			polygonopacity = 1;
+
+		}
+
+		if (count >= 1) {
+			polygoncolor = "#fee5d9";
+			polygonopacity = 1;
+
+		}
+
+		if (count >= 2) {
+			polygoncolor = "#fcbba1";
+			polygonopacity = 1;
+		}
+
+		if (count >= 3) {
+			polygoncolor = "#fc9272";
+			polygonopacity = 1;
+		}
+		  if (count >= 4) {
+			polygoncolor = "#fb6a4a";
+			polygonopacity = 1;
+		}
+		   if (count >= 5) {
+			polygoncolor = "#a50f15";
+			polygonopacity = 1;
+		}
+		   if (count >= 6) {
+			polygoncolor = "#a50f15";
+			polygonopacity = 1;
+		}
+		    if (count >= 7) {
+			polygoncolor = "#a50f15";
+			polygonopacity = 1;
+		}
+		    if (count >= 8) {
+			polygoncolor = "#a50f15";
+			polygonopacity = 1;
+		}
+
+		return {
+		 fillColor: polygoncolor,
+		color: polygoncolor,
+		fillOpacity: polygonopacity,
+		opacity: polygonopacity
+			
+	       };	       
+	      }
+
+         
+         
+
+          var response1 = $.ajax({
+            url: "manufacturers.geojson",
+            dataType: "json",
+            success: console.log("Manufacturers loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	      var manufacturerscsv = Array();
+
+          $.when(response1).done(function() {
+   
+            var manufacturersLayer = L.geoJson(response1.responseJSON, {
+
+		   
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("<b>Food Manufacturer/Processor: " + 
+                            feature.properties.Name + "</b>"); 
+			     manufacturerscsv.push([feature.geometry.coordinates[1], feature.geometry.coordinates[0], 1]);
+
+                       },
+
+                      pointToLayer: function (feature, latlng) { 
+                          return L.circleMarker(latlng, {
+                            
+                         
+                          weight: 1,
+                          opacity: 1,
+                          fillOpacity: 1,
+			radius: 3,
+                            fillColor: "red",
+                            color: "red"
+              });
+              },
+            });
+
+		     console.log(manufacturerscsv);
+
+      manufacturersheatmapLayer = L.heatLayer(manufacturerscsv, {
+        radius: 25
+      });
+
+
+            $("#toggleManufacturers").show();
+
+           $("#toggleManufacturers").click( function() {
+              if (manufacturersVisible) {
+                    manufacturersVisible = false;
+                    manufacturersLayer.removeFrom(map);
+              }
+
+              else {
+                  manufacturersVisible = true;
+                   manufacturersLayer.addTo(map);
+              }
+            });
+
+            $("#toggleManufacturersHeatmap").show();
+
+           $("#toggleManufacturersHeatmap").click( function() {
+              if (manufacturersheatmapVisible) {
+                    manufacturersheatmapVisible = false;
+                    manufacturersheatmapLayer.removeFrom(map);
+              }
+
+              else {
+                  manufacturersheatmapVisible = true;
+                   manufacturersheatmapLayer.addTo(map);
+              }
+            });
+
+          });
+
+
+	      var response2 = $.ajax({
+            url: "foodmanufacturersincensustracts.geojson",
+            dataType: "json",
+            success: console.log("Food manufacturers in census tracts loaded."),
+            error: function(xhr) {
+              alert(xhr.statusText);
+            }
+          });
+
+	    
+          $.when(response2).done(function() {
+   
+            var manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
+
+		    style: manufacturingSymbology,
+              
+                     onEachFeature: function(feature, layer) {
+                            layer.bindPopup("In " + 
+                            feature.properties.NAME1 + "...<br>" + 
+				"There are " + feature.properties.NUMPOINTS + " food manufacturing and processing sites.<br>" +
+				"Meanwhile...<br>" + 
+				"The percentage of the population in poverty is " +
+				feature.properties.pctpov + "%<br>" +
+				"The percentage of the population who is Black and/or Hispanic is " +
+				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				"The percentage of the population who is on SNAP is " +
+				feature.properties.pctSNAP + "%")
+
+                      
+            }
+	    });
+
+		    
+            $("#toggleCensusTracts").show();
+
+           $("#toggleCensusTracts").click( function() {
+              if (manufacturerspercensustractsVisible) {
+                    manufacturerspercensustractsVisible = false;
+                    manufacturerspercensustractsLayer.removeFrom(map);
+              }
+
+              else {
+                  manufacturerspercensustractsVisible = true;
+                   manufacturerspercensustractsLayer.addTo(map);
+              }
+            });
+
+var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+          });
+	      
+   
+              
+      </script>
+  </body>
+</html>
