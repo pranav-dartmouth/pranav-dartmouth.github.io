@@ -442,7 +442,7 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 	       };	       
 	      }
 
-	        function getColor(d) {
+	        function getColorcsas(d) {
 		 return     d > 0 ? "#a6bddb" : 
 		       		
 			      "#ffffff";
@@ -482,6 +482,13 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 		opacity: polygonopacity
 			
 	       };	       
+	      }
+
+	       function getColorurbanfarms(d) {
+		 return     d > 2 ? "#2ca25f" : 
+		       	    d > 1 ? "#99d8c9" :
+			    d > 0 ? "#e5f5f9" :
+			      "#FFFFFF"
 	      }
 
 	        var response = $.ajax({
