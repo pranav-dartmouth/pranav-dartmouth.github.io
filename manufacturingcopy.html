@@ -304,13 +304,13 @@
 			  "EWSR": Esri_WorldShadedRelief
                          };
 
-	      var overlayMaps = {
+	        var overlayMaps = {
 		      "Manufacturing": manufacturersLayer,
 		      "Manufacturing HM": manufacturersheatmapLayer,
 		      "Manufacturers/Census Tract": manufacturerspercensustractsLayer
 	      };
 
-	      L.control.layers(baseMaps, overlayMaps).addTo(map);
+	      
 
 	   function manufacturingSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
@@ -455,6 +455,10 @@ info.update(layer.feature.properties);
               });
               },
             }).addTo(map);
+
+		
+
+	      L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 		   
 
