@@ -388,15 +388,15 @@
                             color: "red"
               });
               },
-            }).addTo(map)
+            }.addTo(map);
 
 		     console.log(manufacturerscsv);
 
       manufacturersheatmapLayer = L.heatLayer(manufacturerscsv, {
         radius: 25
-      });
+      }).addTo(map);
 
-	  }).addTo(map);
+	  });
 
 		  /*
 
