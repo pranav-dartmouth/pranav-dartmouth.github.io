@@ -184,20 +184,20 @@
 
 	      #toggleFoodBanks {
 		margin-top: 5px;
-		border-color: yellow;
-		color: yellow;
+		border-color: #6cbdbd;
+		color: #6cbdbd;
           }
 
 	  #toggleFoodBanksHeatmap {
 		margin-top: 5px;
-		border-color: yellow;
-		color: yellow;
+		border-color: #6cbdbd;
+		color: #6cbdbd;
           }
 
 	      #toggleFoodBanksCensusTracts {
 		margin-top: 5px;
-		border-color: yellow;
-		color: yellow;
+		border-color: #6cbdbd;
+		color: #6cbdbd;
 	   }
 
 	      .section, #firstsection {
@@ -538,6 +538,23 @@
 
         L.control.layers(baseMaps4).addTo(map4);
 
+	      function getColorfastfood(d) {
+		 return     d > 9 ? "#a63603" : 
+		       		d > 8 ? "#a63603" : 
+			      d > 7 ? "#a63603" :
+			      d > 6 ? "#a63603" :
+			      d > 5 ? "#a63603" :
+			       d > 4 ? "#e6550d" :
+			       d > 3 ? "#fd8d3c" :
+			       d > 2 ? "#fdae6b" :
+				 d > 1 ? "#fdd0a2" :
+			 d > 0 ? "#feedde" :
+			 
+			      "#ffffff";
+	      
+
+	      }
+
 	  function fastfoodSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
@@ -586,6 +603,15 @@
 	       };	       
 	      }
 
+	      function getColorfarmersmarkets(d) {
+		 return     d > 1 ? "#ffeb00" : 
+		       		d > 0 ? "#fefd98" : 
+			     
+			      "#ffffff";
+	      
+
+	      }
+
 		    function farmermarketSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
@@ -617,6 +643,18 @@
 	       };	       
 	      }
 
+	      function getColorgrocerystores(d) {
+		 return     d > 4 ? "#54278f" : 
+		       		d > 3 ? "#756bb1" : 
+			 d > 2 ? "#9e9ac8" : 
+		       		d > 1 ? "#cbc9e2" : 
+			 d > 0 ? "#f2f0f7" :
+			     
+			      "#ffffff";
+	      
+
+	      }
+
 	       function grocerystoreSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
@@ -628,18 +666,27 @@
 
 		}
 		  if (count >= 1) {
-			polygoncolor = "#9e9ac8";
+			polygoncolor = "#f2f0f7";
 			polygonopacity = 1;
 
 		}     
 
 		if (count >= 2) {
-			polygoncolor = "#756bb1";
+			polygoncolor = "#cbc9e2";
 			polygonopacity = 1;
 
 		}
 
 		if (count >= 3) {
+			polygoncolor = "#9e9ac8";
+			polygonopacity = 1;
+		}
+
+		      if (count >= 4) {
+			polygoncolor = "#756bb1";
+			polygonopacity = 1;
+		}
+		       if (count >= 5) {
 			polygoncolor = "#54278f";
 			polygonopacity = 1;
 		}
@@ -655,6 +702,17 @@
 	       };	       
 	      }
 
+	       function getColorfoodbanks(d) {
+		 return     d > 2 ? "#6cbdbd" : 
+		       		d > 1 ? "#c5ebe8" : 
+			 d > 0 ? "#dff5f2" : 
+		       	
+			      "#ffffff";
+	      
+
+	      }
+	      
+
 	       function foodbankSymbology(feature) {
                 var count = feature.properties.NUMPOINTS;
 		var polygoncolor;
@@ -666,19 +724,19 @@
 
 		}
 		  if (count >= 1) {
-			polygoncolor = "#9e9ac8";
+			polygoncolor = "#dff5f2";
 			polygonopacity = 1;
 
 		}     
 
 		if (count >= 2) {
-			polygoncolor = "#756bb1";
+			polygoncolor = "#c5ebe8";
 			polygonopacity = 1;
 
 		}
 
 		if (count >= 3) {
-			polygoncolor = "#54278f";
+			polygoncolor = "#6cbdbd";
 			polygonopacity = 1;
 		}
 
