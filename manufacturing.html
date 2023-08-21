@@ -454,9 +454,9 @@
 		     console.log(manufacturerscsv);
 
       manufacturersheatmapLayer = L.heatLayer(manufacturerscsv, {
-        radius: 25
-      },
-	      gradient: {0.0: 'red', 0.5: 'red', 1: 'red'}).addTo(map);
+        radius: 25,
+	      gradient: {0.0: 'red', 0.5: 'red', 1: 'red'}}).addTo(map);
+	      
 
 
             $("#toggleManufacturers").show();
