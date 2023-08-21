@@ -509,24 +509,61 @@ info.update(layer.feature.properties);
 }
 	     
 	      
-	      function resetHighlight(e) {
+	      function resetHighlightcensustracts(e) {
     csascensustractsLayer.resetStyle(e.target);
 		         info.update();
+
+		      
 }
+
+	      
 
 	      function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
 }
 
-	      function onEachFeature(feature, layer) {
+	      function onEachFeaturecensustracts(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
-        mouseout: resetHighlight,
+        mouseout: resetHighlightcensustracts,
         click: zoomToFeature
     });
 
 		      
 }
+
+	         var info1 = L.control();
+
+info1.onAdd = function (map2) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+info1.update = function (props) {
+    this._div.innerHTML = '<h3>Number of Urban Farms</h3>' +  (props ?
+        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' Urban Farms<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
+					: 'Hover over a census tract');
+};
+
+
+	         function resetHighlighturbanfarms(e) {
+    urbanfarmscensustractsLayer.resetStyle(e.target);
+		         info1.update();
+
+		      
+}
+
+	      function onEachFeatureurbanfarms(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlighturbanfarms,
+        click: zoomToFeature
+    });
+
+		      
+}
+
 
 	        var response = $.ajax({
             url: "agriculturalcompanies.geojson",
@@ -607,7 +644,7 @@ info.update(layer.feature.properties);
 
 	 L.control.layers(baseMaps1).addTo(map1);
 
-	      info.addTo(map1);
+	    
 
           $.when(response1).done(function() {
    
@@ -668,6 +705,8 @@ info.update(layer.feature.properties);
               
                       onEachFeature: onEachFeature
             }).addTo(map1);
+
+		    info.addTo(map1);
 
 
 
@@ -787,23 +826,12 @@ info.update(layer.feature.properties);
 
 		    style: urbanfarmsSymbology, 
               
-                     onEachFeature: function(feature, layer) {
-                            layer.bindPopup("In " + 
-                            feature.properties.NAME1 + "...<br>" + 
-				"There are " + feature.properties.NUMPOINTS + " community gardens<br>" +
-				"Meanwhile...<br>" + 
-				"The percentage of the population in poverty is " +
-				feature.properties.pctpov + "%<br>" +
-				"The percentage of the population who is Black and/or Hispanic is " +
-				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
-				"The percentage of the population who is on SNAP is " +
-				feature.properties.pctSNAP + "%"); 
-			   
-
-                       }
+                     onEachFeature: onEachFeatureurbanfarms
 
                     
             }).addTo(map2);
+
+info2.addTo(map2);
 
 
 
