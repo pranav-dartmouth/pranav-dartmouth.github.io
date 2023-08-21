@@ -324,6 +324,68 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 	maxZoom: 13
 });
 
+	      var OpenStreetMap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+
+           var CartoDB_DarkMatter1 = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
+
+          
+
+          var USGS_USImageryTopo1 = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        maxZoom: 20,
+	        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          });
+
+	
+	      var Esri_WorldGrayCanvas1 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+});
+
+	      var Esri_WorldTerrain1 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
+});
+
+	      var Esri_WorldShadedRelief1 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+	maxZoom: 13
+});
+
+	         var OpenStreetMap2 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© <a href="www.openstreetmap.com/copyright">OpenStreetMap</a>'});
+
+           var CartoDB_DarkMatter2 = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
+
+          
+
+          var USGS_USImageryTopo2 = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+	        maxZoom: 20,
+	        attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+          });
+
+	
+	      var Esri_WorldGrayCanvas2 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+});
+
+	      var Esri_WorldTerrain2 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
+});
+
+	      var Esri_WorldShadedRelief2 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+	maxZoom: 13
+});
+
 	      
 
           var baseMaps = {"OSM" : OpenStreetMap,
@@ -335,14 +397,22 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
                          };
 
 	      
-          var baseMaps1 = {"OSM" : OpenStreetMap,
-			  "CTBD" : CartoDB_DarkMatter,
-                          "USGS" : USGS_USImageryTopo,
-			  "EWGC": Esri_WorldGrayCanvas,
-			  "EWT": Esri_WorldTerrain,
-			  "EWSR": Esri_WorldShadedRelief
+          var baseMaps1 = {"OSM" : OpenStreetMap1,
+			  "CTBD" : CartoDB_DarkMatter1,
+                          "USGS" : USGS_USImageryTopo1,
+			  "EWGC": Esri_WorldGrayCanvas1,
+			  "EWT": Esri_WorldTerrain1,
+			  "EWSR": Esri_WorldShadedRelief1
                          };
-	       
+
+	      
+	     var baseMaps2 = {"OSM" : OpenStreetMap2,
+			  "CTBD" : CartoDB_DarkMatter2,
+                          "USGS" : USGS_USImageryTopo2,
+			  "EWGC": Esri_WorldGrayCanvas2,
+			  "EWT": Esri_WorldTerrain2,
+			  "EWSR": Esri_WorldShadedRelief2
+                         };   
 
 	     
 
@@ -424,6 +494,8 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 	  });
 
 	       L.control.layers(baseMaps).addTo(map);
+
+	      
 
 
 	      
@@ -534,7 +606,7 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
             }
           });
 
-	     
+	    
 
           $.when(response2).done(function() {
    
@@ -588,7 +660,7 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 		  layers: [OpenStreetMap]
 	  });
 
-	      L.control.layers(baseMaps).addTo(map2);
+	       L.control.layers(baseMaps2).addTo(map2);
 	      
 
 	      var urbanfarmscsv = Array();
