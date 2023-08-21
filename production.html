@@ -199,6 +199,20 @@
 			      font-size: xx-small;
 			      text-align: center;
 		      }
+
+	       .legend {
+		      line-height: 18px;
+		      color: #555;
+
+	      }
+
+	      .legend i {
+		      width: 18px;
+		      height: 18px;
+		      float: left;
+		      margin-right: 8px;
+		      opacity: 0.7;
+	      }
 		      
 	    
         
@@ -569,6 +583,25 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 	  });
 
 	 L.control.layers(baseMaps1).addTo(map1);
+
+	       var legend = L.control({position: 'bottomright'});
+
+	      legend.onAdd = function (map) {
+
+		      var div = L.DomUtil.create('div', 'info legend'),
+			      grades = [0, 1],
+			      labels = [];
+
+		      for (var i = 0; i < grades.length; i++) {
+			      div.innerHTML +=
+			'<i style="background:' + getColorcsas(grades[i]) + '"></i> ' +
+				      (grades[i] ? grades[i] + '<br>' : '<br>');
+		      }
+
+		      return div;
+
+	      };
+
 
           $.when(response1).done(function() {
    
