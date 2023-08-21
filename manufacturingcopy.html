@@ -342,6 +342,40 @@
 	       };	       
 	      }
 
+	      function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+}
+
+	      function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+}
+
+	      function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+	      function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+
+	      
+
          
          
 
@@ -357,6 +391,9 @@
 	   
 
           $.when(response1).done(function() {
+
+		
+
    
             var manufacturersLayer = L.geoJson(response1.responseJSON, {
 
@@ -413,27 +450,20 @@
             }
           });
 
+	      var geojson;
+
 	    
           $.when(response2).done(function() {
+
+		  geojson = L.geoJson(response2.responseJSON, {
+    		style: manufacturingSymbology,
+    		onEachFeature: onEachFeature
+		}).addTo(map);
+
    
-            var manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
-
-		    style: manufacturingSymbology,
+            
               
-                     onEachFeature: function(feature, layer) {
-                            layer.bindPopup("In " + 
-                            feature.properties.NAME1 + "...<br>" + 
-				"There are " + feature.properties.NUMPOINTS + " food manufacturing and processing sites.<br>" +
-				"Meanwhile...<br>" + 
-				"The percentage of the population in poverty is " +
-				feature.properties.pctpov + "%<br>" +
-				"The percentage of the population who is Black and/or Hispanic is " +
-				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
-				"The percentage of the population who is on SNAP is " +
-				feature.properties.pctSNAP + "%")
-
-                      
-            }
+                     
 	    }).addTo(map);
 
 		    
