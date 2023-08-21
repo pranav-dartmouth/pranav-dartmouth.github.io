@@ -620,11 +620,11 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 				"There are " + feature.properties.NUMPOINTS + " CSAs<br>" +
 				"Meanwhile...<br>" + 
 				"The percentage of the population in poverty is " +
-				feature.properties.pctpov + "%<br>" +
+				Math.round(feature.properties.pctpov) + "%<br>" +
 				"The percentage of the population who is Black and/or Hispanic is " +
-				(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
+				Math.round(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
 				"The percentage of the population who is on SNAP is " +
-				feature.properties.pctSNAP + "%"); 
+				Math.round(feature.properties.pctSNAP) + "%"); 
 			   
 
                        }
