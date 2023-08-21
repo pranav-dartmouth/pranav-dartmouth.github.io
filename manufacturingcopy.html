@@ -264,6 +264,8 @@
 		  zoom: 10,
 		  layers: [OpenStreetMap]
 	  });
+
+	      
         
          
 
@@ -309,6 +311,8 @@
 		      "Manufacturing HM": manufacturersheatmapLayer,
 		      "Manufacturers/Census Tract": manufacturerspercensustractsLayer
 	      };
+
+	       L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 	      
 
@@ -411,7 +415,7 @@ info.update(layer.feature.properties);
 		      
 }
 
-	      L.control.layers(baseMaps, overlayMaps).addTo(map);
+	     
 
 	      
 
