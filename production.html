@@ -335,7 +335,13 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
                          };
 
 	      
-         
+          var baseMaps1 = {"OSM" : OpenStreetMap,
+			  "CTBD" : CartoDB_DarkMatter,
+                          "USGS" : USGS_USImageryTopo,
+			  "EWGC": Esri_WorldGrayCanvas,
+			  "EWT": Esri_WorldTerrain,
+			  "EWSR": Esri_WorldShadedRelief
+                         };
 	       
 
 	     
@@ -477,7 +483,7 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 		  layers: [OpenStreetMap]
 	  });
 
-	 L.control.layers(baseMaps).addTo(map1);
+	 L.control.layers(baseMaps1).addTo(map1);
 
           $.when(response1).done(function() {
    
