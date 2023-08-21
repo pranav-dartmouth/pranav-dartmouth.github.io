@@ -161,7 +161,7 @@
 				padding: 5px;
 				
 			}
-
+/* Source of code: Leaflet Chloropleth Tile Map example */
 	      .info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
@@ -368,7 +368,6 @@ info.onAdd = function (map) {
     return this._div;
 };
 
-// method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = '<h3>Number of Food Manufacturers</h3>' +  (props ?
         '<b>' + props.NAME1 + '</b><br />' + props.NUMPOINTS + ' food manufacturing facilities<br />' + props.pctpov + '% of the population in poverty<br />' + (props.pctblack + props.pcthispani) + '% of the population is Black/Hispanic<br />' + props.pctSNAP + '% of the population on SNAP'
