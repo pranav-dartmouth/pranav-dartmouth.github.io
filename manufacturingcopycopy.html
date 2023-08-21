@@ -290,11 +290,7 @@
 			  "EWSR": Esri_WorldShadedRelief
                          };
 
-         var overlayMaps = {
-    "Manufacturing Locations": manufacturersLayer,
-"Manufacturing Heatmap": manufacturersheatmapLayer,
-"Manufacturing Census Tracts": manufacturerspercensustractsLayer
-};
+         
 
 
 
@@ -401,6 +397,7 @@
         radius: 25
       });
 
+		  /*
 
             $("#toggleManufacturers").show();
 
@@ -415,8 +412,9 @@
                    manufacturersLayer.addTo(map);
               }
             });
+	    */
 
-            $("#toggleManufacturersHeatmap").show();
+         /*    $("#toggleManufacturersHeatmap").show();
 
            $("#toggleManufacturersHeatmap").click( function() {
               if (manufacturersheatmapVisible) {
@@ -431,6 +429,8 @@
             });
 
           });
+
+   */
 
 
 	      var response2 = $.ajax({
@@ -466,7 +466,7 @@
 	    });
 
 		    
-            $("#toggleCensusTracts").show();
+          /*   $("#toggleCensusTracts").show();
 
            $("#toggleCensusTracts").click( function() {
               if (manufacturerspercensustractsVisible) {
@@ -479,6 +479,13 @@
                    manufacturerspercensustractsLayer.addTo(map);
               }
             });
+	    */
+
+		  var overlayMaps = {
+    "Manufacturing Locations": manufacturersLayer,
+"Manufacturing Heatmap": manufacturersheatmapLayer,
+"Manufacturing Census Tracts": manufacturerspercensustractsLayer
+};
 
 var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
 
