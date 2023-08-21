@@ -392,7 +392,7 @@ info.update(layer.feature.properties);
 }
 
 	      function resetHighlight(e) {
-    geojson.resetStyle(e.target);
+    manufacturerspercensustractsLayer.resetStyle(e.target);
 		         info.update();
 }
 
@@ -493,13 +493,13 @@ info.update(layer.feature.properties);
           });
 
 	     
-	var geojson;
+	
 	    
           $.when(response2).done(function() {
 
 		  /* Source of code: Leaflet */
 
-		  geojson = L.geoJson(response2.responseJSON, {
+		  manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
     		style: manufacturingSymbology,
     		onEachFeature: onEachFeature
 		}).addTo(map);
