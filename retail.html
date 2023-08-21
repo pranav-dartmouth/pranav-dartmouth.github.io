@@ -966,8 +966,8 @@
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Food Bank: " + 
-                            feature.properties.Name + "</b>"); 
-			     fastfoodcsv.push([feature.geometry.coordinates[1], feature.geometry.coordinates[0], 1]);
+                            feature.properties.FoodBank + "</b>"); 
+			     foodbankscsv.push([feature.geometry.coordinates[1], feature.geometry.coordinates[0], 1]);
 
                        },
 
