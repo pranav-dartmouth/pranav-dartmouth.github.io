@@ -258,10 +258,7 @@
 	
 </div>
 
-	  <div class="section">
-		  <h3>Case in Point: Butchertown</h3>
-		  <div id="map1"></div>
-	  </div>  
+	  
 
 
       <script>
@@ -458,7 +455,8 @@
 
       manufacturersheatmapLayer = L.heatLayer(manufacturerscsv, {
         radius: 25
-      }).addTo(map);
+      }, {
+	      gradient: {1: 'red'}}).addTo(map);
 
 
             $("#toggleManufacturers").show();
