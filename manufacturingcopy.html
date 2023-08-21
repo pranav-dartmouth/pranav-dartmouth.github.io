@@ -371,8 +371,8 @@ info.onAdd = function (map) {
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = '<h3>Number of Food Manufacturers</h3>' +  (props ?
-        '<b>' + props.NAME1 + '</b><br />' + props.NUMPOINTS + ' food manufacturing facilities'
-        : 'Hover over a census tract');
+        '<b>' + props.NAME1 + '</b><br />' + props.NUMPOINTS + ' food manufacturing facilities<br />' + props.pctpov + '% of the population in poverty<br />' + (props.pctblack + props.pcthispani) + '% of the population is Black/Hispanic<br />' + props.pctSNAP + '% of the population on SNAP'
+					: 'Hover over a census tract');
 };
 
 	      function highlightFeature(e) {
