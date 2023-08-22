@@ -602,8 +602,8 @@ info1.onAdd = function (map2) {
 };
 
 info1.update = function (props) {
-    this._div.innerHTML = '<h3>Number of Urban Farms</h3>' +  (props ?
-        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' Urban Farms<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
+    this._div.innerHTML = '<h3>Number of Community Gardens</h3>' +  (props ?
+        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' community gardens<br />' + Math.round(props.pctpov) + '% poor<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% on SNAP'
 					: 'Hover over a census tract');
 };
 
