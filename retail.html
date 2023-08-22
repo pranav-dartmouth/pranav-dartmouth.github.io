@@ -1386,7 +1386,7 @@ info1.addTo(map2);
 		     console.log(grocerystorescsv);
 
     grocerystoresheatmapLayer = L.heatLayer(grocerystorescsv, {
-        radius: 25
+        radius: 25, gradient: {0.0: '#54278f', 0.5: '#54278f', 1: '#54278f'}
       }).addTo(map3);
 
 
@@ -1501,7 +1501,7 @@ info2.addTo(map3);
 		     
 
       foodbanksheatmapLayer = L.heatLayer(foodbankscsv, {
-        radius: 25
+        radius: 25, gradient: {0.0: '#6cbdbd', 0.5: '#6cbdbd', 1: '#6cbdbd'}
       }).addTo(map4);
 
 
