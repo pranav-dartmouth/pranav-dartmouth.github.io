@@ -525,6 +525,114 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 			      "#FFFFFF"
 	      }
 
+	       var info = L.control();
+
+info.onAdd = function (map1) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+info.update = function (props) {
+    this._div.innerHTML = '<h3>Number of CSAs</h3>' +  (props ?
+        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' CSAs<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
+					: 'Hover over a census tract');
+};
+
+	      function highlightFeaturecsas(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+info.update(layer.feature.properties);
+}
+	     
+	      
+	      function resetHighlightcsas(e) {
+    csascensustractsLayer.resetStyle(e.target);
+		         info.update();
+
+		      
+}
+
+	      
+
+	      function zoomToFeaturecsas(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+	      function onEachFeaturecsas(feature, layer) {
+    layer.on({
+        mouseover: highlightFeaturecsas,
+        mouseout: resetHighlightcsas,
+        click: zoomToFeaturecsas
+    });
+
+		      
+}
+
+	      var info1 = L.control();
+
+info1.onAdd = function (map2) {
+    this._div = L.DomUtil.create('div', 'info1'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+info1.update = function (props) {
+    this._div.innerHTML = '<h3>Number of Urban Farms</h3>' +  (props ?
+        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' Urban Farms<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
+					: 'Hover over a census tract');
+};
+
+	      function highlightFeatureurbanfarms(e) {
+    var layer1 = e.target;
+
+    layer1.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer1.bringToFront();
+    }
+info1.update(layer1.feature.properties);
+}
+	     
+	      
+	      function resetHighlighturbanfarms(e) {
+    urbanfarmscensustractsLayer.resetStyle(e.target);
+		         info1.update();
+
+		      
+}
+
+	      
+
+	      function zoomToFeatureurbanfarms(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+	      function onEachFeatureurbanfarms(feature, layer) {
+    layer.on({
+        mouseover: highlightFeatureurbanfarms,
+        mouseout: resetHighlighturbanfarms,
+        click: zoomToFeatureurbanfarms
+    });
+
+		      
+}
+
 	        var response = $.ajax({
             url: "agriculturalcompanies.geojson",
             dataType: "json",
