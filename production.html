@@ -549,7 +549,7 @@ info.onAdd = function (map1) {
 
 info.update = function (props) {
     this._div.innerHTML = '<h3>Number of CSAs</h3>' +  (props ?
-        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' CSAs<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
+        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' CSAs<br />' + Math.round(props.pctpov) + '% poor<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% on SNAP'
 					: 'Hover over a census tract');
 };
 
