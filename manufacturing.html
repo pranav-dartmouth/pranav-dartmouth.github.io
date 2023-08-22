@@ -410,6 +410,57 @@
 	       };	       
 	      }
 
+	      /* Source of below code: Leaflet Chloropleth Demo */
+
+	   var info = L.control({position: "bottomleft"});
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+info.update = function (props) {
+    this._div.innerHTML = '<h3>Number of Food Manufacturers</h3>' +  (props ?
+        '<b>' + props.NAME1 + '</b><br />' + Math.round(props.NUMPOINTS) + ' food manufacturing facilities<br />' + Math.round(props.pctpov) + '% of the population in poverty<br />' + Math.round(parseFloat(props.pctblack) + parseFloat(props.pcthispani)) + '% of the population is Black/Hispanic<br />' + Math.round(props.pctSNAP) + '% of the population on SNAP'
+					: 'Hover over a census tract');
+};
+
+	      function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+info.update(layer.feature.properties);
+}
+
+	      function resetHighlight(e) {
+    manufacturerspercensustractsLayer.resetStyle(e.target);
+		         info.update();
+}
+
+	      function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+	      function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+
+		      
+}
+
          
          
 
