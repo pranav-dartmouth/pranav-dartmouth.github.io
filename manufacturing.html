@@ -553,25 +553,14 @@ info.update(layer.feature.properties);
 	    
           $.when(response2).done(function() {
    
-            var manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
+            manufacturerspercensustractsLayer = L.geoJson(response2.responseJSON, {
 
 		    style: manufacturingSymbology,
               
-                     onEachFeature: function(feature, layer) {
-                            layer.bindPopup("In " + 
-                            feature.properties.NAME1 + "...<br>" + 
-				"There are " + Math.round(feature.properties.NUMPOINTS) + " food manufacturing and processing sites.<br>" +
-				"Meanwhile...<br>" + 
-				"The percentage of the population in poverty is " +
-				Math.round(feature.properties.pctpov) + "%<br>" +
-				"The percentage of the population who is Black and/or Hispanic is " +
-				Math.round(parseFloat(feature.properties.pctblack) + parseFloat(feature.properties.pcthispani)) + "%<br>" +
-				"The percentage of the population who is on SNAP is " +
-				Math.round(feature.properties.pctSNAP) + "%")
-
-                      
-            }
+                     onEachFeature: onEachFeature
 	    }).addTo(map);
+
+info.addTo(map);
 
 		    
             $("#toggleCensusTracts").show();
