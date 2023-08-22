@@ -549,6 +549,7 @@ Yet, despite the fact that community gardening doesn't seem to be unequally spat
 			    d > 0 ? "#e5f5f9" :
 			      "#FFFFFF"
 	      }
+/* Source of below code: Leaflet Chloropleth demo */
 
 	       var info = L.control({position: "topleft"});
 
@@ -686,7 +687,7 @@ info1.update(layer1.feature.properties);
               
                      onEachFeature: function(feature, layer) {
                             layer.bindPopup("<b>Company: " + 
-                            feature.properties.Name + "</b><br>" + feature.properties.Name + ", " + feature.properties.Description + ", " + feature.properties.Issue + "<br>"); 
+                            feature.properties.Name + "</b><br>" + feature.properties.Name + ", " + feature.properties.Description + ", " + feature.properties.Issue + "<br>" + "See more information here:" + feature.properties.link); 
 
                        },
 
