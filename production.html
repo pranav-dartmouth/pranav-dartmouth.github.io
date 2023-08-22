@@ -893,7 +893,7 @@ info.addTo(map1);
 		     console.log(urbanfarmscsv);
 
       urbanfarmheatmapLayer = L.heatLayer(urbanfarmscsv, {
-        radius: 25
+        radius: 25, gradient: {0.0: '#2ca25f', 0.5: '#2ca25f', 1: '#2ca25f'}
       }).addTo(map2);
 
 
